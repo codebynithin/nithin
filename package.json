@@ -13,7 +13,14 @@
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
   },
+  "devDependencies": {
+    "eslint": "^8.57.1",
+    "husky": "~4.2.5",
+    "lint-staged": "~11.0.0",
+    "prettier": "~2.3.0"
+  },
   "scripts": {
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -36,5 +43,18 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "lint-staged": {
+    "src/app/**/*.js": [
+      "eslint --fix"
+    ],
+    "src/**/*.(html|css|json|js)": [
+      "prettier --write"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   }
 }
