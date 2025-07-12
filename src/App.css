@@ -1,38 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;700&display=swap');
+
+:root {
+  --primary-color: #00b8d6;
+  --primary-dark-color: #009bb7;
+  --primary-text-color: #eceff4;
+  --secondary-color: #ff5821;
+  --secondary-dark-color: #d83a0f;
+  --primary-text-color: #81a1c1;
+  --primary-bg-color: #181b20;
+  --secondary-bg-color: #23272f;
+  --scrollbar-thumb-color: #2e3440;
+  --white: #fff;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--primary-bg-color);
+  color: var(--primary-text-color);
+  font-family: 'Fira Mono', monospace, 'Segoe UI', Arial, sans-serif;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-between;
+  background: var(--secondary-bg-color);
 }
 
-.App-link {
-  color: #61dafb;
+/* Remove default link styles */
+a {
+  text-decoration: none;
+  color: inherit;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  background: var(--secondary-bg-color);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb-color);
+  border-radius: 4px;
 }

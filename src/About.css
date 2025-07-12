@@ -1,0 +1,125 @@
+.about-container {
+  display: flex;
+  min-height: 100vh;
+  background: var(--primary-bg-color);
+  color: var(--primary-text-color);
+}
+
+.about-sidebar {
+  width: 220px;
+  background: var(--secondary-bg-color);
+  padding: 2.5em 1.2em 1.2em 1.2em;
+  font-size: 1.08rem;
+  border-right: 1px solid #23272f33;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.about-sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.about-sidebar li {
+  padding: 0.6em 0.8em;
+  border-radius: 6px;
+  margin-bottom: 0.3em;
+  cursor: pointer;
+  color: var(--primary-text-color);
+  transition: background 0.15s, color 0.15s;
+}
+.about-sidebar li.active {
+  background: var(--primary-color);
+  color: var(--white);
+}
+
+.about-main {
+  flex: 1;
+  padding: 2.5em 2em 2em 2.5em;
+  display: flex;
+  flex-direction: column;
+}
+.about-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5em;
+  color: var(--primary-color);
+  letter-spacing: 0.04em;
+}
+
+.about-experience-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+}
+.about-experience-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.1em;
+}
+.about-experience-icon {
+  min-width: 2.1em;
+  min-height: 2.1em;
+  background: var(--secondary-bg-color);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3em;
+  font-weight: 700;
+  color: var(--primary-color);
+  box-shadow: 0 1px 4px #0002;
+}
+.about-experience-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2em;
+}
+.about-experience-company {
+  font-size: 1.1em;
+  font-weight: 700;
+  color: var(--white);
+}
+.about-experience-role {
+  font-size: 1em;
+  color: var(--primary-text-color);
+  margin-bottom: 0.1em;
+}
+.about-experience-period {
+  font-size: 0.98em;
+  color: var(--secondary-text-color, #b0bec5);
+  margin-bottom: 0.1em;
+}
+.about-experience-subtitle {
+  font-size: 0.99em;
+  color: var(--primary-color);
+  margin-bottom: 0.1em;
+}
+
+@media (max-width: 900px) {
+  .about-container {
+    flex-direction: column;
+  }
+  .about-sidebar {
+    width: 100%;
+    flex-direction: row;
+    border-right: none;
+    border-bottom: 1px solid #23272f33;
+    padding: 1em 0.5em;
+    justify-content: flex-start;
+    align-items: center;
+    overflow-x: auto;
+  }
+  .about-sidebar ul {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5em;
+  }
+  .about-sidebar li {
+    margin-bottom: 0;
+    margin-right: 0.5em;
+  }
+  .about-main {
+    padding: 1.5em 1em;
+  }
+}
