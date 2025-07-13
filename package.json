@@ -1,30 +1,47 @@
 {
   "name": "nithin",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
-  "dependencies": {
-    "@testing-library/dom": "^10.4.0",
-    "@testing-library/jest-dom": "^6.6.3",
-    "@testing-library/react": "^16.3.0",
-    "@testing-library/user-event": "^13.5.0",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0",
-    "react-router-dom": "^6.30.1",
-    "react-scripts": "5.0.1",
-    "web-vitals": "^2.1.4"
-  },
-  "devDependencies": {
-    "eslint": "^8.57.1",
-    "husky": "~4.2.5",
-    "lint-staged": "~11.0.0",
-    "prettier": "~2.3.0"
+  "author": {
+    "name": "Nithin Viswanathan",
+    "email": "mails2nithin@gmail.com"
   },
   "scripts": {
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start:web": "react-scripts start",
+    "build:web": "react-scripts build",
+    "test:web": "react-scripts test",
+    "eject:web": "react-scripts eject",
+    "start:server": "cd server && node index.js",
+    "dev:server": "cd server && nodemon index.js",
+    "start": "concurrently \"npm run start:web\" \"npm run start:server\"",
+    "start:dev": "concurrently \"npm run start:web\" \"npm run dev:server\""
+  },
+  "dependencies": {
+    "@testing-library/dom": "~10.4.0",
+    "@testing-library/jest-dom": "~6.6.3",
+    "@testing-library/react": "~16.3.0",
+    "@testing-library/user-event": "~13.5.0",
+    "cors": "~2.8.5",
+    "dotenv": "~16.0.3",
+    "express": "~4.18.2",
+    "mongoose": "~7.0.3",
+    "react": "~19.1.0",
+    "react-dom": "~19.1.0",
+    "react-router-dom": "~6.30.1",
+    "react-scripts": "5.0.1",
+    "web-vitals": "~2.1.4"
+  },
+  "devDependencies": {
+    "autoprefixer": "~10.4.21",
+    "concurrently": "~9.2.0",
+    "eslint": "~8.57.1",
+    "husky": "~4.2.5",
+    "lint-staged": "~11.0.0",
+    "nodemon": "~3.0.1",
+    "postcss": "~8.5.6",
+    "prettier": "~2.3.0",
+    "tailwindcss": "~4.1.11"
   },
   "eslintConfig": {
     "extends": [
@@ -32,6 +49,7 @@
       "react-app/jest"
     ]
   },
+  "proxy": "http://localhost:5000",
   "browserslist": {
     "production": [
       ">0.2%",
@@ -45,10 +63,10 @@
     ]
   },
   "lint-staged": {
-    "src/app/**/*.js": [
+    "{server,src}/app/**/*.js": [
       "eslint --fix"
     ],
-    "src/**/*.(html|css|json|js)": [
+    "{server,src}/**/*.(html|css|json|js)": [
       "prettier --write"
     ]
   },

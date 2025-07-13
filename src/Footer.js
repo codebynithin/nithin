@@ -1,50 +1,39 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './Footer.css';
+import { apiFetch } from './http';
 
-const Footer = () => (
-  <footer className="footer">
-    <div className="footer-connect">
-      Connect With Me:
-      {[
-        {
-          href: 'https://www.linkedin.com/in/nithinvuideveloper',
-          iconClass: 'icon-linkedin2',
-          label: 'LinkedIn',
-        },
-        {
-          href: 'https://twitter.com/Nithin_V86',
-          iconClass: 'icon-twitter',
-          label: 'Twitter',
-        },
-        {
-          href: 'https://github.com/nithinv86',
-          iconClass: 'icon-github',
-          label: 'GitHub',
-        },
-        {
-          href: 'https://stackoverflow.com/users/8904502/nithin-v',
-          iconClass: 'icon-stackoverflow',
-          label: 'Stack Overflow',
-        },
-        {
-          href: 'https://www.facebook.com/nithinvuideveloper',
-          iconClass: 'icon-facebook',
-          label: 'Facebook',
-        },
-      ].map((link) => (
-        <a
-          key={link.label}
-          href={link.href}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="footer-icon"
-          aria-label={link.label}
-        >
-          <span className={`icon ${link.iconClass}`}></span>
-        </a>
-      ))}
-    </div>
-  </footer>
-);
+const Footer = () => {
+  const [links, setLinks] = useState([]);
+
+  useEffect(() => {
+    apiFetch('/api/social-links')
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setLinks(data);
+      })
+      .catch((err) => console.error('Failed to fetch social links', err));
+  }, []);
+
+  return (
+    <footer className="footer">
+      <div className="footer-connect">
+        Connect With Me:
+        {links.map((link) => (
+          <a
+            key={link.label}
+            href={link.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="footer-icon"
+            aria-label={link.label}
+          >
+            <span className={`icon ${link.icon}`}></span>
+          </a>
+        ))}
+      </div>
+    </footer>
+  );
+};
 
 export default Footer;
