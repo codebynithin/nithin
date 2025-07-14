@@ -16,8 +16,8 @@ const Footer = () => {
   }, []);
 
   return (
-    <footer className="footer">
-      <div className="footer-connect">
+    <footer className="footer flex align-items-center justify-content-between">
+      <div className="footer-connect flex align-items-center">
         Connect With Me:
         {links.map((link) => (
           <a
@@ -31,6 +31,10 @@ const Footer = () => {
             <span className={`icon ${link.icon}`}></span>
           </a>
         ))}
+      </div>
+      <div className="footer-copyright flex align-items-center">
+        <span className="flex align-items-start">&copy;</span>
+        {new Date().getFullYear()} Nithin Viswanathan. All rights reserved.
       </div>
     </footer>
   );

@@ -1,4 +1,3 @@
-/* Footer Styles */
 .footer {
   width: 100vw;
   background: var(--secondary-bg-color);
@@ -8,14 +7,10 @@
   position: fixed;
   bottom: 0;
   left: 0;
-  display: flex;
-  align-items: center;
   z-index: 10;
   font-size: 1rem;
 }
 .footer-connect {
-  display: flex;
-  align-items: center;
   gap: 1.5em;
 }
 .footer-icon {
@@ -26,4 +21,7 @@
 }
 .footer-icon:hover {
   color: var(--primary-color);
+}
+.footer-copyright span {
+  height: 15px;
 }
