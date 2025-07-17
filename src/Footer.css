@@ -25,3 +25,12 @@
 .footer-copyright span {
   height: 15px;
 }
+
+@media screen and (max-width: 900px) {
+  .footer {
+    flex-direction: column;
+  }
+  .footer-connect {
+    gap: 0.25em;
+  }
+}

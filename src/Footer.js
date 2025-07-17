@@ -8,10 +8,7 @@ const Footer = () => {
   useEffect(() => {
     apiFetch('/api/social-links')
       .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        setLinks(data);
-      })
+      .then((data) => setLinks(data))
       .catch((err) => console.error('Failed to fetch social links', err));
   }, []);
 
@@ -34,7 +31,7 @@ const Footer = () => {
       </div>
       <div className="footer-copyright flex align-items-center">
         <span className="flex align-items-start">&copy;</span>
-        {new Date().getFullYear()} Nithin Viswanathan. All rights reserved.
+        {new Date().getFullYear()} codebynithin.
       </div>
     </footer>
   );

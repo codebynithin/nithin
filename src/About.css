@@ -7,27 +7,34 @@
 }
 
 .about-sidebar {
-  width: 220px;
+  width: 30px;
+  height: 100vh;
   background: var(--secondary-bg-color);
-  padding: 1.2em;
-  font-size: 1.08rem;
-  border-right: 1px solid #23272f33;
+  padding: 0;
+  font-size: 1rem;
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+  overflow: hidden;
+  position: fixed;
 }
 .about-sidebar ul {
   list-style: none;
   padding: 0;
   margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  overflow: hidden;
 }
 .about-sidebar li {
+  height: auto;
+  display: flex;
+  align-items: center;
   padding: 0.6em 0.8em;
   border-radius: 6px;
   margin-bottom: 0.3em;
   cursor: pointer;
   color: var(--primary-text-color);
-  transition: background 0.15s, color 0.15s;
+  writing-mode: vertical-rl;
 }
 .about-sidebar li.active {
   background: var(--primary-color);
@@ -35,8 +42,9 @@
 }
 
 .about-main {
-  flex: 1;
-  padding: 2em;
+  width: calc(100% - 30px);
+  padding: 2em 1em;
+  margin-left: 30px;
 }
 .about-title {
   font-size: 1.5rem;
@@ -46,12 +54,12 @@
   letter-spacing: 0.04em;
 }
 
-.about-biography-list,
-.about-experience-list {
-  justify-content: center;
+.about-list {
+  display: flex;
+  flex-direction: column;
   gap: 2em;
 }
-.about-biography-list .info {
+.about-list .info {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -59,16 +67,21 @@
   flex-direction: column;
   gap: 1em;
 }
-.about-biography-list .info strong {
-  min-width: 160px;
+.about-list .info li {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+.about-list .info strong {
+  min-width: 120px;
   display: inline-flex;
 }
-.about-experience-item {
+.about-item {
   display: flex;
   align-items: flex-start;
   gap: 1.1em;
 }
-.about-experience-icon {
+.about-icon {
   min-width: 2.1em;
   min-height: 2.1em;
   background: var(--secondary-bg-color);
@@ -81,62 +94,60 @@
   color: var(--primary-color);
   box-shadow: 0 1px 4px #0002;
 }
-.about-experience-content {
+.about-content {
   display: flex;
   flex-direction: column;
   gap: 0.2em;
 }
-.about-experience-company {
+.about-company {
   font-size: 1.1em;
   font-weight: 700;
   color: var(--white);
 }
-.about-experience-role {
+.about-role {
   font-size: 1em;
   color: var(--primary-text-color);
   margin-bottom: 0.1em;
 }
-.about-experience-period {
+.about-period {
   font-size: 0.98em;
   color: var(--secondary-text-color, #b0bec5);
   margin-bottom: 0.1em;
 }
-.about-experience-subtitle {
+.about-subtitle {
   font-size: 0.99em;
   color: var(--primary-color);
   margin-bottom: 0.1em;
 }
 
-@media (max-width: 900px) {
-  .about-container {
-    flex-direction: column;
+@media screen and (min-width: 900px) {
+  .about-list .info strong {
+    min-width: 120px;
   }
+
   .about-sidebar {
-    width: 100%;
-    flex-direction: row;
-    border-right: none;
-    border-bottom: 1px solid #23272f33;
-    padding: 1em 0.5em;
+    width: 220px;
+    height: 100vh;
+    padding: 1.2em;
+    font-size: 1.08rem;
+    border-right: 1px solid #23272f33;
+    flex-direction: column;
     justify-content: flex-start;
-    align-items: center;
-    overflow-x: auto;
-  }
-  .about-sidebar ul {
-    display: flex;
-    flex-direction: row;
-    gap: 0.5em;
   }
   .about-sidebar li {
-    margin-bottom: 0;
-    margin-right: 0.5em;
+    transition: background 0.15s, color 0.15s;
+    writing-mode: horizontal-tb;
+  }
+  .about-list {
+    flex-direction: row;
+    gap: 2em;
   }
   .about-main {
-    padding: 1.5em 1em;
+    width: calc(100% - 220px);
+    margin-left: 220px;
+    padding: 2em;
   }
-}
-
-@media (min-width: 641px) {
-  .about-biography-list .info strong {
-    min-width: 200px;
+  .about-list .info li {
+    flex-direction: row;
   }
 }

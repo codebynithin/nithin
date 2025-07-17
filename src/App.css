@@ -103,7 +103,7 @@ p {
   padding-left: 1em;
 }
 
-@media (min-width: 641px) {
+@media screen and (min-width: 641px) {
   .md\:col-60 {
     flex: 0 0 60%;
     max-width: 60%;
@@ -126,7 +126,7 @@ p {
   }
 }
 
-@media (min-width: 901px) {
+@media screen and (min-width: 901px) {
   .lg\:col-60 {
     flex: 0 0 60%;
     max-width: 60%;

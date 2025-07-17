@@ -74,7 +74,7 @@ const MainSection = () => {
         <p className="subtitle">I am a full stack developer</p>
       </div>
       <div className="main-image">
-        <img src="/images/programmer.svg" alt="Developer at computer" />
+        <img src={process.env.PUBLIC_URL + '/images/programmer.svg'} alt="Developer at computer" />
       </div>
     </main>
   );
