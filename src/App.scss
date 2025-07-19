@@ -7,10 +7,10 @@
   --secondary-color: #ff5821;
   --secondary-dark-color: #d83a0f;
   --primary-text-color: #81a1c1;
-  --primary-bg-color: #181b20;
+  --primary-bg-color: #222;
   --secondary-bg-color: #23272f;
   --scrollbar-thumb-color: #2e3440;
-  --white: #fff;
+  --white: #dbdbdb;
 
   /* Responsive utility variables - mobile first */
   --col-60: 100%;
@@ -66,10 +66,10 @@ body {
 a {
   color: inherit;
   text-decoration: none;
-}
-a:hover {
-  color: var(--primary-color);
-  text-decoration: underline;
+  &:hover {
+    color: var(--primary-color);
+    text-decoration: underline;
+  }
 }
 
 p {
@@ -98,50 +98,4 @@ p {
 }
 .align-items-center {
   align-items: center;
-}
-.justify-content-between {
-  justify-content: space-between;
-}
-
-.col {
-  flex: 0 0 100%;
-  max-width: 100%;
-}
-/* Responsive utility classes using CSS custom properties */
-.col-60,
-.md\:col-60,
-.lg\:col-60 {
-  flex: 0 0 var(--col-60);
-  max-width: var(--col-60);
-}
-
-.col-40,
-.md\:col-40,
-.lg\:col-40 {
-  flex: 0 0 var(--col-40);
-  max-width: var(--col-40);
-}
-
-.pr-0,
-.md\:pr-0,
-.lg\:pr-0 {
-  padding-right: var(--pr-0);
-}
-
-.pr-2,
-.md\:pr-2,
-.lg\:pr-2 {
-  padding-right: var(--pr-2);
-}
-
-.pl-0,
-.md\:pl-0,
-.lg\:pl-0 {
-  padding-left: var(--pl-0);
-}
-
-.pl-1,
-.md\:pl-1,
-.lg\:pl-1 {
-  padding-left: var(--pl-1);
 }
