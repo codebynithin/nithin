@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './Footer.css';
-import { apiFetch } from './http';
+import { apiFetch } from '../../http';
 
 const Footer = () => {
   const [links, setLinks] = useState([]);

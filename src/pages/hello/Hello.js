@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
-import './MainSection.css';
+import './Hello.css';
 
-const MainSection = () => {
+const Hello = () => {
   const canvasRef = useRef(null);
 
   useEffect(() => {
@@ -22,6 +22,7 @@ const MainSection = () => {
 
     let frame = 0;
     const speed = 2; // Higher value = slower
+
     function draw() {
       ctx.fillStyle = 'rgba(24, 27, 32, 0.08)';
       ctx.fillRect(0, 0, width, height);
@@ -32,22 +33,29 @@ const MainSection = () => {
       if (frame % speed === 0) {
         for (let i = 0; i < drops.length; i++) {
           const text = letters.charAt(Math.floor(Math.random() * letters.length));
+
           ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
           if (drops[i] * fontSize > height && Math.random() > 0.975) {
             drops[i] = 0;
           }
+
           drops[i]++;
         }
       } else {
         // Draw the current state without incrementing drops
         for (let i = 0; i < drops.length; i++) {
           const text = letters.charAt(Math.floor(Math.random() * letters.length));
+
           ctx.fillText(text, i * fontSize, drops[i] * fontSize);
         }
       }
+
       frame++;
+
       animationFrameId = requestAnimationFrame(draw);
     }
+
     draw();
 
     function handleResize() {
@@ -80,4 +88,4 @@ const MainSection = () => {
   );
 };
 
-export default MainSection;
+export default Hello;
