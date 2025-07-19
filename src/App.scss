@@ -1,66 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;700&display=swap');
-
-:root {
-  --primary-color: #00b8d6;
-  --primary-dark-color: #009bb7;
-  --primary-text-color: #eceff4;
-  --secondary-color: #ff5821;
-  --secondary-dark-color: #d83a0f;
-  --primary-text-color: #81a1c1;
-  --primary-bg-color: #222;
-  --secondary-bg-color: #23272f;
-  --scrollbar-thumb-color: #2e3440;
-  --white: #dbdbdb;
-
-  /* Responsive utility variables - mobile first */
-  --col-60: 100%;
-  --col-40: 100%;
-  --pr-0: 0;
-  --pr-2: 0;
-  --pl-0: 0;
-  --pl-1: 0;
-}
-
-@media screen and (min-width: 641px) {
-  :root {
-    --col-60: 60%;
-    --col-40: 40%;
-    --pr-0: 0;
-    --pr-2: 2em;
-    --pl-0: 0;
-    --pl-1: 1em;
-  }
-}
-
-@media screen and (min-width: 901px) {
-  :root {
-    --pr-2: 2em;
-    --pl-1: 1em;
-  }
-}
-
-*,
-*::after,
-*::before {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-  padding: 0;
-  background: var(--primary-bg-color);
-  color: var(--primary-text-color);
-  font-family: 'Fira Mono', monospace, 'Segoe UI', Arial, sans-serif;
-  min-height: 100vh;
-  box-sizing: border-box;
-}
-
 .App {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background: var(--secondary-bg-color);
 }
 
 a {
@@ -76,26 +18,4 @@ p {
   margin: 0;
   margin-bottom: 1.5em;
   line-height: 1.6;
-}
-
-::-webkit-scrollbar {
-  width: 8px;
-  background: var(--secondary-bg-color);
-}
-::-webkit-scrollbar-thumb {
-  background: var(--scrollbar-thumb-color);
-  border-radius: 4px;
-}
-
-.flex {
-  display: flex;
-}
-.flex-column {
-  flex-direction: column;
-}
-.align-items-start {
-  align-items: flex-start;
-}
-.align-items-center {
-  align-items: center;
 }

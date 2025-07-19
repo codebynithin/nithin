@@ -26,24 +26,25 @@
     "dotenv": "~16.0.3",
     "express": "~4.18.2",
     "mongoose": "~7.0.3",
+    "primeflex": "^4.0.0",
     "react": "~19.1.0",
     "react-dom": "~19.1.0",
     "react-router-dom": "~6.30.1",
     "react-scripts": "5.0.1",
-    "sass": "^1.89.2",
+    "sass": "~1.89.2",
     "web-vitals": "~2.1.4"
   },
   "devDependencies": {
-    "@types/jest": "^30.0.0",
-    "@types/react": "^19.1.8",
-    "@types/react-dom": "^19.1.6",
+    "@types/jest": "~30.0.0",
+    "@types/react": "~19.1.8",
+    "@types/react-dom": "~19.1.6",
     "concurrently": "~9.2.0",
     "eslint": "~8.57.1",
     "husky": "~4.2.5",
     "lint-staged": "~11.0.0",
     "nodemon": "~3.0.1",
     "prettier": "~2.3.0",
-    "typescript": "^5.8.3"
+    "typescript": "~4.9.5"
   },
   "eslintConfig": {
     "extends": [
@@ -64,10 +65,10 @@
     ]
   },
   "lint-staged": {
-    "{server,src}/app/**/*.js": [
+    "{server,src}/app/**/*.(tsx|ts)": [
       "eslint --fix"
     ],
-    "{server,src}/**/*.(html|css|json|js)": [
+    "{server,src}/**/*.(html|scss|json|tsx|ts)": [
       "prettier --write"
     ]
   },
