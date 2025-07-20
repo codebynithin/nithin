@@ -7,6 +7,11 @@
   margin-top: 80px;
 }
 
+.tap-bg {
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.15);
+}
+
 .p-dataview-content > .p-grid {
   & > .col-12 {
     &:not(:last-child) {

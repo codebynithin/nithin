@@ -131,14 +131,14 @@ const Home: React.FC = () => {
   }, []);
 
   return (
-    <>
+    <div>
       <div className="flex flex-column gap-3 md:gap-8 md:flex-row">
         <div className="col">
           <div className="grid">
-            <div className="col-12 p-0 md:m-2 text-6xl text-center text-white md:text-right font-bold">
+            <div className="col-12 p-0 md:m-2 text-6xl text-center md:text-right font-bold">
               Nithin
             </div>
-            <div className="col-12 p-0 md:m-2 text-6xl text-center text-white md:text-right font-bold">
+            <div className="col-12 p-0 md:m-2 text-6xl text-center md:text-right font-bold">
               Viswanathan
             </div>
           </div>
@@ -146,7 +146,7 @@ const Home: React.FC = () => {
         <div className="col hidden md:flex">&nbsp;</div>
         <div className="col text-center md:text-left">
           <div className="col-12 text-2xl">
-            A <span className="font-bold text-white">Full-Stack Developer</span>
+            A <span className="font-bold">Full-Stack Developer</span>
           </div>
           <div className="col-12 text-2xl line-height-3 pt-0">
             who enjoys crafting digital experiences
@@ -163,7 +163,7 @@ const Home: React.FC = () => {
               {keyCombination.map((key: string, index: number) => (
                 <React.Fragment key={index}>
                   {index > 0 && <span className="mx-2">+</span>}
-                  <span className="surface-50 inline-flex border-round md:border-round-xl px-3 py-2">
+                  <span className="inline-flex border-round md:border-round-xl px-3 py-2 tap-bg">
                     {key}
                   </span>
                 </React.Fragment>
@@ -194,7 +194,7 @@ const Home: React.FC = () => {
           lazy={true}
         ></DataView>
       </Dialog>
-    </>
+    </div>
   );
 };
 
