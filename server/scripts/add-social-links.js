@@ -39,29 +39,17 @@ async function seed() {
   await connectDB();
   const existingSocialLinks = await SocialLink.find();
   const existingTopNavigations = await TopNavigation.find();
-  let hasSocialDifference = false;
-  let hasTopNavDifference = false;
-
-  console.log('Checking the DB data.');
-
-  if (existingSocialLinks) {
-    hasSocialDifference = existingSocialLinks.every(({ href, icon, label }, index) => {
-      return (
-        href !== links[index].href || icon !== links[index].icon || label !== links[index].label
-      );
-    });
-  }
-
-  if (existingTopNavigations) {
-    hasTopNavDifference = existingTopNavigations.every(({ href, icon, label }, index) => {
-      return (
-        href !== topNav[index].href || icon !== topNav[index].icon || label !== topNav[index].label
-      );
-    });
-  }
+  const hasSocialDifference = (existingSocialLinks || []).every(
+    ({ href, icon, label }, index) =>
+      href !== links[index].href || icon !== links[index].icon || label !== links[index].label,
+  );
+  const hasTopNavDifference = (existingTopNavigations || []).every(
+    ({ href, icon, label }, index) =>
+      href !== topNav[index].href || icon !== topNav[index].icon || label !== topNav[index].label,
+  );
 
   if (existingSocialLinks?.length === links.length && !hasSocialDifference) {
-    console.log('Social links already exist');
+    console.log('Social links already exist.');
     mongoose.disconnect();
 
     return;
@@ -69,11 +57,11 @@ async function seed() {
     await SocialLink.deleteMany({});
     await SocialLink.insertMany(links);
 
-    console.log('Added social links');
+    console.log('Added social links.');
   }
 
   if (existingTopNavigations?.length === topNav.length && !hasTopNavDifference) {
-    console.log('Top navigations already exist');
+    console.log('Top navigations already exist.');
     mongoose.disconnect();
 
     return;
@@ -81,7 +69,7 @@ async function seed() {
     await TopNavigation.deleteMany({});
     await TopNavigation.insertMany(topNav);
 
-    console.log('Added top navigations');
+    console.log('Added top navigations.');
   }
 
   mongoose.disconnect();
