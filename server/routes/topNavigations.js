@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const TopNavigation = require('../models/TopNavigation');
 
-// GET /api/top-navigations
 router.get('/', async (req, res) => {
   try {
     const links = await TopNavigation.find();
@@ -19,7 +18,6 @@ router.get('/', async (req, res) => {
   }
 });
 
-// POST /api/top-navigations
 router.post('/', async (req, res) => {
   try {
     const { href, icon, label } = req.body;
@@ -38,13 +36,10 @@ router.post('/', async (req, res) => {
   }
 });
 
-// PATCH /api/top-navigations/:id
 router.patch('/:id', async (req, res) => {
   try {
     const { id } = req.params;
     const { href, icon, label } = req.body;
-
-    // Only update fields that are provided
     const update = {};
 
     if (href !== undefined) update.href = href;
@@ -63,7 +58,6 @@ router.patch('/:id', async (req, res) => {
   }
 });
 
-// DELETE /api/top-navigations/:id
 router.delete('/:id', async (req, res) => {
   try {
     const { id } = req.params;

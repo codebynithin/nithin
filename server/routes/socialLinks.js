@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const SocialLink = require('../models/SocialLink');
 
-// GET /api/social-links
 router.get('/', async (req, res) => {
   try {
     const links = await SocialLink.find();
@@ -19,7 +18,6 @@ router.get('/', async (req, res) => {
   }
 });
 
-// POST /api/social-links
 router.post('/', async (req, res) => {
   try {
     const { href, icon, label } = req.body;
@@ -38,7 +36,6 @@ router.post('/', async (req, res) => {
   }
 });
 
-// PATCH /api/social-links/:id
 router.patch('/:id', async (req, res) => {
   try {
     const { id } = req.params;
@@ -61,7 +58,6 @@ router.patch('/:id', async (req, res) => {
   }
 });
 
-// DELETE /api/social-links/:id
 router.delete('/:id', async (req, res) => {
   try {
     const { id } = req.params;

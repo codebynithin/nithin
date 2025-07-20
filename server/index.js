@@ -8,19 +8,11 @@ const { seed } = require('./scripts/add-social-links');
 
 app.use(cors());
 app.use(express.json());
-
-// Social Links API
 app.use('/api/social-links', require('./routes/socialLinks'));
-
-// Top Navigation API
 app.use('/api/top-navigations', require('./routes/topNavigations'));
-
-// Example route (replace with your own routes)
 app.get('/', (req, res) => {
   res.send('Nithin backend running');
 });
-
-// Connect to MongoDB
 
 connectDB()
   .then(async () => {
