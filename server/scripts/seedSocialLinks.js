@@ -5,27 +5,27 @@ const SocialLink = require('../models/SocialLink');
 const links = [
   {
     href: 'https://www.linkedin.com/in/nithinvuideveloper',
-    icon: 'icon-linkedin2',
+    icon: 'cbn-linkedin2',
     label: 'LinkedIn',
   },
   {
     href: 'https://twitter.com/Nithin_V86',
-    icon: 'icon-twitter',
+    icon: 'cbn-twitter',
     label: 'Twitter',
   },
   {
-    href: 'https://github.com/nithinv86',
-    icon: 'icon-github',
+    href: 'https://github.com/codebynithin',
+    icon: 'cbn-github',
     label: 'GitHub',
   },
   {
     href: 'https://stackoverflow.com/users/8904502/nithin-v',
-    icon: 'icon-stackoverflow',
+    icon: 'cbn-stackoverflow',
     label: 'Stack Overflow',
   },
   {
     href: 'https://www.facebook.com/nithinvuideveloper',
-    icon: 'icon-facebook',
+    icon: 'cbn-facebook',
     label: 'Facebook',
   },
 ];

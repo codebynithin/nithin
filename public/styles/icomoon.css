@@ -22,6 +22,9 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.cbn-service:before {
+  content: '\ea20';
+}
 .cbn-x1:before {
   content: '\ea1f';
 }
