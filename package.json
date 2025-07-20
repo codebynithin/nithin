@@ -27,6 +27,7 @@
     "express": "~4.18.2",
     "mongoose": "~7.0.3",
     "primeflex": "^4.0.0",
+    "primereact": "^10.9.6",
     "react": "~19.1.0",
     "react-dom": "~19.1.0",
     "react-router-dom": "~6.30.1",

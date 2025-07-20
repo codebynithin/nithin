@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './Header.scss';
-import { apiFetch } from '../http';
+import { apiFetch } from '../../http';
 
 const Header: React.FC = () => {
   const location = useLocation();
@@ -13,14 +13,8 @@ const Header: React.FC = () => {
   const [links, setLinks] = useState([]);
   const [menuOpen, setMenuOpen] = useState(false);
   const loadTheme = (theme: 'light' | 'dark') => {
-    const themeLink = document.getElementById('theme-css');
-
-    if (themeLink) {
-      themeLink.setAttribute(
-        'href',
-        `https://unpkg.com/primeflex@latest/themes/primeone-${theme}.css`,
-      );
-    }
+    document.body.classList.remove('light', 'dark');
+    document.body.classList.add(theme);
   };
   const toggleTheme = () => {
     setIsDarkMode(!isDarkMode);
@@ -40,19 +34,21 @@ const Header: React.FC = () => {
   }, []);
 
   return (
-    <header className={`header p-4 flex justify-content-between ${menuOpen ? 'active' : ''}`}>
-      <div className="header-content p-2 flex flex-column gap-1">
-        <div>Based on</div>
-        <div className="underline mb-1">Kerala, India</div>
+    <header
+      className={`header p-3 flex justify-content-between align-items-start ${
+        menuOpen ? 'active' : ''
+      }`}
+    >
+      <div className="header-content flex flex-column gap-1">
         <div>Switch to</div>
-        <div onClick={toggleTheme} className="underline mb-1 cursor-pointer">
+        <div onClick={toggleTheme} className="underline cursor-pointer hover:text-primary">
           {isDarkMode ? 'Light Mode' : 'Dark Mode'}
         </div>
       </div>
-      <div className="header-content p-2">
+      <div className="header-content">
         <a href="https://codebynithin.com">codebynithin.com</a>
       </div>
-      <div className="header-content p-2 flex flex-column align-items-end gap-1">
+      <div className="header-content flex flex-column align-items-end gap-1">
         {links.map((link: any) => (
           <Link
             key={link.id}
@@ -60,7 +56,7 @@ const Header: React.FC = () => {
             className={location.pathname === link.href ? 'selected' : ''}
             onClick={() => setMenuOpen(false)}
           >
-            {link.icon && <span className={`icon ${link.icon}`}></span>}
+            {/* {link.icon && <span className={`icon ${link.icon}`}></span>} */}
             {link.label}
           </Link>
         ))}

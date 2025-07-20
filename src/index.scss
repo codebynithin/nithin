@@ -1,19 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap');
 
 :root {
-  --primary-color: #00b8d6;
+  --p-primary-color: #00b8d6;
   --primary-dark-color: #009bb7;
-  --primary-text-color: #bdbdbd;
   --secondary-color: #ff5821;
   --secondary-dark-color: #d83a0f;
-  --primary-bg-color: #222;
-  --secondary-bg-color: #23272f;
-  --scrollbar-thumb-color: #2e3440;
   --white: #eceff4;
+  --bg-color-light: #bdbdbd;
+  --text-color-light: #222;
+  --bg-color-dark: #222;
+  --text-color-dark: #bdbdbd;
+  --border-color: rgba(255, 255, 255, 0.15);
+  --hover-color: rgba(255, 255, 255, 0.15);
 }
 
-html {
-  font-size: 18px;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
 body {
@@ -23,8 +27,30 @@ body {
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s, color 0.3s;
+
+  &.light {
+    background-color: var(--bg-color-light);
+    color: var(--text-color-light);
+  }
+
+  &.dark {
+    background-color: var(--bg-color-dark);
+    color: var(--text-color-dark);
+  }
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+.p-inputtext {
+  font-family: 'Fira Code', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+
+  &::placeholder {
+    font-family: 'Fira Code', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    font-size: 1rem;
+    color: inherit;
+    opacity: 0.5;
+  }
 }
