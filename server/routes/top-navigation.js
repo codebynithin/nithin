@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const TopNavigation = require('../models/TopNavigation');
+const TopNavigation = require('../models/top-navigation');
 
 router.get('/', async (req, res) => {
   try {

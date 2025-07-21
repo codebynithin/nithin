@@ -27,7 +27,7 @@ const Header: React.FC = () => {
     localStorage.setItem('theme', theme);
   }, [isDarkMode]);
   useEffect(() => {
-    apiFetch('/api/top-navigations')
+    apiFetch('/api/v1/top-navigations')
       .then((res) => res.json())
       .then((data) => setLinks(data))
       .catch((err) => console.error('Failed to fetch top navigations', err));

@@ -6,4 +6,4 @@ const SocialLinkSchema = new mongoose.Schema({
   label: { type: String, required: true },
 });
 
-module.exports = mongoose.model('TopNavigation', SocialLinkSchema);
+module.exports = mongoose.model('social-link', SocialLinkSchema);

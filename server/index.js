@@ -3,20 +3,20 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 const PORT = process.env.PORT || 5000;
-const connectDB = require('./db');
-const { seed } = require('./scripts/add-social-links');
+const { connectDB } = require('./db');
+const { seed } = require('./scripts/add-data');
 
 app.use(cors());
 app.use(express.json());
-app.use('/api/social-links', require('./routes/socialLinks'));
-app.use('/api/top-navigations', require('./routes/topNavigations'));
-app.get('/', (req, res) => {
-  res.send('Nithin backend running');
-});
 
 connectDB()
   .then(async () => {
-    console.log('MongoDB connected');
+    app.use('/api/v1/social-links', require('./routes/social-link'));
+    app.use('/api/v1/top-navigations', require('./routes/top-navigation'));
+
+    app.get('/api/v1', (req, res) => {
+      res.send('Nithin backend running');
+    });
 
     await seed();
 
@@ -24,4 +24,5 @@ connectDB()
   })
   .catch((err) => {
     console.error('MongoDB connection error:', err);
+    process.exit(1);
   });

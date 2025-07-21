@@ -1,7 +1,5 @@
-const mongoose = require('mongoose');
-const connectDB = require('../db');
-const SocialLink = require('../models/SocialLink');
-const TopNavigation = require('../models/TopNavigation');
+const SocialLink = require('../models/social-link');
+const TopNavigation = require('../models/top-navigation');
 const links = [
   {
     href: 'https://www.linkedin.com/in/nithinvuideveloper',
@@ -34,9 +32,7 @@ const topNav = [
   { href: '/portfolio', icon: 'cbn-portfolio', label: 'Portfolio' },
   { href: '/service', icon: 'cbn-service', label: 'Service' },
 ];
-
-async function seed() {
-  await connectDB();
+const seed = async () => {
   const existingSocialLinks = await SocialLink.find();
   const existingTopNavigations = await TopNavigation.find();
   const hasSocialDifference = (existingSocialLinks || []).every(
@@ -50,9 +46,6 @@ async function seed() {
 
   if (existingSocialLinks?.length === links.length && !hasSocialDifference) {
     console.log('Social links already exist.');
-    mongoose.disconnect();
-
-    return;
   } else {
     await SocialLink.deleteMany({});
     await SocialLink.insertMany(links);
@@ -62,17 +55,12 @@ async function seed() {
 
   if (existingTopNavigations?.length === topNav.length && !hasTopNavDifference) {
     console.log('Top navigations already exist.');
-    mongoose.disconnect();
-
-    return;
   } else {
     await TopNavigation.deleteMany({});
     await TopNavigation.insertMany(topNav);
 
     console.log('Added top navigations.');
   }
-
-  mongoose.disconnect();
-}
+};
 
 module.exports = { seed };
