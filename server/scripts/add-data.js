@@ -29,20 +29,23 @@ const links = [
 ];
 const topNav = [
   { href: '/about', icon: 'cbn-user', label: 'About' },
+  { href: '/experiences', icon: 'cbn-experiences', label: 'Experiences' },
   { href: '/portfolio', icon: 'cbn-portfolio', label: 'Portfolio' },
-  { href: '/service', icon: 'cbn-service', label: 'Service' },
 ];
 const seed = async () => {
   const existingSocialLinks = await SocialLink.find();
   const existingTopNavigations = await TopNavigation.find();
-  const hasSocialDifference = (existingSocialLinks || []).every(
-    ({ href, icon, label }, index) =>
-      href !== links[index].href || icon !== links[index].icon || label !== links[index].label,
-  );
-  const hasTopNavDifference = (existingTopNavigations || []).every(
-    ({ href, icon, label }, index) =>
-      href !== topNav[index].href || icon !== topNav[index].icon || label !== topNav[index].label,
-  );
+  const hasSocialDifference = existingSocialLinks.length !== links.length ||
+    !existingSocialLinks.every(
+      ({ href, icon, label }, index) =>
+        href === links[index].href && icon === links[index].icon && label === links[index].label,
+    );
+
+  const hasTopNavDifference = existingTopNavigations.length !== topNav.length ||
+    !existingTopNavigations.every(
+      ({ href, icon, label }, index) =>
+        href === topNav[index].href && icon === topNav[index].icon && label === topNav[index].label,
+    );
 
   if (existingSocialLinks?.length === links.length && !hasSocialDifference) {
     console.log('Social links already exist.');

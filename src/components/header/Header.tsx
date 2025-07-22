@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './Header.scss';
-import { apiFetch } from '../../http';
+// eslint-disable-next-line no-unused-vars
+import { HeaderProps } from '../../interfaces';
 
-const Header: React.FC = () => {
+const Header: React.FC<HeaderProps> = ({ links = [] }) => {
   const location = useLocation();
   const [isDarkMode, setIsDarkMode] = useState<boolean>(() => {
     const savedTheme = localStorage.getItem('theme');
 
     return !savedTheme || savedTheme === 'dark';
   });
-  const [links, setLinks] = useState([]);
   const [menuOpen, setMenuOpen] = useState(false);
   const loadTheme = (theme: 'light' | 'dark') => {
     document.body.classList.remove('light', 'dark');
@@ -26,12 +26,6 @@ const Header: React.FC = () => {
     loadTheme(theme);
     localStorage.setItem('theme', theme);
   }, [isDarkMode]);
-  useEffect(() => {
-    apiFetch('/api/v1/top-navigations')
-      .then((res) => res.json())
-      .then((data) => setLinks(data))
-      .catch((err) => console.error('Failed to fetch top navigations', err));
-  }, []);
 
   return (
     <header
@@ -46,9 +40,9 @@ const Header: React.FC = () => {
         </div>
       </div>
       <div className="header-content">
-        <a href="https://codebynithin.com">codebynithin.com</a>
+        <Link to="/">codebynithin.com</Link>
       </div>
-      <div className="header-content flex flex-column align-items-end gap-1">
+      <div className="header-content flex flex-column align-items-end gap-2">
         {links.map((link: any) => (
           <Link
             key={link.id}
