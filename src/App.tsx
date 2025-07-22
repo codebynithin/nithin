@@ -16,7 +16,11 @@ const App: React.FC = () => {
       .then((res) => res.json())
       .then((data) => setLinks(data))
       .catch((err) => console.error('Failed to fetch top navigations', err))
-      .finally(() => setIsLoading(false));
+      .finally(() => {
+        setTimeout(() => {
+          setIsLoading(false);
+        }, 3000);
+      });
   }, []);
 
   if (isLoading) {

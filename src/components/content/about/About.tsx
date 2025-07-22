@@ -5,7 +5,8 @@ const About: React.FC = () => {
   return (
     <div className="about-page w-full px-5 md:px-8">
       <div className="grid gap-4">
-        <h1 className="col-12 p-0 text-2xl font-bold mb-4">About Me</h1>
+        <h1 className="col-12 p-0 text-4xl font-bold m-0">About Me</h1>
+        <hr className="col-12 p-0 m-0 border-50" />
         <div className="flex flex-column md:flex-row gap-8">
           <div className="col p-0">
             <h2 className="text-2xl font-bold mb-4">Biography</h2>
