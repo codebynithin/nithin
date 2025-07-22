@@ -14,7 +14,11 @@ const App: React.FC = () => {
   useEffect(() => {
     apiFetch('/api/v1/top-navigations')
       .then((res) => res.json())
-      .then((data) => setLinks(data))
+      .then((data) => {
+        console.log({ data });
+
+        setLinks(data);
+      })
       .catch((err) => console.error('Failed to fetch top navigations', err))
       .finally(() => setIsLoading(false));
   }, []);

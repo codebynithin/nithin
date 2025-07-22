@@ -4,16 +4,20 @@ const TopNavigation = require('../models/top-navigation');
 
 router.get('/', async (req, res) => {
   try {
+    console.log('Fetching top navigation');
     const links = await TopNavigation.find();
+    console.log('Fetched top navigation', links);
     const formattedLinks = links.map((link) => ({
       href: link.href,
       icon: link.icon,
       label: link.label,
       id: link._id,
     }));
+    console.log('Formatted top navigation', formattedLinks);
 
     res.status(200).json(formattedLinks);
   } catch (err) {
+    console.log('Failed to fetch top navigation', err);
     res.status(500).json({ error: 'Failed to fetch top navigation' });
   }
 });
