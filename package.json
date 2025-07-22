@@ -9,11 +9,12 @@
   "scripts": {
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "start:web": "react-scripts start",
-    "build:web": "react-scripts build",
+    "build": "react-scripts build",
     "test:web": "react-scripts test",
     "eject:web": "react-scripts eject",
     "start:server": "cd server && node index.js",
     "dev:server": "cd server && nodemon index.js",
+    "build:server": "pm2 start server/index.js",
     "start": "npm install && concurrently \"npm run start:web\" \"npm run start:server\"",
     "start:dev": "npm install && concurrently \"npm run start:web\" \"npm run dev:server\""
   },
