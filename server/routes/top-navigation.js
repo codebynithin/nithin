@@ -11,7 +11,7 @@ router.get('/', async (req, res) => {
       href: link.href,
       icon: link.icon,
       label: link.label,
-      id: link._id,
+      id: link._id.toString(),
     }));
     console.log('Formatted top navigation', formattedLinks);
 
