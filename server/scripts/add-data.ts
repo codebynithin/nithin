@@ -4,14 +4,16 @@ import Skill from '../schema/skill.schema';
 import Education from '../schema/education';
 import Experience from '../schema/experience';
 import Portfolio from '../schema/portfolio';
+import QuickLink from '../schema/quick-link';
 import { SkillCategoryEnum } from '../../common/enum/skill-category.enum';
 import { SkillTypeEnum } from '../../common/enum/skill-type.enum';
-import { SocialLinkModel } from '../../common/model/social-link.model';
-import { TopNavigationModel } from '../../common/model/top-navigation.model';
-import { SkillModel } from '../../common/model/skill.model';
-import { EducationModel } from '../../common/model/education.model';
-import { ExperienceModel } from '../../common/model/experience.model';
-import { PortfolioModel } from '../../common/model/portfolio.model';
+import { SocialLinkModel } from '@/model/social-link.model';
+import { TopNavigationModel } from '@/model/top-navigation.model';
+import { SkillModel } from '@/model/skill.model';
+import { EducationModel } from '@/model/education.model';
+import { ExperienceModel } from '@/model/experience.model';
+import { PortfolioModel } from '@/model/portfolio.model';
+import { QuickLinkModel } from '@/model/quick-link.model';
 
 const links: Partial<SocialLinkModel>[] = [
   {
@@ -150,7 +152,7 @@ const educations: Partial<EducationModel>[] = [
   {
     date: '2003 - 2006',
     title: 'Diploma in Polymer Technology',
-    institution: 'Govt. Polytechnic College, Kottayam',
+    institution: 'Technical Education Department Kerala',
     description: 'Completed 3 year diploma course with 73% of marks.',
   },
   {
@@ -205,7 +207,7 @@ const portfolios: Partial<PortfolioModel>[] = [
     thumbnailUrl: 'pappys-300.gif',
   },
   {
-    title: 'Translation ImpEx Creator',
+    title: 'Translation Creator',
     category: 'Website',
     imageUrl: 'impex-600.gif',
     thumbnailUrl: 'impex-300.gif',
@@ -292,6 +294,28 @@ const portfolios: Partial<PortfolioModel>[] = [
     thumbnailUrl: 'panel-partnership-300.png',
   },
 ];
+const quickLinks: Partial<QuickLinkModel>[] = [
+  {
+    name: 'Download Resume',
+    icon: 'cbn-download',
+    href: '/downloads/resume-nithin-v.pdf',
+    target: '_blank',
+  },
+  { name: 'Know my career', icon: 'cbn-user', href: '/experiences' },
+  { name: 'See my skills', icon: 'cbn-target', href: '/about#skills' },
+  {
+    name: 'See my github',
+    icon: 'cbn-github',
+    href: 'https://github.com/codebynithin',
+    target: '_blank',
+  },
+  {
+    name: 'View my source code',
+    icon: 'cbn-code',
+    href: 'https://github.com/codebynithin/nithin',
+    target: '_blank',
+  },
+];
 
 const seed = async () => {
   const existingSocialLinks = await SocialLink.find();
@@ -300,6 +324,7 @@ const seed = async () => {
   const existingEducations = await Education.find();
   const existingExperiences = await Experience.find();
   const existingPortfolios = await Portfolio.find();
+  const existingQuickLinks = await QuickLink.find();
   const hasSocialDifference =
     existingSocialLinks.length !== links.length ||
     !existingSocialLinks.every(
@@ -345,6 +370,15 @@ const seed = async () => {
       ({ title, category }: PortfolioModel, index: number) =>
         title === portfolios[index].title && category === portfolios[index].category,
     );
+  const hasQuickLinkDifference =
+    existingQuickLinks.length !== quickLinks.length ||
+    !existingQuickLinks.every(
+      ({ name, icon, href, target }: QuickLinkModel, index: number) =>
+        name === quickLinks[index].name &&
+        icon === quickLinks[index].icon &&
+        href === quickLinks[index].href &&
+        target === quickLinks[index].target,
+    );
 
   if (existingSocialLinks?.length !== links.length || hasSocialDifference) {
     await SocialLink.deleteMany({});
@@ -386,6 +420,13 @@ const seed = async () => {
     await Portfolio.insertMany(portfolios);
 
     console.log('Added portfolios.');
+  }
+
+  if (existingQuickLinks?.length !== quickLinks.length || hasQuickLinkDifference) {
+    await QuickLink.deleteMany({});
+    await QuickLink.insertMany(quickLinks);
+
+    console.log('Added quick links.');
   }
 };
 

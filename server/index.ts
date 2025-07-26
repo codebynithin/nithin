@@ -12,6 +12,7 @@ import skillRouter from './routes/skill';
 import experienceRouter from './routes/experience';
 import educationRouter from './routes/education';
 import portfolioRouter from './routes/portfolio';
+import quickLinkRouter from './routes/quick-link';
 
 const app: Application = express();
 const PORT = process.env.SERVER_PORT || 5000;
@@ -27,6 +28,7 @@ connectDB()
     app.use('/api/v1/experiences', experienceRouter);
     app.use('/api/v1/educations', educationRouter);
     app.use('/api/v1/portfolios', portfolioRouter);
+    app.use('/api/v1/quick-links', quickLinkRouter);
     app.get('/api/v1', (req: Request, res: Response) => {
       res.send('Nithin backend running');
     });

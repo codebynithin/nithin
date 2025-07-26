@@ -29,15 +29,15 @@ const Experience: React.FC = () => {
   return (
     <div className="experience-page w-full px-5 ml-0 md:px-8 md:-ml-8">
       <div className="grid grid-nogutter gap-4">
-        <h1 className="col-12 p-0 text-4xl font-bold m-0">Experience</h1>
+        <h1 className="col-12 p-0 text-4xl text-900 font-bold m-0">Experience</h1>
         <hr className="col-12 p-0 m-0 border-50" />
         <div className="experience-items grid grid-nogutter">
           {experiences.map((item, index) => (
             <div key={index} className="experience-item col-12 md:col-6 lg:col-4 p-3">
               <div className="timeline-content p-3 border-1 border-solid border-round border-50">
-                <p className="text-sm text-500 mx-0 my-2">{item.date}</p>
-                <p className="text-xl mx-0 my-2 font-bold">{item.title}</p>
-                <p className="text-sm text-500 mx-0 my-2">{item.company}</p>
+                <p className="text-sm text-800 mx-0 my-2">{item.date}</p>
+                <p className="text-xl text-900 font-bold mx-0 my-2">{item.title}</p>
+                <p className="text-sm text-800 mx-0 my-2">{item.company}</p>
                 <p className="mx-0 my-2">{item.description}</p>
               </div>
             </div>

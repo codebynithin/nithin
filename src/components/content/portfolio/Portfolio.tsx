@@ -26,7 +26,7 @@ const Portfolio: React.FC = () => {
   return (
     <div className="portfolio-page w-full px-5 ml-0 md:px-8 md:-ml-8">
       <div className="grid grid-nogutter gap-4">
-        <h1 className="col-12 p-0 text-4xl font-bold m-0">Portfolio</h1>
+        <h1 className="col-12 p-0 text-4xl text-900 font-bold m-0">Portfolio</h1>
         <hr className="col-12 p-0 m-0 border-50" />
         <div className="portfolio-items grid grid-nogutter">
           {portfolios.map((item, index) => (
@@ -38,8 +38,8 @@ const Portfolio: React.FC = () => {
                   className="w-full"
                 />
                 <div className="p-3">
-                  <h3 className="text-lg m-0">{item.title}</h3>
-                  <p className="text-sm text-500 mt-1 mb-0">{item.category}</p>
+                  <h3 className="text-lg text-900 m-0">{item.title}</h3>
+                  <p className="text-sm text-800 mt-1 mb-0">{item.category}</p>
                 </div>
               </div>
             </div>

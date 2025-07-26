@@ -23,10 +23,10 @@ const Home: React.FC = () => {
     <div className="home-container w-full flex flex-column align-items-center justify-content-center gap-3 pt-6 ml-0 md:px-8 md:-ml-8 md:flex-row md:gap-8 md:pt-0">
       <div className="col flex align-items-end justify-content-end md:align-items-center pb-4 md:pb-0">
         <div className="grid grid-nogutter">
-          <div className="col-12 p-0 md:m-2 text-6xl text-center md:text-right font-bold">
+          <div className="col-12 p-0 md:m-2 text-6xl text-center md:text-right text-900 font-bold">
             Nithin
           </div>
-          <div className="col-12 p-0 md:m-2 text-6xl text-center md:text-right font-bold">
+          <div className="col-12 p-0 md:m-2 text-6xl text-center md:text-right text-900 font-bold">
             Viswanathan
           </div>
         </div>
@@ -34,7 +34,7 @@ const Home: React.FC = () => {
       <div className="w-8rem hidden md:flex">&nbsp;</div>
       <div className="col text-center md:text-left">
         <div className="col-12 text-2xl">
-          A <span className="font-bold">Full-Stack Developer</span>
+          A <span className="text-900 font-bold">Full-Stack Developer</span>
         </div>
         <div className="col-12 text-2xl line-height-3 pt-0">
           who enjoys crafting digital experiences

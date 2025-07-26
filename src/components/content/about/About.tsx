@@ -39,13 +39,13 @@ const About: React.FC = () => {
   }, []);
 
   return (
-    <div className="about-page w-full px-5 md:px-8">
+    <div className="about-page w-full px-5 ml-0 md:px-8 md:-ml-8">
       <div className="w-full grid grid-nogutter gap-4">
-        <h1 className="col-12 p-0 text-4xl font-bold m-0">About Me</h1>
+        <h1 className="col-12 p-0 text-4xl text-900 font-bold m-0">About Me</h1>
         <hr className="col-12 p-0 m-0 border-50" />
         <div className="w-full flex flex-column md:flex-row gap-8">
           <div className="col p-0">
-            <h2 className="text-2xl font-bold mb-4">Biography</h2>
+            <h2 className="text-2xl text-900 font-bold mb-4">Biography</h2>
             <p>
               I&apos;m a passionate and results-oriented Full Stack Developer with a solid
               foundation in building end-to-end digital solutions across both product-driven and
@@ -73,7 +73,7 @@ const About: React.FC = () => {
 
             <hr className="my-4 border-50" />
 
-            <h2 className="text-2xl font-bold mb-4">Personal Information</h2>
+            <h2 className="text-2xl text-900 font-bold mb-4">Personal Information</h2>
 
             <ul className="info list-none p-0 m-0">
               <li className="flex align-items-center py-2">
@@ -99,8 +99,8 @@ const About: React.FC = () => {
             </ul>
 
             {skills && skills[SkillCategoryEnum.PROFICIENCY] && (
-              <div className="col-12 md:col-6 py-4 px-0">
-                <h3 className="text-xl font-bold mt-0 mb-4">Language Proficiency</h3>
+              <div className="col-12 md:col-6 py-4 px-0 mt-4">
+                <h3 className="text-xl text-900 font-bold mt-0 mb-4">Language Proficiency</h3>
                 {skills[SkillCategoryEnum.PROFICIENCY].map((skill: any, index: number) => (
                   <div
                     key={index}
@@ -128,12 +128,14 @@ const About: React.FC = () => {
           </div>
           <div className="col p-0 relative" id="skills">
             <hr className="my-4 border-50 md:absolute md:top-0 md:left-0 md:h-full md:my-0 spacer" />
-            <h2 className="text-2xl font-bold mb-4">Skills</h2>
+            <h2 className="text-2xl text-900 font-bold mb-4">Skills</h2>
             <div className="grid grid-nogutter">
               {skills && skills[SkillCategoryEnum.CODING] && (
-                <div className="col-12 md:col-6 mb-4">
+                <div className="col-12 mb-5 md:col-5 md:mr-5">
                   <div className="p-4 border-1 border-solid border-round border-50">
-                    <h3 className="text-xl font-bold mt-0 mb-4">FrameWorks &amp; Coding</h3>
+                    <h3 className="text-xl text-900 font-bold mt-0 mb-4">
+                      FrameWorks &amp; Coding
+                    </h3>
                     <div className="flex gap-4 justify-content-center">
                       {skills[SkillCategoryEnum.CODING]
                         .slice(0, 2)
@@ -142,7 +144,7 @@ const About: React.FC = () => {
                             <div
                               className="w-8rem h-8rem border-circle surface-50 flex align-items-center justify-content-center mb-2 mx-auto"
                               style={{
-                                background: `conic-gradient(var(--primary-color) ${skill.percentage}%, var(--surface-50) 0)`,
+                                background: `conic-gradient(var(--p-primary-color) ${skill.percentage}%, var(--surface-50) 0)`,
                               }}
                             >
                               <div className="w-6rem h-6rem border-circle surface-0 flex align-items-center justify-content-center font-bold text-2xl">
@@ -161,7 +163,7 @@ const About: React.FC = () => {
                             <div
                               className="w-8rem h-8rem border-circle surface-50 flex align-items-center justify-content-center mb-2 mx-auto"
                               style={{
-                                background: `conic-gradient(var(--primary-color) ${skill.percentage}%, var(--surface-50) 0)`,
+                                background: `conic-gradient(var(--p-primary-color) ${skill.percentage}%, var(--surface-50) 0)`,
                               }}
                             >
                               <div className="w-6rem h-6rem border-circle surface-0 flex align-items-center justify-content-center font-bold text-2xl">
@@ -177,9 +179,9 @@ const About: React.FC = () => {
               )}
 
               {skills && skills[SkillCategoryEnum.DESIGN] && (
-                <div className="col-12 md:col-6 mb-4">
+                <div className="col-12 mb-5 md:col-5 md:mr-5">
                   <div className="p-4 border-1 border-solid border-round border-50">
-                    <h3 className="text-xl font-bold mt-0 mb-4">Design</h3>
+                    <h3 className="text-xl text-900 font-bold mt-0 mb-4">Design</h3>
                     {skills[SkillCategoryEnum.DESIGN].map((skill: any, index: number) => (
                       <div
                         key={index}
@@ -203,9 +205,9 @@ const About: React.FC = () => {
               )}
 
               {skills && skills[SkillCategoryEnum.KNOWLEDGE] && (
-                <div className="col-12 md:col-6 mb-4">
+                <div className="col-12 mb-5 md:col-5 md:mr-5">
                   <div className="p-4 border-1 border-solid border-round border-50">
-                    <h3 className="text-xl font-bold mt-0 mb-4">Knowledge</h3>
+                    <h3 className="text-xl text-900 font-bold mt-0 mb-4">Knowledge</h3>
                     <ul className="list-none p-0 m-0">
                       {skills[SkillCategoryEnum.KNOWLEDGE].map((skill: any, index: number) => (
                         <li

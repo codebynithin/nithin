@@ -9,19 +9,29 @@ const Header: React.FC<{ links: TopNavigationModel[] }> = ({ links = [] }) => {
   const [isDarkMode, setIsDarkMode] = useState<boolean>(() => {
     const savedTheme = localStorage.getItem('theme');
 
-    return !savedTheme || savedTheme === 'dark';
+    return !savedTheme || savedTheme === 'layout-dark';
   });
   const [menuOpen, setMenuOpen] = useState(false);
-  const loadTheme = (theme: 'light' | 'dark') => {
-    document.body.classList.remove('light', 'dark');
+  const loadTheme = (theme: 'layout-light' | 'layout-dark') => {
+    document.body.classList.remove('layout-light', 'layout-dark');
     document.body.classList.add(theme);
+
+    document
+      .getElementById('root')
+      ?.classList.remove('layout-wrapper-light', 'layout-wrapper-dark');
+    document
+      .getElementById('root')
+      ?.classList.add(
+        'layout-wrapper',
+        theme === 'layout-light' ? 'layout-wrapper-light' : 'layout-wrapper-dark',
+      );
   };
   const toggleTheme = () => {
     setIsDarkMode(!isDarkMode);
   };
 
   useEffect(() => {
-    const theme = isDarkMode ? 'dark' : 'light';
+    const theme = isDarkMode ? 'layout-dark' : 'layout-light';
 
     loadTheme(theme);
     localStorage.setItem('theme', theme);

@@ -1,5 +1,7 @@
+/* eslint-disable no-unused-vars, no-undef */
 import React, { useState, useEffect, useRef } from 'react';
-import { Route, Routes, useLocation } from 'react-router-dom';
+import { Route, Routes, useLocation, Navigate } from 'react-router-dom';
+import { AutoComplete, AutoCompleteCompleteEvent } from 'primereact/autocomplete';
 import { Dialog } from 'primereact/dialog';
 import { DataView } from 'primereact/dataview';
 import { InputText } from 'primereact/inputtext';
@@ -10,61 +12,30 @@ import Experience from './experience/Experience';
 import Education from './education/Education';
 import Portfolio from './portfolio/Portfolio';
 import { DialogProvider, useDialog } from '../dialog/Dialog';
+import { apiFetch } from '../../http';
+import { QuickLinkModel } from '@/model/quick-link.model';
 
 const DialogController: React.FC = () => {
   const { isDialogVisible, showDialog, hideDialog } = useDialog();
   const dataViewRef = useRef<DataView>(null);
   const [filter, setFilter] = useState('');
-
-  const quickLinks = [
-    {
-      name: 'Download Resume',
-      icon: 'cbn-download',
-      href: `${process.env.PUBLIC_URL}/downloads/resume-nithin-v.pdf`,
-      target: '_blank',
-    },
-    { name: 'Know my career', icon: 'cbn-user', href: '/experiences' },
-    { name: 'See my skills', icon: 'cbn-target', href: '/about#skills' },
-    {
-      name: 'See my github',
-      icon: 'cbn-github',
-      href: 'https://github.com/codebynithin',
-      target: '_blank',
-    },
-    {
-      name: 'View my source code',
-      icon: 'cbn-code',
-      href: 'https://github.com/codebynithin/nithin',
-      target: '_blank',
-    },
-  ];
-
-  const filteredQuickLinks = quickLinks.filter((link) =>
-    link.name.toLowerCase().includes(filter.toLowerCase()),
-  );
-
+  const [value, setValue] = useState<QuickLinkModel | null>(null);
+  const [quickLinks, setQuickLinks] = useState<any[]>([]);
+  const filteredQuickLinks = (filter: string) => {
+    setFilter(filter);
+    fetchQuickLinks(filter);
+  };
   const dataviewHeader = (
     <div className="h-4rem flex justify-content-end">
       <InputText
         className="w-full h-full bg-black-alpha-10 search-filter px-3"
         value={filter}
-        onChange={(e) => setFilter(e.target.value)}
+        onChange={(e) => filteredQuickLinks(e.target.value)}
         placeholder="Type what you want to know about me..."
       />
     </div>
   );
-
-  const itemTemplate = ({
-    name,
-    icon,
-    href,
-    target,
-  }: {
-    name: string;
-    icon: string;
-    href: string;
-    target?: string;
-  }) => {
+  const itemTemplate = ({ name, icon, href, target }: QuickLinkModel) => {
     const navigate = () => {
       window.open(href, target || '_self');
       hideDialog();
@@ -89,32 +60,52 @@ const DialogController: React.FC = () => {
       </div>
     );
   };
-
   const handleDialogShow = () => {
     setTimeout(() => {
       if (dataViewRef.current) {
-        const container = (dataViewRef.current as any).getElement();
-        if (container) {
-          const firstItem = container.querySelector('.p-dataview-content .p-grid .col-12');
-          if (firstItem) {
-            (firstItem as HTMLElement).focus();
-          }
+        const firstItem = (dataViewRef.current as any)
+          .getElement()
+          .querySelector('[tabindex="0"]') as HTMLElement;
+
+        if (firstItem) {
+          firstItem.focus();
         }
       }
-    }, 0);
+    }, 10);
+  };
+  const fetchQuickLinks = async (query?: string) => {
+    try {
+      const params: { [key: string]: string } = {};
+
+      if (query) {
+        params['name'] = query;
+      }
+
+      const response = await apiFetch(
+        `/api/v1/quick-links?${new URLSearchParams(params).toString()}`,
+      );
+      const data = await response.json();
+      setQuickLinks(data);
+    } catch (error) {
+      console.error('Error fetching quick links:', error);
+    }
   };
 
   useEffect(() => {
+    if (isDialogVisible) {
+      fetchQuickLinks();
+    }
+  }, [isDialogVisible]);
+
+  useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
-      const isMac = navigator.platform.toLowerCase().includes('mac');
-      if (event.key === 'Enter' && (isMac ? event.metaKey : event.ctrlKey)) {
+      if ((event.metaKey || event.ctrlKey) && event.key === 'Enter') {
         event.preventDefault();
         showDialog();
       }
     };
 
     window.addEventListener('keydown', handleKeyDown);
-
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
     };
@@ -122,45 +113,30 @@ const DialogController: React.FC = () => {
 
   useEffect(() => {
     const handleNavigation = (event: KeyboardEvent) => {
-      if (!isDialogVisible) return;
+      if (!isDialogVisible || !dataViewRef.current) return;
 
       if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
         event.preventDefault();
 
-        if (dataViewRef.current) {
-          const container = (dataViewRef.current as any).getElement();
-          if (container) {
-            const items = Array.from(
-              container.querySelectorAll('.p-dataview-content .p-grid .col-12'),
-            ) as HTMLElement[];
+        const container = (dataViewRef.current as any).getElement();
+        const items = Array.from(container.querySelectorAll('[tabindex="0"]')) as HTMLElement[];
 
-            if (items.length === 0) return;
+        if (items.length === 0) return;
 
-            const activeElement = document.activeElement as HTMLElement;
-            let currentIndex = items.findIndex((item) => item === activeElement);
+        const activeElement = document.activeElement as HTMLElement;
+        let currentIndex = items.findIndex((item) => item === activeElement);
 
-            if (currentIndex === -1) {
-              if (event.key === 'ArrowDown') {
-                items[0].focus();
-              }
-              return;
-            }
-
-            let nextIndex;
-            if (event.key === 'ArrowDown') {
-              nextIndex = (currentIndex + 1) % items.length;
-            } else {
-              nextIndex = (currentIndex - 1 + items.length) % items.length;
-            }
-
-            items[nextIndex].focus();
-          }
+        let nextIndex;
+        if (event.key === 'ArrowDown') {
+          nextIndex = currentIndex < 0 ? 0 : (currentIndex + 1) % items.length;
+        } else {
+          nextIndex = currentIndex <= 0 ? items.length - 1 : currentIndex - 1;
         }
+        items[nextIndex].focus();
       }
     };
 
     window.addEventListener('keydown', handleNavigation);
-
     return () => {
       window.removeEventListener('keydown', handleNavigation);
     };
@@ -180,7 +156,7 @@ const DialogController: React.FC = () => {
     >
       <DataView
         ref={dataViewRef}
-        value={filteredQuickLinks}
+        value={quickLinks}
         itemTemplate={itemTemplate}
         header={dataviewHeader}
         emptyMessage="Nothing here, try again."
@@ -215,7 +191,7 @@ const Content: React.FC = () => {
           <Route path="/experiences" element={<Experience />} />
           <Route path="/educations" element={<Education />} />
           <Route path="/portfolio" element={<Portfolio />} />
-          {/* Add other routes here */}
+          <Route path="*" element={<Navigate to="/" />} />
         </Routes>
         <DialogController />
       </main>
