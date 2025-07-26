@@ -15,8 +15,8 @@
     "start:server": "cd server && node index.ts",
     "dev:server": "cd server && nodemon index.ts",
     "build:server": "pm2 start server/index.ts",
-    "start": "npm install && concurrently \"npm run start:web\" \"npm run start:server\"",
-    "start:dev": "npm install && concurrently \"npm run start:web\" \"npm run dev:server\""
+    "start": "concurrently \"npm run start:web\" \"npm run start:server\"",
+    "start:dev": "concurrently \"npm run start:web\" \"npm run dev:server\""
   },
   "dependencies": {
     "@testing-library/dom": "~10.4.0",

@@ -126,14 +126,14 @@ const About: React.FC = () => {
               </div>
             )}
           </div>
-          <div className="col p-0 relative">
+          <div className="col p-0 relative" id="skills">
             <hr className="my-4 border-50 md:absolute md:top-0 md:left-0 md:h-full md:my-0 spacer" />
             <h2 className="text-2xl font-bold mb-4">Skills</h2>
             <div className="grid grid-nogutter">
               {skills && skills[SkillCategoryEnum.CODING] && (
-                <div className="col-12 md:col-6">
+                <div className="col-12 md:col-6 mb-4">
                   <div className="p-4 border-1 border-solid border-round border-50">
-                    <h3 className="text-xl font-bold mt-0 mb-4">CODING</h3>
+                    <h3 className="text-xl font-bold mt-0 mb-4">FrameWorks &amp; Coding</h3>
                     <div className="flex gap-4 justify-content-center">
                       {skills[SkillCategoryEnum.CODING]
                         .slice(0, 2)
@@ -177,9 +177,9 @@ const About: React.FC = () => {
               )}
 
               {skills && skills[SkillCategoryEnum.DESIGN] && (
-                <div className="col-12 md:col-6">
+                <div className="col-12 md:col-6 mb-4">
                   <div className="p-4 border-1 border-solid border-round border-50">
-                    <h3 className="text-xl font-bold mt-0 mb-4">DESIGN</h3>
+                    <h3 className="text-xl font-bold mt-0 mb-4">Design</h3>
                     {skills[SkillCategoryEnum.DESIGN].map((skill: any, index: number) => (
                       <div
                         key={index}
@@ -203,18 +203,18 @@ const About: React.FC = () => {
               )}
 
               {skills && skills[SkillCategoryEnum.KNOWLEDGE] && (
-                <div className="col-12 md:col-6">
+                <div className="col-12 md:col-6 mb-4">
                   <div className="p-4 border-1 border-solid border-round border-50">
-                    <h3 className="text-xl font-bold mt-0 mb-4">KNOWLEDGE</h3>
+                    <h3 className="text-xl font-bold mt-0 mb-4">Knowledge</h3>
                     <ul className="list-none p-0 m-0">
                       {skills[SkillCategoryEnum.KNOWLEDGE].map((skill: any, index: number) => (
                         <li
                           key={index}
-                          className={`flex align-items-center ${
+                          className={`flex align-items-center my-3 ${
                             index < skills[SkillCategoryEnum.KNOWLEDGE].length - 1 ? 'mb-2' : ''
                           }`}
                         >
-                          <i className="pi pi-check-circle text-primary mr-2"></i>
+                          <i className="icon cbn-target text-primary mr-2"></i>
                           <span>{skill.name}</span>
                         </li>
                       ))}

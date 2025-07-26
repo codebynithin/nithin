@@ -25,7 +25,7 @@ const App: React.FC = () => {
 
   return (
     <Router>
-      <div className="App w-full max-w-screen h-full max-h-screen text-sm md:text-lg flex flex-column justify-content-between m-0">
+      <div className="w-full text-sm md:text-lg flex flex-column justify-content-between m-0">
         <Header links={links} />
         <Content />
         <Footer />
