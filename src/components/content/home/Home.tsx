@@ -31,7 +31,7 @@ const Home: React.FC = () => {
           </div>
         </div>
       </div>
-      <div className="w-8rem hidden md:flex">&nbsp;</div>
+      <div className="w-1rem hidden md:flex">&nbsp;</div>
       <div className="col text-center md:text-left">
         <div className="col-12 text-2xl">
           A <span className="text-900 font-bold">Full-Stack Developer</span>

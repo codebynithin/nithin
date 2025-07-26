@@ -39,7 +39,7 @@ const Header: React.FC<{ links: TopNavigationModel[] }> = ({ links = [] }) => {
 
   return (
     <header
-      className={`header w-full p-2 md:p-3 flex justify-content-start align-items-start gap-2 ${
+      className={`header w-full p-2 md:p-3 flex justify-content-between align-items-start gap-2 ${
         menuOpen ? 'active' : ''
       }`}
     >
@@ -49,7 +49,7 @@ const Header: React.FC<{ links: TopNavigationModel[] }> = ({ links = [] }) => {
           {isDarkMode ? 'Light Mode' : 'Dark Mode'}
         </div>
       </div>
-      <div className="header-content mx-auto">
+      <div className="header-content">
         <Link to="/">codebynithin.com</Link>
       </div>
       <div className="header-content flex flex-column align-items-end gap-2">
