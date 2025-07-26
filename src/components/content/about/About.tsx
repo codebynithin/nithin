@@ -1,13 +1,49 @@
-import React from 'react';
+/* eslint-disable no-unused-vars, no-undef */
+import React, { useState, useEffect } from 'react';
 import './About.scss';
+import { apiFetch } from '../../../http';
+import { SkillModel } from '../../../common/model/skill.model';
+import { SkillCategoryEnum } from '../../../common/enum/skill-category.enum';
 
 const About: React.FC = () => {
+  const [skills, setSkills] = useState<Record<SkillCategoryEnum, SkillModel[]>>();
+
+  useEffect(() => {
+    const fetchSkills = async () => {
+      try {
+        const response = await apiFetch('/api/v1/skills');
+        const data = await response.json();
+        const groupedSkills = data.reduce(
+          (acc: Record<SkillCategoryEnum, SkillModel[]>, skill: SkillModel) => {
+            const { category } = skill;
+
+            if (!acc[category]) {
+              acc[category] = [];
+            }
+
+            acc[category].push(skill);
+
+            return acc;
+          },
+          {},
+        );
+
+        console.log(groupedSkills);
+        setSkills(groupedSkills);
+      } catch (error) {
+        console.error('Failed to fetch skills:', error);
+      }
+    };
+
+    fetchSkills();
+  }, []);
+
   return (
     <div className="about-page w-full px-5 md:px-8">
-      <div className="grid gap-4">
+      <div className="w-full grid grid-nogutter gap-4">
         <h1 className="col-12 p-0 text-4xl font-bold m-0">About Me</h1>
         <hr className="col-12 p-0 m-0 border-50" />
-        <div className="flex flex-column md:flex-row gap-8">
+        <div className="w-full flex flex-column md:flex-row gap-8">
           <div className="col p-0">
             <h2 className="text-2xl font-bold mb-4">Biography</h2>
             <p>
@@ -61,62 +97,132 @@ const About: React.FC = () => {
                 <span>Indian</span>
               </li>
             </ul>
+
+            {skills && skills[SkillCategoryEnum.PROFICIENCY] && (
+              <div className="col-12 md:col-6 py-4 px-0">
+                <h3 className="text-xl font-bold mt-0 mb-4">Language Proficiency</h3>
+                {skills[SkillCategoryEnum.PROFICIENCY].map((skill: any, index: number) => (
+                  <div
+                    key={index}
+                    className={
+                      index < skills[SkillCategoryEnum.PROFICIENCY].length - 1 ? 'mb-4' : ''
+                    }
+                  >
+                    <div className="flex justify-content-between mb-2">
+                      <span>{skill.name}</span>
+                    </div>
+                    <div className="flex gap-1">
+                      {[...Array(10)].map((_, i) => (
+                        <div
+                          key={i}
+                          className={`w-1rem h-1rem border-circle ${
+                            i < skill.percentage / 10 ? 'bg-primary' : 'surface-50'
+                          }`}
+                        ></div>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
           <div className="col p-0 relative">
             <hr className="my-4 border-50 md:absolute md:top-0 md:left-0 md:h-full md:my-0 spacer" />
-            <h2 className="text-2xl font-bold mb-4">Services</h2>
-            <ul className="info list-none p-0 m-0 flex flex-column md:flex-row align-items-start flex-wrap">
-              <li className="col-12 md:col-6 py-3 flex flex-column align-items-center">
-                <i className="cbn-globe text-4xl md:text-6xl bg-black-alpha-90 p-3 md:p-4 border-circle"></i>
-                <h4 className="font-bold text-xl my-4">Web Development</h4>
-                <p>
-                  Modern and mobile-ready website that will help you reach all of your marketing.
-                </p>
-              </li>
-              <li className="col-12 md:col-6 py-3 flex flex-column align-items-center">
-                <i className="cbn-smartphone text-4xl md:text-6xl bg-black-alpha-90 p-3 md:p-4 border-circle"></i>
-                <h4 className="font-bold text-xl my-4">Mobile App Development</h4>
-                <p>Mobile app development that will help you reach all of your marketing.</p>
-              </li>
-              <li className="col-12 md:col-6 py-3 flex flex-column align-items-center">
-                <i className="cbn-pen-tool text-4xl md:text-6xl bg-black-alpha-90 p-3 md:p-4 border-circle"></i>
-                <h4 className="font-bold text-xl my-4">UX Design</h4>
-                <p>UX design that will help you reach all of your marketing.</p>
-              </li>
-              <li className="col-12 md:col-6 py-3 flex flex-column align-items-center">
-                <i className="cbn-search text-4xl md:text-6xl bg-black-alpha-90 p-3 md:p-4 border-circle"></i>
-                <h4 className="font-bold text-xl my-4">SEO</h4>
-                <p>SEO services that will help you reach all of your marketing.</p>
-              </li>
-            </ul>
-
-            <hr className="my-4 border-50" />
-
             <h2 className="text-2xl font-bold mb-4">Skills</h2>
-            {/* <ul className="info list-none p-0 m-0 flex flex-column md:flex-row align-items-start flex-wrap">
-              <li className="col-12 md:col-6 py-3 flex flex-column align-items-center">
-                <i className="cbn-globe text-4xl md:text-6xl bg-black-alpha-90 p-3 md:p-4 border-circle"></i>
-                <h4 className="font-bold text-xl my-4">Web Development</h4>
-                <p>
-                  Modern and mobile-ready website that will help you reach all of your marketing.
-                </p>
-              </li>
-              <li className="col-12 md:col-6 py-3 flex flex-column align-items-center">
-                <i className="cbn-smartphone text-4xl md:text-6xl bg-black-alpha-90 p-3 md:p-4 border-circle"></i>
-                <h4 className="font-bold text-xl my-4">Mobile App Development</h4>
-                <p>Mobile app development that will help you reach all of your marketing.</p>
-              </li>
-              <li className="col-12 md:col-6 py-3 flex flex-column align-items-center">
-                <i className="cbn-pen-tool text-4xl md:text-6xl bg-black-alpha-90 p-3 md:p-4 border-circle"></i>
-                <h4 className="font-bold text-xl my-4">UX Design</h4>
-                <p>UX design that will help you reach all of your marketing.</p>
-              </li>
-              <li className="col-12 md:col-6 py-3 flex flex-column align-items-center">
-                <i className="cbn-search text-4xl md:text-6xl bg-black-alpha-90 p-3 md:p-4 border-circle"></i>
-                <h4 className="font-bold text-xl my-4">SEO</h4>
-                <p>SEO services that will help you reach all of your marketing.</p>
-              </li>
-            </ul> */}
+            <div className="grid grid-nogutter">
+              {skills && skills[SkillCategoryEnum.CODING] && (
+                <div className="col-12 md:col-6">
+                  <div className="p-4 border-1 border-solid border-round border-50">
+                    <h3 className="text-xl font-bold mt-0 mb-4">CODING</h3>
+                    <div className="flex gap-4 justify-content-center">
+                      {skills[SkillCategoryEnum.CODING]
+                        .slice(0, 2)
+                        .map((skill: any, index: number) => (
+                          <div key={index} className="text-center">
+                            <div
+                              className="w-8rem h-8rem border-circle surface-50 flex align-items-center justify-content-center mb-2 mx-auto"
+                              style={{
+                                background: `conic-gradient(var(--primary-color) ${skill.percentage}%, var(--surface-50) 0)`,
+                              }}
+                            >
+                              <div className="w-6rem h-6rem border-circle surface-0 flex align-items-center justify-content-center font-bold text-2xl">
+                                {skill.percentage}%
+                              </div>
+                            </div>
+                            <span>{skill.name}</span>
+                          </div>
+                        ))}
+                    </div>
+                    <div className="flex gap-4 justify-content-center mt-4">
+                      {skills[SkillCategoryEnum.CODING]
+                        .slice(2, 4)
+                        .map((skill: any, index: number) => (
+                          <div key={index} className="text-center">
+                            <div
+                              className="w-8rem h-8rem border-circle surface-50 flex align-items-center justify-content-center mb-2 mx-auto"
+                              style={{
+                                background: `conic-gradient(var(--primary-color) ${skill.percentage}%, var(--surface-50) 0)`,
+                              }}
+                            >
+                              <div className="w-6rem h-6rem border-circle surface-0 flex align-items-center justify-content-center font-bold text-2xl">
+                                {skill.percentage}%
+                              </div>
+                            </div>
+                            <span>{skill.name}</span>
+                          </div>
+                        ))}
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {skills && skills[SkillCategoryEnum.DESIGN] && (
+                <div className="col-12 md:col-6">
+                  <div className="p-4 border-1 border-solid border-round border-50">
+                    <h3 className="text-xl font-bold mt-0 mb-4">DESIGN</h3>
+                    {skills[SkillCategoryEnum.DESIGN].map((skill: any, index: number) => (
+                      <div
+                        key={index}
+                        className={
+                          index < skills[SkillCategoryEnum.DESIGN].length - 1 ? 'mb-4' : ''
+                        }
+                      >
+                        <div className="flex justify-content-between mb-1">
+                          <span>{skill.name}</span>
+                        </div>
+                        <div className="surface-50 border-round" style={{ height: '8px' }}>
+                          <div
+                            className="bg-primary border-round"
+                            style={{ width: `${skill.percentage}%`, height: '8px' }}
+                          ></div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {skills && skills[SkillCategoryEnum.KNOWLEDGE] && (
+                <div className="col-12 md:col-6">
+                  <div className="p-4 border-1 border-solid border-round border-50">
+                    <h3 className="text-xl font-bold mt-0 mb-4">KNOWLEDGE</h3>
+                    <ul className="list-none p-0 m-0">
+                      {skills[SkillCategoryEnum.KNOWLEDGE].map((skill: any, index: number) => (
+                        <li
+                          key={index}
+                          className={`flex align-items-center ${
+                            index < skills[SkillCategoryEnum.KNOWLEDGE].length - 1 ? 'mb-2' : ''
+                          }`}
+                        >
+                          <i className="pi pi-check-circle text-primary mr-2"></i>
+                          <span>{skill.name}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </div>

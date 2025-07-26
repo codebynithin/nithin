@@ -25,7 +25,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Fira Code', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-  min-height: 100vh;
+  height: 100vh;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   transition: background-color 0.3s, color 0.3s;
@@ -38,6 +38,10 @@ body {
   &.dark {
     background-color: var(--bg-color-dark);
     color: var(--text-color-dark);
+  }
+
+  #root {
+    height: 100vh;
   }
 }
 

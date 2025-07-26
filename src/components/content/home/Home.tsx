@@ -131,10 +131,10 @@ const Home: React.FC = () => {
   }, []);
 
   return (
-    <div>
+    <div className="w-full">
       <div className="flex flex-column gap-3 md:flex-row pt-6 md:gap-8 md:pt-0">
         <div className="col">
-          <div className="grid">
+          <div className="grid grid-nogutter">
             <div className="col-12 p-0 md:m-2 text-6xl text-center md:text-right font-bold">
               Nithin
             </div>

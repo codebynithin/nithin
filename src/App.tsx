@@ -14,11 +14,7 @@ const App: React.FC = () => {
   useEffect(() => {
     apiFetch('/api/v1/top-navigations')
       .then((res) => res.json())
-      .then((data) => {
-        console.log({ data });
-
-        setLinks(data);
-      })
+      .then((data) => setLinks(data))
       .catch((err) => console.error('Failed to fetch top navigations', err))
       .finally(() => setIsLoading(false));
   }, []);
@@ -29,7 +25,7 @@ const App: React.FC = () => {
 
   return (
     <Router>
-      <div className="App text-sm md:text-lg">
+      <div className="App w-full max-w-screen h-full max-h-screen text-sm md:text-lg flex flex-column justify-content-between m-0">
         <Header links={links} />
         <Content />
         <Footer />

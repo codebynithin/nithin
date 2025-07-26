@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './Header.scss';
 // eslint-disable-next-line no-unused-vars
-import { HeaderProps } from '../../interfaces';
+import { TopNavigationModel } from '../../common/model/top-navigation.model';
 
-const Header: React.FC<HeaderProps> = ({ links = [] }) => {
+const Header: React.FC<{ links: TopNavigationModel[] }> = ({ links = [] }) => {
   const location = useLocation();
   const [isDarkMode, setIsDarkMode] = useState<boolean>(() => {
     const savedTheme = localStorage.getItem('theme');
@@ -29,7 +29,7 @@ const Header: React.FC<HeaderProps> = ({ links = [] }) => {
 
   return (
     <header
-      className={`header p-3 flex justify-content-between align-items-start ${
+      className={`header w-full p-2 md:p-3 flex justify-content-start align-items-start gap-2 ${
         menuOpen ? 'active' : ''
       }`}
     >
@@ -39,7 +39,7 @@ const Header: React.FC<HeaderProps> = ({ links = [] }) => {
           {isDarkMode ? 'Light Mode' : 'Dark Mode'}
         </div>
       </div>
-      <div className="header-content">
+      <div className="header-content mx-auto">
         <Link to="/">codebynithin.com</Link>
       </div>
       <div className="header-content flex flex-column align-items-end gap-2">
