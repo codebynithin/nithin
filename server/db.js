@@ -1,6 +1,5 @@
-import mongoose from 'mongoose';
-
-export const connectDB = async () => {
+const mongoose = require('mongoose');
+const connectDB = async () => {
   try {
     if (!process.env.MONGO_URI) {
       throw new Error('MONGO_URI is not defined in the environment variables');
@@ -8,17 +7,16 @@ export const connectDB = async () => {
     await mongoose.connect(process.env.MONGO_URI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
-    } as mongoose.ConnectOptions);
-  } catch (error: any) {
+    });
+  } catch (error) {
     console.error('MongoDB connection failed:', error.message);
     throw error;
   }
 };
-
+module.exports.connectDB = connectDB;
 mongoose.connection.on('disconnected', () => {
   console.log('MongoDB disconnected');
 });
-
-mongoose.connection.on('error', (err: any) => {
+mongoose.connection.on('error', (err) => {
   console.error('MongoDB connection error:', err);
 });

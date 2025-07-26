@@ -1,21 +1,13 @@
-import SocialLink from '../schema/social-link';
-import TopNavigation from '../schema/top-navigation';
-import Skill from '../schema/skill.schema';
-import Education from '../schema/education';
-import Experience from '../schema/experience';
-import Portfolio from '../schema/portfolio';
-import QuickLink from '../schema/quick-link';
-import { SkillCategoryEnum } from '../../common/enum/skill-category.enum';
-import { SkillTypeEnum } from '../../common/enum/skill-type.enum';
-import { SocialLinkModel } from '@/model/social-link.model';
-import { TopNavigationModel } from '@/model/top-navigation.model';
-import { SkillModel } from '@/model/skill.model';
-import { EducationModel } from '@/model/education.model';
-import { ExperienceModel } from '@/model/experience.model';
-import { PortfolioModel } from '@/model/portfolio.model';
-import { QuickLinkModel } from '@/model/quick-link.model';
-
-const links: Partial<SocialLinkModel>[] = [
+const social_link = require('../schema/social-link');
+const top_navigation = require('../schema/top-navigation');
+const skill_schema = require('../schema/skill.schema');
+const education = require('../schema/education');
+const experience = require('../schema/experience');
+const portfolio = require('../schema/portfolio');
+const quick_link = require('../schema/quick-link');
+const skill_category_enum = require('../../common/enum/skill-category.enum');
+const skill_type_enum = require('../../common/enum/skill-type.enum');
+const links = [
   {
     href: 'https://www.linkedin.com/in/nithinvuideveloper',
     icon: 'cbn-linkedin2',
@@ -42,107 +34,127 @@ const links: Partial<SocialLinkModel>[] = [
     label: 'Facebook',
   },
 ];
-const topNav: Partial<TopNavigationModel>[] = [
+const topNav = [
   { href: '/about', icon: 'cbn-user', label: 'About' },
   { href: '/experiences', icon: 'cbn-experiences', label: 'Experiences' },
   { href: '/portfolio', icon: 'cbn-portfolio', label: 'Portfolio' },
   { href: '/educations', icon: 'cbn-educations', label: 'Educations' },
 ];
-const skills: Partial<SkillModel>[] = [
+const skills = [
   {
     name: 'Web Designing',
-    category: SkillCategoryEnum.DESIGN,
+    category: skill_category_enum.SkillCategoryEnum.DESIGN,
     percentage: 95,
-    type: SkillTypeEnum.PROGRESS_BAR,
+    type: skill_type_enum.SkillTypeEnum.PROGRESS_BAR,
   },
   {
     name: 'Photoshop',
-    category: SkillCategoryEnum.DESIGN,
+    category: skill_category_enum.SkillCategoryEnum.DESIGN,
     percentage: 90,
-    type: SkillTypeEnum.PROGRESS_BAR,
+    type: skill_type_enum.SkillTypeEnum.PROGRESS_BAR,
   },
   {
     name: 'Figma',
-    category: SkillCategoryEnum.DESIGN,
+    category: skill_category_enum.SkillCategoryEnum.DESIGN,
     percentage: 85,
-    type: SkillTypeEnum.PROGRESS_BAR,
+    type: skill_type_enum.SkillTypeEnum.PROGRESS_BAR,
   },
   {
     name: 'Illustrator',
-    category: SkillCategoryEnum.DESIGN,
+    category: skill_category_enum.SkillCategoryEnum.DESIGN,
     percentage: 80,
-    type: SkillTypeEnum.PROGRESS_BAR,
+    type: skill_type_enum.SkillTypeEnum.PROGRESS_BAR,
   },
   {
     name: 'InDesign',
-    category: SkillCategoryEnum.DESIGN,
+    category: skill_category_enum.SkillCategoryEnum.DESIGN,
     percentage: 70,
-    type: SkillTypeEnum.PROGRESS_BAR,
+    type: skill_type_enum.SkillTypeEnum.PROGRESS_BAR,
   },
   {
     name: 'English',
-    category: SkillCategoryEnum.PROFICIENCY,
+    category: skill_category_enum.SkillCategoryEnum.PROFICIENCY,
     percentage: 90,
-    type: SkillTypeEnum.DOTS,
+    type: skill_type_enum.SkillTypeEnum.DOTS,
   },
   {
     name: 'Malayalam',
-    category: SkillCategoryEnum.PROFICIENCY,
+    category: skill_category_enum.SkillCategoryEnum.PROFICIENCY,
     percentage: 100,
-    type: SkillTypeEnum.DOTS,
+    type: skill_type_enum.SkillTypeEnum.DOTS,
   },
   {
     name: 'Hindi',
-    category: SkillCategoryEnum.PROFICIENCY,
+    category: skill_category_enum.SkillCategoryEnum.PROFICIENCY,
     percentage: 70,
-    type: SkillTypeEnum.DOTS,
+    type: skill_type_enum.SkillTypeEnum.DOTS,
   },
   {
     name: 'HTML5 / CSS3',
-    category: SkillCategoryEnum.CODING,
+    category: skill_category_enum.SkillCategoryEnum.CODING,
     percentage: 95,
-    type: SkillTypeEnum.CIRCULAR_PROGRESS,
+    type: skill_type_enum.SkillTypeEnum.CIRCULAR_PROGRESS,
   },
   {
     name: 'Angular / NativeScript / NestJs / JavaScript / Typescript',
-    category: SkillCategoryEnum.CODING,
+    category: skill_category_enum.SkillCategoryEnum.CODING,
     percentage: 90,
-    type: SkillTypeEnum.CIRCULAR_PROGRESS,
+    type: skill_type_enum.SkillTypeEnum.CIRCULAR_PROGRESS,
   },
   {
     name: 'Vue / Ionic / Git / Ajax',
-    category: SkillCategoryEnum.CODING,
+    category: skill_category_enum.SkillCategoryEnum.CODING,
     percentage: 80,
-    type: SkillTypeEnum.CIRCULAR_PROGRESS,
+    type: skill_type_enum.SkillTypeEnum.CIRCULAR_PROGRESS,
   },
   {
     name: 'Grunt / Sonar / PHP',
-    category: SkillCategoryEnum.CODING,
+    category: skill_category_enum.SkillCategoryEnum.CODING,
     percentage: 75,
-    type: SkillTypeEnum.CIRCULAR_PROGRESS,
+    type: skill_type_enum.SkillTypeEnum.CIRCULAR_PROGRESS,
   },
-  { name: 'Web Application', category: SkillCategoryEnum.KNOWLEDGE, type: SkillTypeEnum.LIST },
-  { name: 'Mobile Application', category: SkillCategoryEnum.KNOWLEDGE, type: SkillTypeEnum.LIST },
-  { name: 'Website Hosting', category: SkillCategoryEnum.KNOWLEDGE, type: SkillTypeEnum.LIST },
-  { name: 'Create Logo Design', category: SkillCategoryEnum.KNOWLEDGE, type: SkillTypeEnum.LIST },
-  { name: 'Design for Print', category: SkillCategoryEnum.KNOWLEDGE, type: SkillTypeEnum.LIST },
+  {
+    name: 'Web Application',
+    category: skill_category_enum.SkillCategoryEnum.KNOWLEDGE,
+    type: skill_type_enum.SkillTypeEnum.LIST,
+  },
+  {
+    name: 'Mobile Application',
+    category: skill_category_enum.SkillCategoryEnum.KNOWLEDGE,
+    type: skill_type_enum.SkillTypeEnum.LIST,
+  },
+  {
+    name: 'Website Hosting',
+    category: skill_category_enum.SkillCategoryEnum.KNOWLEDGE,
+    type: skill_type_enum.SkillTypeEnum.LIST,
+  },
+  {
+    name: 'Create Logo Design',
+    category: skill_category_enum.SkillCategoryEnum.KNOWLEDGE,
+    type: skill_type_enum.SkillTypeEnum.LIST,
+  },
+  {
+    name: 'Design for Print',
+    category: skill_category_enum.SkillCategoryEnum.KNOWLEDGE,
+    type: skill_type_enum.SkillTypeEnum.LIST,
+  },
   {
     name: 'Modern and Mobile Ready Websites',
-    category: SkillCategoryEnum.KNOWLEDGE,
-    type: SkillTypeEnum.LIST,
+    category: skill_category_enum.SkillCategoryEnum.KNOWLEDGE,
+    type: skill_type_enum.SkillTypeEnum.LIST,
   },
   {
     name: 'Search Engine Marketing',
-    category: SkillCategoryEnum.KNOWLEDGE,
-    type: SkillTypeEnum.LIST,
+    category: skill_category_enum.SkillCategoryEnum.KNOWLEDGE,
+    type: skill_type_enum.SkillTypeEnum.LIST,
   },
   {
     name: 'Graphics and Animations',
-    category: SkillCategoryEnum.KNOWLEDGE,
-    type: SkillTypeEnum.LIST,
+    category: skill_category_enum.SkillCategoryEnum.KNOWLEDGE,
+    type: skill_type_enum.SkillTypeEnum.LIST,
   },
 ];
-const educations: Partial<EducationModel>[] = [
+const educations = [
   {
     date: '2008 - 2009',
     title: 'Web Designing and Animation',
@@ -163,7 +175,7 @@ const educations: Partial<EducationModel>[] = [
       'Completed 2 year vocational and higher secondary course in Refrigerator and Air Conditioning with 67% of marks.',
   },
 ];
-const experiences: Partial<ExperienceModel>[] = [
+const experiences = [
   {
     date: '2020 - Present',
     title: 'Senior Software Engineer',
@@ -199,7 +211,7 @@ const experiences: Partial<ExperienceModel>[] = [
     description: '3.7 years experience in Back office works, MS office, etc.',
   },
 ];
-const portfolios: Partial<PortfolioModel>[] = [
+const portfolios = [
   {
     title: "PAPPY'S NEST",
     category: 'Website',
@@ -294,7 +306,7 @@ const portfolios: Partial<PortfolioModel>[] = [
     thumbnailUrl: 'panel-partnership-300.png',
   },
 ];
-const quickLinks: Partial<QuickLinkModel>[] = [
+const quickLinks = [
   {
     name: 'Download Resume',
     icon: 'cbn-download',
@@ -316,118 +328,112 @@ const quickLinks: Partial<QuickLinkModel>[] = [
     target: '_blank',
   },
 ];
-
 const seed = async () => {
-  const existingSocialLinks = await SocialLink.find();
-  const existingTopNavigations = await TopNavigation.find();
-  const existingSkills = await Skill.find();
-  const existingEducations = await Education.find();
-  const existingExperiences = await Experience.find();
-  const existingPortfolios = await Portfolio.find();
-  const existingQuickLinks = await QuickLink.find();
+  const existingSocialLinks = await social_link.find();
+  const existingTopNavigations = await top_navigation.find();
+  const existingSkills = await skill_schema.find();
+  const existingEducations = await education.find();
+  const existingExperiences = await experience.find();
+  const existingPortfolios = await portfolio.find();
+  const existingQuickLinks = await quick_link.find();
+
   const hasSocialDifference =
-    existingSocialLinks.length !== links.length ||
+    existingSocialLinks?.length !== links.length ||
     !existingSocialLinks.every(
-      ({ href, icon, label }: SocialLinkModel, index: number) =>
+      ({ href, icon, label }, index) =>
         href === links[index].href && icon === links[index].icon && label === links[index].label,
     );
   const hasTopNavDifference =
-    existingTopNavigations.length !== topNav.length ||
+    existingTopNavigations?.length !== topNav.length ||
     !existingTopNavigations.every(
-      ({ href, icon, label }: TopNavigationModel, index: number) =>
+      ({ href, icon, label }, index) =>
         href === topNav[index].href && icon === topNav[index].icon && label === topNav[index].label,
     );
   const hasSkillDifference =
-    existingSkills.length !== skills.length ||
+    existingSkills?.length !== skills.length ||
     !existingSkills.every(
-      ({ name, category, percentage, type }: SkillModel, index: number) =>
+      ({ name, category, percentage, type }, index) =>
         name === skills[index].name &&
         category === skills[index].category &&
         percentage === skills[index].percentage &&
         type === skills[index].type,
     );
   const hasEducationDifference =
-    existingEducations.length !== educations.length ||
+    existingEducations?.length !== educations.length ||
     !existingEducations.every(
-      ({ date, title, institution, description }: EducationModel, index: number) =>
+      ({ date, title, institution, description }, index) =>
         date === educations[index].date &&
         title === educations[index].title &&
         institution === educations[index].institution &&
         description === educations[index].description,
     );
   const hasExperienceDifference =
-    existingExperiences.length !== experiences.length ||
+    existingExperiences?.length !== experiences.length ||
     !existingExperiences.every(
-      ({ date, title, company, description }: ExperienceModel, index: number) =>
+      ({ date, title, company, description }, index) =>
         date === experiences[index].date &&
         title === experiences[index].title &&
         company === experiences[index].company &&
         description === experiences[index].description,
     );
   const hasPortfolioDifference =
-    existingPortfolios.length !== portfolios.length ||
+    existingPortfolios?.length !== portfolios.length ||
     !existingPortfolios.every(
-      ({ title, category }: PortfolioModel, index: number) =>
+      ({ title, category }, index) =>
         title === portfolios[index].title && category === portfolios[index].category,
     );
   const hasQuickLinkDifference =
-    existingQuickLinks.length !== quickLinks.length ||
+    existingQuickLinks?.length !== quickLinks?.length ||
     !existingQuickLinks.every(
-      ({ name, icon, href, target }: QuickLinkModel, index: number) =>
+      ({ name, icon, href, target }, index) =>
         name === quickLinks[index].name &&
         icon === quickLinks[index].icon &&
         href === quickLinks[index].href &&
         target === quickLinks[index].target,
     );
 
-  if (existingSocialLinks?.length !== links.length || hasSocialDifference) {
-    await SocialLink.deleteMany({});
-    await SocialLink.insertMany(links);
-
+  if (hasSocialDifference) {
+    await social_link.deleteMany({});
+    await social_link.insertMany(links);
     console.log('Added social links.');
   }
 
-  if (existingTopNavigations?.length !== topNav.length || hasTopNavDifference) {
-    await TopNavigation.deleteMany({});
-    await TopNavigation.insertMany(topNav);
-
+  if (hasTopNavDifference) {
+    await top_navigation.deleteMany({});
+    await top_navigation.insertMany(topNav);
     console.log('Added top navigations.');
   }
 
-  if (existingSkills?.length !== skills.length || hasSkillDifference) {
-    await Skill.deleteMany({});
-    await Skill.insertMany(skills);
-
+  if (hasSkillDifference) {
+    await skill_schema.deleteMany({});
+    await skill_schema.insertMany(skills);
     console.log('Added skills.');
   }
 
-  if (existingEducations?.length !== educations.length || hasEducationDifference) {
-    await Education.deleteMany({});
-    await Education.insertMany(educations);
-
+  if (hasEducationDifference) {
+    await education.deleteMany({});
+    await education.insertMany(educations);
     console.log('Added educations.');
   }
 
-  if (existingExperiences?.length !== experiences.length || hasExperienceDifference) {
-    await Experience.deleteMany({});
-    await Experience.insertMany(experiences);
-
+  if (hasExperienceDifference) {
+    await experience.deleteMany({});
+    await experience.insertMany(experiences);
     console.log('Added experiences.');
   }
 
-  if (existingPortfolios?.length !== portfolios.length || hasPortfolioDifference) {
-    await Portfolio.deleteMany({});
-    await Portfolio.insertMany(portfolios);
-
+  if (hasPortfolioDifference) {
+    await portfolio.deleteMany({});
+    await portfolio.insertMany(portfolios);
     console.log('Added portfolios.');
   }
 
-  if (existingQuickLinks?.length !== quickLinks.length || hasQuickLinkDifference) {
-    await QuickLink.deleteMany({});
-    await QuickLink.insertMany(quickLinks);
+  if (hasQuickLinkDifference) {
+    await quick_link.deleteMany({});
+    await quick_link.insertMany(quickLinks);
 
     console.log('Added quick links.');
   }
 };
 
-export { seed };
+exports.seed = seed;
