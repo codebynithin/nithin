@@ -253,8 +253,8 @@ const portfolios: Partial<PortfolioModel>[] = [
   {
     title: 'Patanjali Divya Yoga',
     category: 'Website',
-    imageUrl: 'Patanjali-divya-yoga-600.png',
-    thumbnailUrl: 'Patanjali-divya-yoga-300.png',
+    imageUrl: 'patanjali-divya-yoga-600.png',
+    thumbnailUrl: 'patanjali-divya-yoga-300.png',
   },
   {
     title: 'Its Ella',

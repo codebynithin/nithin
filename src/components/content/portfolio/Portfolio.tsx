@@ -24,7 +24,7 @@ const Portfolio: React.FC = () => {
   }, []);
 
   return (
-    <div className="portfolio-page w-full px-5 ml-0 md:px-8 md:-ml-8">
+    <div className="portfolio-page w-full px-5 md:px-8">
       <div className="grid grid-nogutter gap-4">
         <h1 className="col-12 p-0 text-4xl text-900 font-bold m-0">Portfolio</h1>
         <hr className="col-12 p-0 m-0 border-50" />

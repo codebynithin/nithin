@@ -184,7 +184,7 @@ const Content: React.FC = () => {
 
   return (
     <DialogProvider>
-      <main className="content-container w-full relative flex align-items-start md:ml-8 ">
+      <main className="content-container w-full relative flex align-items-start">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />

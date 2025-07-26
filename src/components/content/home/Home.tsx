@@ -20,7 +20,7 @@ const Home: React.FC = () => {
   }, []);
 
   return (
-    <div className="home-container w-full flex flex-column align-items-center justify-content-center gap-3 pt-6 ml-0 md:px-8 md:-ml-8 md:flex-row md:gap-8 md:pt-0">
+    <div className="home-container w-full flex flex-column align-items-center justify-content-center gap-3 pt-6 md:px-8 md:flex-row md:gap-8 md:pt-0">
       <div className="col flex align-items-end justify-content-end md:align-items-center pb-4 md:pb-0">
         <div className="grid grid-nogutter">
           <div className="col-12 p-0 md:m-2 text-6xl text-center md:text-right text-900 font-bold">
