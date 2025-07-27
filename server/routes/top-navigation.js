@@ -2,6 +2,36 @@ const express = require('express');
 const top_navigation = require('../schema/top-navigation');
 const router = express.Router();
 
+/**
+ * @swagger
+ * tags:
+ *   name: Top Navigation
+ *   description: API for managing top navigation links
+ */
+
+/**
+ * @swagger
+ * /api/v1/top-navigations:
+ *   get:
+ *     summary: Retrieve a list of top navigation links
+ *     tags: [Top Navigation]
+ *     responses:
+ *       200:
+ *         description: A list of top navigation links.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 type: object
+ *                 properties:
+ *                   id: { type: string }
+ *                   href: { type: string }
+ *                   icon: { type: string }
+ *                   label: { type: string }
+ *       500:
+ *         description: Server error
+ */
 router.get('/', async (req, res) => {
   try {
     const links = await top_navigation.find();
@@ -18,6 +48,32 @@ router.get('/', async (req, res) => {
   }
 });
 
+/**
+ * @swagger
+ * /api/v1/top-navigations:
+ *   post:
+ *     summary: Create a new top navigation link
+ *     tags: [Top Navigation]
+ *     security:
+ *       - basicAuth: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               href: { type: string }
+ *               icon: { type: string }
+ *               label: { type: string }
+ *     responses:
+ *       201:
+ *         description: Top navigation link created successfully
+ *       400:
+ *         description: Missing required fields
+ *       500:
+ *         description: Server error
+ */
 router.post('/', async (req, res) => {
   try {
     const { href, icon, label } = req.body;
@@ -36,6 +92,38 @@ router.post('/', async (req, res) => {
   }
 });
 
+/**
+ * @swagger
+ * /api/v1/top-navigations/{id}:
+ *   patch:
+ *     summary: Update a top navigation link
+ *     tags: [Top Navigation]
+ *     security:
+ *       - basicAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         schema:
+ *           type: string
+ *         required: true
+ *         description: The top navigation link ID
+ *     requestBody:
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               href: { type: string }
+ *               icon: { type: string }
+ *               label: { type: string }
+ *     responses:
+ *       200:
+ *         description: Top navigation link updated successfully
+ *       404:
+ *         description: Top navigation link not found
+ *       500:
+ *         description: Server error
+ */
 router.patch('/:id', async (req, res) => {
   try {
     const { id } = req.params;
@@ -60,6 +148,29 @@ router.patch('/:id', async (req, res) => {
   }
 });
 
+/**
+ * @swagger
+ * /api/v1/top-navigations/{id}:
+ *   delete:
+ *     summary: Delete a top navigation link
+ *     tags: [Top Navigation]
+ *     security:
+ *       - basicAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         schema:
+ *           type: string
+ *         required: true
+ *         description: The top navigation link ID
+ *     responses:
+ *       200:
+ *         description: Top navigation link deleted successfully
+ *       404:
+ *         description: Top navigation link not found
+ *       500:
+ *         description: Server error
+ */
 router.delete('/:id', async (req, res) => {
   try {
     const { id } = req.params;

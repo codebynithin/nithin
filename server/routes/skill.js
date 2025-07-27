@@ -2,6 +2,38 @@ const express = require('express');
 const skill_schema = require('../schema/skill.schema');
 const router = express.Router();
 
+/**
+ * @swagger
+ * tags:
+ *   name: Skills
+ *   description: API for managing skills
+ */
+
+/**
+ * @swagger
+ * /api/v1/skills:
+ *   get:
+ *     summary: Retrieve a list of skills
+ *     tags: [Skills]
+ *     responses:
+ *       200:
+ *         description: A list of skills.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 type: object
+ *                 properties:
+ *                   id: { type: string }
+ *                   name: { type: string }
+ *                   category: { type: string }
+ *                   percentage: { type: number }
+ *                   subSkills: { type: array, items: { type: string } }
+ *                   type: { type: string }
+ *       500:
+ *         description: Server error
+ */
 router.get('/', async (req, res) => {
   try {
     const skills = await skill_schema.find();
@@ -20,6 +52,34 @@ router.get('/', async (req, res) => {
   }
 });
 
+/**
+ * @swagger
+ * /api/v1/skills:
+ *   post:
+ *     summary: Create a new skill
+ *     tags: [Skills]
+ *     security:
+ *       - basicAuth: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               name: { type: string }
+ *               category: { type: string }
+ *               percentage: { type: number }
+ *               subSkills: { type: array, items: { type: string } }
+ *               type: { type: string }
+ *     responses:
+ *       201:
+ *         description: Skill created successfully
+ *       400:
+ *         description: Missing required fields
+ *       500:
+ *         description: Server error
+ */
 router.post('/', async (req, res) => {
   try {
     const { name, category, percentage, subSkills, type } = req.body;
@@ -38,6 +98,40 @@ router.post('/', async (req, res) => {
   }
 });
 
+/**
+ * @swagger
+ * /api/v1/skills/{id}:
+ *   patch:
+ *     summary: Update a skill
+ *     tags: [Skills]
+ *     security:
+ *       - basicAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         schema:
+ *           type: string
+ *         required: true
+ *         description: The skill ID
+ *     requestBody:
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               name: { type: string }
+ *               category: { type: string }
+ *               percentage: { type: number }
+ *               subSkills: { type: array, items: { type: string } }
+ *               type: { type: string }
+ *     responses:
+ *       200:
+ *         description: Skill updated successfully
+ *       404:
+ *         description: Skill not found
+ *       500:
+ *         description: Server error
+ */
 router.patch('/:id', async (req, res) => {
   try {
     const { id } = req.params;
@@ -66,6 +160,29 @@ router.patch('/:id', async (req, res) => {
   }
 });
 
+/**
+ * @swagger
+ * /api/v1/skills/{id}:
+ *   delete:
+ *     summary: Delete a skill
+ *     tags: [Skills]
+ *     security:
+ *       - basicAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         schema:
+ *           type: string
+ *         required: true
+ *         description: The skill ID
+ *     responses:
+ *       200:
+ *         description: Skill deleted successfully
+ *       404:
+ *         description: Skill not found
+ *       500:
+ *         description: Server error
+ */
 router.delete('/:id', async (req, res) => {
   try {
     const { id } = req.params;

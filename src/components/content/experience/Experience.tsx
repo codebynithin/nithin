@@ -31,10 +31,10 @@ const Experience: React.FC = () => {
       <div className="grid grid-nogutter gap-4">
         <h1 className="col-12 p-0 text-4xl text-900 font-bold m-0">Experience</h1>
         <hr className="col-12 p-0 m-0 border-50" />
-        <div className="experience-items grid grid-nogutter">
+        <div className="grid grid-nogutter">
           {experiences.map((item, index) => (
-            <div key={index} className="experience-item col-12 md:col-6 lg:col-4 p-3">
-              <div className="timeline-content p-3 border-1 border-solid border-round border-50">
+            <div key={index} className="col-12 md:col-6 lg:col-4 p-3">
+              <div className="h-full p-3 border-1 border-solid border-round border-50">
                 <p className="text-sm text-800 mx-0 my-2">{item.date}</p>
                 <p className="text-xl text-900 font-bold mx-0 my-2">{item.title}</p>
                 <p className="text-sm text-800 mx-0 my-2">{item.company}</p>

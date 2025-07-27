@@ -34,8 +34,7 @@ const Education: React.FC = () => {
         <div className="flex flex-wrap">
           {educations.map((item, index) => (
             <div key={index} className="col-12 md:col-6 lg:col-4 p-3">
-              <div className="timeline-marker"></div>
-              <div className="timeline-content p-3 border-1 border-solid border-round border-50">
+              <div className="h-full p-3 border-1 border-solid border-round border-50">
                 <p className="text-sm text-800 mt-0 mb-2">{item.date}</p>
                 <p className="text-xl text-900 font-bold m-0">{item.title}</p>
                 <p className="text-sm text-800 mt-1 mb-2">{item.institution}</p>

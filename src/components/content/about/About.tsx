@@ -129,9 +129,9 @@ const About: React.FC = () => {
           <div className="col p-0 relative" id="skills">
             <hr className="my-4 border-50 md:absolute md:top-0 md:left-0 md:h-full md:my-0 spacer" />
             <h2 className="text-2xl text-900 font-bold mb-4">Skills</h2>
-            <div className="grid grid-nogutter">
+            <div className="flex flex-wrap gap-4">
               {skills && skills[SkillCategoryEnum.CODING] && (
-                <div className="col-12 mb-5 md:col-5 md:mr-5">
+                <div className="w-full md:w-6">
                   <div className="p-4 border-1 border-solid border-round border-50">
                     <h3 className="text-xl text-900 font-bold mt-0 mb-4">
                       FrameWorks &amp; Coding
@@ -179,7 +179,7 @@ const About: React.FC = () => {
               )}
 
               {skills && skills[SkillCategoryEnum.DESIGN] && (
-                <div className="col-12 mb-5 md:col-5 md:mr-5">
+                <div className="w-full md:w-5">
                   <div className="p-4 border-1 border-solid border-round border-50">
                     <h3 className="text-xl text-900 font-bold mt-0 mb-4">Design</h3>
                     {skills[SkillCategoryEnum.DESIGN].map((skill: any, index: number) => (
@@ -205,7 +205,7 @@ const About: React.FC = () => {
               )}
 
               {skills && skills[SkillCategoryEnum.KNOWLEDGE] && (
-                <div className="col-12 mb-5 md:col-5 md:mr-5">
+                <div className="w-full md:w-6">
                   <div className="p-4 border-1 border-solid border-round border-50">
                     <h3 className="text-xl text-900 font-bold mt-0 mb-4">Knowledge</h3>
                     <ul className="list-none p-0 m-0">

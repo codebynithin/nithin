@@ -2,6 +2,37 @@ const express = require('express');
 const experience = require('../schema/experience');
 const router = express.Router();
 
+/**
+ * @swagger
+ * tags:
+ *   name: Experience
+ *   description: API for managing experience entries
+ */
+
+/**
+ * @swagger
+ * /api/v1/experiences:
+ *   get:
+ *     summary: Retrieve a list of experience entries
+ *     tags: [Experience]
+ *     responses:
+ *       200:
+ *         description: A list of experience entries.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 type: object
+ *                 properties:
+ *                   id: { type: string }
+ *                   date: { type: string }
+ *                   title: { type: string }
+ *                   company: { type: string }
+ *                   description: { type: string }
+ *       500:
+ *         description: Server error
+ */
 router.get('/', async (req, res) => {
   try {
     const experiences = await experience.find();
@@ -20,6 +51,33 @@ router.get('/', async (req, res) => {
   }
 });
 
+/**
+ * @swagger
+ * /api/v1/experiences:
+ *   post:
+ *     summary: Create a new experience entry
+ *     tags: [Experience]
+ *     security:
+ *       - basicAuth: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               date: { type: string }
+ *               title: { type: string }
+ *               company: { type: string }
+ *               description: { type: string }
+ *     responses:
+ *       201:
+ *         description: Experience entry created successfully
+ *       400:
+ *         description: Missing required fields
+ *       500:
+ *         description: Server error
+ */
 router.post('/', async (req, res) => {
   try {
     const { date, title, company, description } = req.body;
@@ -38,6 +96,39 @@ router.post('/', async (req, res) => {
   }
 });
 
+/**
+ * @swagger
+ * /api/v1/experiences/{id}:
+ *   patch:
+ *     summary: Update an experience entry
+ *     tags: [Experience]
+ *     security:
+ *       - basicAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         schema:
+ *           type: string
+ *         required: true
+ *         description: The experience entry ID
+ *     requestBody:
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               date: { type: string }
+ *               title: { type: string }
+ *               company: { type: string }
+ *               description: { type: string }
+ *     responses:
+ *       200:
+ *         description: Experience entry updated successfully
+ *       404:
+ *         description: Experience entry not found
+ *       500:
+ *         description: Server error
+ */
 router.patch('/:id', async (req, res) => {
   try {
     const { id } = req.params;
@@ -64,6 +155,29 @@ router.patch('/:id', async (req, res) => {
   }
 });
 
+/**
+ * @swagger
+ * /api/v1/experiences/{id}:
+ *   delete:
+ *     summary: Delete an experience entry
+ *     tags: [Experience]
+ *     security:
+ *       - basicAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         schema:
+ *           type: string
+ *         required: true
+ *         description: The experience entry ID
+ *     responses:
+ *       200:
+ *         description: Experience entry deleted successfully
+ *       404:
+ *         description: Experience entry not found
+ *       500:
+ *         description: Server error
+ */
 router.delete('/:id', async (req, res) => {
   try {
     const { id } = req.params;
