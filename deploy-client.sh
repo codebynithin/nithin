@@ -10,6 +10,6 @@ echo "🧱 Building client..."
 npm run build
 
 echo "📂 Copying client build to backend public directory..."
-cp -r build /var/www/nithin
+cp -r build /var/www/html
 
 echo "✅ Client deployment complete."

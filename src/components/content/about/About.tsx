@@ -126,10 +126,10 @@ const About: React.FC = () => {
               </div>
             )}
           </div>
-          <div className="col p-0 relative" id="skills">
+          <div className="col p-0 pl-0 md:pl-8 relative" id="skills">
             <hr className="my-4 border-50 md:absolute md:top-0 md:left-0 md:h-full md:my-0 spacer" />
             <h2 className="text-2xl text-900 font-bold mb-4">Skills</h2>
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-wrap gap-5">
               {skills && skills[SkillCategoryEnum.CODING] && (
                 <div className="w-full md:w-6">
                   <div className="p-4 border-1 border-solid border-round border-50">
@@ -179,7 +179,7 @@ const About: React.FC = () => {
               )}
 
               {skills && skills[SkillCategoryEnum.DESIGN] && (
-                <div className="w-full md:w-5">
+                <div className="w-full custom-width">
                   <div className="p-4 border-1 border-solid border-round border-50">
                     <h3 className="text-xl text-900 font-bold mt-0 mb-4">Design</h3>
                     {skills[SkillCategoryEnum.DESIGN].map((skill: any, index: number) => (
