@@ -19,7 +19,6 @@ const DialogController: React.FC = () => {
   const { isDialogVisible, showDialog, hideDialog } = useDialog();
   const dataViewRef = useRef<DataView>(null);
   const [filter, setFilter] = useState('');
-  const [value, setValue] = useState<QuickLinkModel | null>(null);
   const [quickLinks, setQuickLinks] = useState<any[]>([]);
   const filteredQuickLinks = (filter: string) => {
     setFilter(filter);
@@ -124,7 +123,7 @@ const DialogController: React.FC = () => {
         if (items.length === 0) return;
 
         const activeElement = document.activeElement as HTMLElement;
-        let currentIndex = items.findIndex((item) => item === activeElement);
+        const currentIndex = items.findIndex((item) => item === activeElement);
 
         let nextIndex;
         if (event.key === 'ArrowDown') {
@@ -148,7 +147,7 @@ const DialogController: React.FC = () => {
       showHeader={false}
       dismissableMask={true}
       visible={isDialogVisible}
-      className="surface-50 w-9 max-w-30rem dialog-list"
+      className="w-9 max-w-30rem dialog-list"
       maskClassName="bg-black-alpha-50"
       position="top"
       onHide={hideDialog}

@@ -43,7 +43,7 @@ body {
     --text-color-secondary: #6c757d;
     --primary-color: #00a3ff;
     --primary-color-text: #fff;
-    --font-family: 'Inter';
+    --font-family: 'Fira Code', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
     --surface-0: #fff;
     --surface-50: #f9fafb;
     --surface-100: #f8f9fa;
@@ -213,6 +213,12 @@ body {
     --docsearch-hit-color: var(--text-color);
     --docsearch-highlight-color: var(--primary-color);
     --docsearch-hit-active-color: var(--primary-color-text);
+
+    .p-dataview .p-dataview-header,
+    .p-dataview .p-dataview-content,
+    .loader-container {
+      background-color: var(--bg-color-light);
+    }
   }
 
   &.layout-dark {
@@ -228,7 +234,7 @@ body {
     --text-color-secondary: #cccdd1;
     --primary-color: #00e08f;
     --primary-color-text: #151515;
-    --font-family: 'Inter';
+    --font-family: 'Fira Code', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
     --surface-0: #00031a;
     --surface-50: #191c31;
     --surface-100: #333548;
@@ -398,6 +404,12 @@ body {
     --docsearch-hit-color: var(--text-color);
     --docsearch-highlight-color: var(--primary-color);
     --docsearch-hit-active-color: var(--primary-color-text);
+
+    .p-dataview .p-dataview-header,
+    .p-dataview .p-dataview-content,
+    .loader-container {
+      background-color: var(--bg-color-dark);
+    }
   }
 
   .layout-wrapper-dark {
@@ -454,4 +466,12 @@ code {
 
 .border-50 {
   border-color: light-dark(var(--surface-500), var(--surface-800)) !important;
+}
+
+.p-dialog-content {
+  padding: 0;
+}
+
+.p-toast {
+  font-family: 'Inter', sans-serif;
 }

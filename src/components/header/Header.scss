@@ -2,6 +2,11 @@
   min-height: 120px;
 }
 
+.header-theme,
+.header-navs {
+  width: 120px;
+}
+
 .selected {
   color: var(--p-primary-color);
 }
