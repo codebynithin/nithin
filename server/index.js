@@ -98,7 +98,7 @@ db.connectDB()
 
     await add_data.seed();
 
-    app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
+    app.listen(PORT, () => console.log('Server started successfully 😊'));
   })
   .catch((err) => {
     console.error('MongoDB connection error:', err);
