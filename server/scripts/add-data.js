@@ -313,6 +313,7 @@ const quickLinks = [
     href: '/downloads/resume-nithin-v.pdf',
     target: '_blank',
   },
+  { name: 'Know me', icon: 'cbn-user', href: '/about' },
   { name: 'Know my career', icon: 'cbn-user', href: '/experiences' },
   { name: 'See my skills', icon: 'cbn-target', href: '/about#skills' },
   {
