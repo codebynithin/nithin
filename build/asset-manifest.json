@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/nithin/static/css/main.3eb5643f.css",
-    "main.js": "/nithin/static/js/main.b65090a4.js",
+    "main.js": "/nithin/static/js/main.e056bf97.js",
     "static/js/5467.1f4799ec.chunk.js": "/nithin/static/js/5467.1f4799ec.chunk.js",
     "static/js/5970.099249c6.chunk.js": "/nithin/static/js/5970.099249c6.chunk.js",
     "static/js/5205.329b3a48.chunk.js": "/nithin/static/js/5205.329b3a48.chunk.js",
@@ -280,7 +280,7 @@
     "static/media/poppins-v15-latin-ext_latin-700.woff2": "/nithin/static/media/poppins-v15-latin-ext_latin-700.5e2dfda5fae3c158fe30.woff2",
     "index.html": "/nithin/index.html",
     "main.3eb5643f.css.map": "/nithin/static/css/main.3eb5643f.css.map",
-    "main.b65090a4.js.map": "/nithin/static/js/main.b65090a4.js.map",
+    "main.e056bf97.js.map": "/nithin/static/js/main.e056bf97.js.map",
     "5467.1f4799ec.chunk.js.map": "/nithin/static/js/5467.1f4799ec.chunk.js.map",
     "5970.099249c6.chunk.js.map": "/nithin/static/js/5970.099249c6.chunk.js.map",
     "5205.329b3a48.chunk.js.map": "/nithin/static/js/5205.329b3a48.chunk.js.map",
@@ -397,6 +397,6 @@
   },
   "entrypoints": [
     "static/css/main.3eb5643f.css",
-    "static/js/main.b65090a4.js"
+    "static/js/main.e056bf97.js"
   ]
 }

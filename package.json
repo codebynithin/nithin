@@ -48,7 +48,7 @@
     "@types/react-dom": "~19.1.6",
     "concurrently": "~9.2.0",
     "eslint": "~8.57.1",
-    "gh-pages": "^6.3.0",
+    "gh-pages": "~6.3.0",
     "husky": "~4.2.5",
     "lint-staged": "~11.0.0",
     "nodemon": "~3.0.1",
