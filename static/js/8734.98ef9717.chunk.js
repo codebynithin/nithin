@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunknithin=self.webpackChunknithin||[]).push([[8734],{8734:(e,i,t)=>{e.exports=t.p+"static/media/poppins-v15-latin-ext_latin-600.27069d861fbec01deb28.woff2"}}]);
