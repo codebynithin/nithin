@@ -1,20 +1,17 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Route, Routes, useLocation, Navigate } from 'react-router-dom';
-import { Dialog } from 'primereact/dialog';
-import { DataView } from 'primereact/dataview';
-import { InputText } from 'primereact/inputtext';
 import './Content.scss';
 import Home from './home/Home';
 import About from './about/About';
 import Experience from './experience/Experience';
 import Education from './education/Education';
 import Portfolio from './portfolio/Portfolio';
-import { DialogProvider, useDialog } from '../dialog/Dialog';
 import { QuickLinkModel } from '@/model/quick-link.model';
 
 const DialogController: React.FC = () => {
-  const { isDialogVisible, showDialog, hideDialog } = useDialog();
-  const dataViewRef = useRef<DataView>(null);
+  const [isDialogVisible, setIsDialogVisible] = useState(false);
+  const dialogRef = useRef<HTMLDivElement>(null);
+  const dataViewRef = useRef<{ getElement: () => HTMLElement }>(null);
   const [filter, setFilter] = useState('');
   const [quickLinks, setQuickLinks] = useState<any[]>([]);
   const allQuickLinks = [
@@ -40,13 +37,35 @@ const DialogController: React.FC = () => {
       target: '_blank',
     },
   ];
-  const filteredQuickLinks = (filter: string) => {
-    setFilter(filter);
-    fetchQuickLinks(filter);
-  };
+
+  const showDialog = useCallback(() => {
+    setIsDialogVisible(true);
+    document.body.style.overflow = 'hidden';
+  }, []);
+
+  const hideDialog = useCallback(() => {
+    setIsDialogVisible(false);
+    document.body.style.overflow = 'auto';
+  }, []);
+  const filteredQuickLinks = useCallback(
+    (filterValue: string) => {
+      setFilter(filterValue);
+      if (filterValue) {
+        setQuickLinks(
+          allQuickLinks.filter((link) =>
+            link.name.toLowerCase().includes(filterValue.toLowerCase()),
+          ),
+        );
+      } else {
+        setQuickLinks(allQuickLinks);
+      }
+    },
+    [allQuickLinks],
+  );
   const dataviewHeader = (
     <div className="h-4rem flex justify-content-end">
-      <InputText
+      <input
+        type="text"
         className="w-full h-full bg-black-alpha-10 search-filter px-3"
         value={filter}
         onChange={(e) => filteredQuickLinks(e.target.value)}
@@ -79,38 +98,15 @@ const DialogController: React.FC = () => {
       </div>
     );
   };
-  const handleDialogShow = () => {
+  const handleDialogShow = useCallback(() => {
     setTimeout(() => {
-      if (dataViewRef.current) {
-        const firstItem = (dataViewRef.current as any)
-          .getElement()
-          .querySelector('[tabindex="0"]') as HTMLElement;
-
-        if (firstItem) {
-          firstItem.focus();
-        }
-      }
+      const firstItem = dialogRef.current?.querySelector('[tabindex="0"]') as HTMLElement;
+      firstItem?.focus();
     }, 10);
-  };
-  const fetchQuickLinks = async (query?: string) => {
-    try {
-      if (query) {
-        setQuickLinks(
-          allQuickLinks.filter((link) => link.name.toLowerCase().includes(query.toLowerCase())),
-        );
-      } else {
-        setQuickLinks(allQuickLinks);
-      }
-    } catch (error) {
-      console.error('Error filtering quick links:', error);
-    }
-  };
-
+  }, []);
   useEffect(() => {
-    if (isDialogVisible) {
-      fetchQuickLinks();
-    }
-  }, [isDialogVisible]);
+    setQuickLinks(allQuickLinks);
+  }, []);
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -157,28 +153,100 @@ const DialogController: React.FC = () => {
     };
   }, [isDialogVisible]);
 
+  // Handle click outside to close dialog
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dialogRef.current && !dialogRef.current.contains(event.target as Node)) {
+        hideDialog();
+      }
+    };
+
+    if (isDialogVisible) {
+      document.addEventListener('mousedown', handleClickOutside);
+      handleDialogShow();
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isDialogVisible, handleDialogShow, hideDialog]);
+
+  // Handle Escape key to close dialog
+  useEffect(() => {
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape' && isDialogVisible) {
+        hideDialog();
+      }
+    };
+
+    document.addEventListener('keydown', handleEscape);
+    return () => document.removeEventListener('keydown', handleEscape);
+  }, [isDialogVisible, hideDialog]);
+
+  if (!isDialogVisible) return null;
+
   return (
-    <Dialog
-      modal
-      showHeader={false}
-      dismissableMask={true}
-      visible={isDialogVisible}
-      className="w-9 max-w-30rem dialog-list"
-      maskClassName="bg-black-alpha-50"
-      position="top"
-      onHide={hideDialog}
-      onShow={handleDialogShow}
-    >
-      <DataView
-        ref={dataViewRef}
-        value={quickLinks}
-        itemTemplate={itemTemplate}
-        header={dataviewHeader}
-        emptyMessage="Nothing here, try again."
-        alwaysShowPaginator={false}
-        lazy={true}
-      ></DataView>
-    </Dialog>
+    <div className="fixed inset-0 z-50 flex items-start justify-center pt-16 px-4">
+      {/* Backdrop */}
+      <div
+        className="fixed inset-0 bg-black/50 transition-opacity"
+        onClick={hideDialog}
+        aria-hidden="true"
+      />
+
+      {/* Dialog */}
+      <div
+        ref={dialogRef}
+        className="relative w-full max-w-3xl bg-white dark:bg-gray-800 rounded-lg shadow-xl overflow-hidden transition-all transform"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="dialog-title"
+      >
+        {/* Header with search */}
+        <div className="p-4 border-b border-gray-200 dark:border-gray-700">
+          <div className="relative">
+            <input
+              type="text"
+              className="w-full px-4 py-3 pl-10 text-sm bg-gray-100 dark:bg-gray-700 border-0 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none"
+              placeholder="Type what you want to know about me..."
+              value={filter}
+              onChange={(e) => filteredQuickLinks(e.target.value)}
+              autoFocus
+            />
+            <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+              <svg
+                className="w-5 h-5 text-gray-400"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        {/* Content */}
+        <div className="max-h-[60vh] overflow-y-auto">
+          {quickLinks.length > 0 ? (
+            <ul className="divide-y divide-gray-200 dark:divide-gray-700">
+              {quickLinks.map((link, index) => (
+                <li key={index}>{itemTemplate(link)}</li>
+              ))}
+            </ul>
+          ) : (
+            <div className="p-6 text-center text-gray-500 dark:text-gray-400">
+              Nothing here, try again.
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
   );
 };
 
@@ -198,19 +266,21 @@ const Content: React.FC = () => {
   }, [location]);
 
   return (
-    <DialogProvider>
-      <main className="content-container w-full relative flex align-items-start">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/experiences" element={<Experience />} />
-          <Route path="/educations" element={<Education />} />
-          <Route path="/portfolio" element={<Portfolio />} />
-          <Route path="*" element={<Navigate to="/" />} />
-        </Routes>
-        <DialogController />
-      </main>
-    </DialogProvider>
+    <>
+      <DialogController />
+      <div className="content-container w-full relative">
+        <div className="content">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/experiences" element={<Experience />} />
+            <Route path="/education" element={<Education />} />
+            <Route path="/portfolio" element={<Portfolio />} />
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Routes>
+        </div>
+      </div>
+    </>
   );
 };
 

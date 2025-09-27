@@ -1,18 +1,13 @@
 {
   "files": {
-    "main.css": "https://codebynithin.github.io/nithin/static/css/main.a91c0f11.css",
-    "main.js": "https://codebynithin.github.io/nithin/static/js/main.c32f2add.js",
-    "static/media/InterVariable-Italic.woff2": "https://codebynithin.github.io/nithin/static/media/InterVariable-Italic.e295f70fe3e2df296c7b.woff2",
-    "static/media/InterVariable.woff2": "https://codebynithin.github.io/nithin/static/media/InterVariable.a0e477f2f1f9d2376fde.woff2",
-    "static/media/primeicons.svg": "https://codebynithin.github.io/nithin/static/media/primeicons.6ed59f962963a4a73af2.svg",
-    "static/media/primeicons.eot": "https://codebynithin.github.io/nithin/static/media/primeicons.ff0c4cd79b2ffca2de54.eot",
-    "static/media/primeicons.woff": "https://codebynithin.github.io/nithin/static/media/primeicons.8931fda1930c3bd21e96.woff",
-    "static/media/primeicons.ttf": "https://codebynithin.github.io/nithin/static/media/primeicons.a5c2a53d1ff7a9ff5933.ttf",
-    "static/media/primeicons.woff2": "https://codebynithin.github.io/nithin/static/media/primeicons.024b32cc7bf399b1a847.woff2",
-    "index.html": "https://codebynithin.github.io/nithin/index.html"
+    "main.css": "https://codebynithin.github.io/nithin/static/css/main.0f12bb3f.css",
+    "main.js": "https://codebynithin.github.io/nithin/static/js/main.fb4fb07f.js",
+    "index.html": "https://codebynithin.github.io/nithin/index.html",
+    "main.0f12bb3f.css.map": "https://codebynithin.github.io/nithin/static/css/main.0f12bb3f.css.map",
+    "main.fb4fb07f.js.map": "https://codebynithin.github.io/nithin/static/js/main.fb4fb07f.js.map"
   },
   "entrypoints": [
-    "static/css/main.a91c0f11.css",
-    "static/js/main.c32f2add.js"
+    "static/css/main.0f12bb3f.css",
+    "static/js/main.fb4fb07f.js"
   ]
 }
