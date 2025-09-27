@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunknithin=self.webpackChunknithin||[]).push([[8690],{8690:(t,e,i)=>{t.exports=i.p+"static/media/roboto-v20-latin-ext_latin-regular.5cb5c8f08bb4e6cb64c3.woff2"}}]);

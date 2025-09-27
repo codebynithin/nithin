@@ -2,11 +2,14 @@
   "name": "nithin",
   "version": "1.0.1",
   "private": true,
+  "homepage": "https://codebynithin.github.io/nithin",
   "author": {
     "name": "Nithin Viswanathan",
     "email": "mails2nithin@gmail.com"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -45,6 +48,7 @@
     "@types/react-dom": "~19.1.6",
     "concurrently": "~9.2.0",
     "eslint": "~8.57.1",
+    "gh-pages": "^6.3.0",
     "husky": "~4.2.5",
     "lint-staged": "~11.0.0",
     "nodemon": "~3.0.1",

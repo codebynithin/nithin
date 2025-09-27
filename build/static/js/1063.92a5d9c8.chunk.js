@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunknithin=self.webpackChunknithin||[]).push([[1063],{1063:(t,i,e)=>{t.exports=e.p+"static/media/lato-v17-latin-ext_latin-300.df0b586402822891d90b.woff2"}}]);

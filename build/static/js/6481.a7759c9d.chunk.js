@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunknithin=self.webpackChunknithin||[]).push([[6481],{6481:(e,i,t)=>{e.exports=t.p+"static/media/Inter-Medium.293fd13dbca5a3e450ef.woff2"}}]);

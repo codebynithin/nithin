@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunknithin=self.webpackChunknithin||[]).push([[5185],{5185:(e,i,t)=>{e.exports=t.p+"static/media/Inter-SemiBold.57fcd36069589ac94692.woff2"}}]);
