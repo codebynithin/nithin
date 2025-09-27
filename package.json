@@ -2,17 +2,17 @@
   "name": "nithin",
   "version": "1.0.1",
   "private": true,
-  "homepage": "https://codebynithin.github.io/nithin",
+  "homepage": ".",
   "author": {
     "name": "Nithin Viswanathan",
     "email": "mails2nithin@gmail.com"
   },
   "scripts": {
-    "predeploy": "npm run build",
+    "predeploy": "GENERATE_SOURCEMAP=false npm run build",
     "deploy": "gh-pages -d build",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "PUBLIC_URL=/ react-scripts start",
+    "build": "PUBLIC_URL=https://codebynithin.github.io/nithin react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
