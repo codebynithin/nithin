@@ -1,42 +1,131 @@
 /* eslint-disable no-unused-vars, no-undef */
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import './About.scss';
-import { apiFetch } from '../../../http';
-import { SkillModel } from '../../../common/model/skill.model';
 import { SkillCategoryEnum } from '../../../common/enum/skill-category.enum';
 
 const About: React.FC = () => {
-  const [skills, setSkills] = useState<Record<SkillCategoryEnum, SkillModel[]>>();
-
-  useEffect(() => {
-    const fetchSkills = async () => {
-      try {
-        const response = await apiFetch('/api/v1/skills');
-        const data = await response.json();
-        const groupedSkills = data.reduce(
-          (acc: Record<SkillCategoryEnum, SkillModel[]>, skill: SkillModel) => {
-            const { category } = skill;
-
-            if (!acc[category]) {
-              acc[category] = [];
-            }
-
-            acc[category].push(skill);
-
-            return acc;
-          },
-          {},
-        );
-
-        console.log(groupedSkills);
-        setSkills(groupedSkills);
-      } catch (error) {
-        console.error('Failed to fetch skills:', error);
-      }
-    };
-
-    fetchSkills();
-  }, []);
+  const skills = {
+    design: [
+      {
+        name: 'Web Designing',
+        category: 'design',
+        percentage: 95,
+        type: 'progress-bar',
+      },
+      {
+        name: 'Photoshop',
+        category: 'design',
+        percentage: 90,
+        type: 'progress-bar',
+      },
+      {
+        name: 'Figma',
+        category: 'design',
+        percentage: 85,
+        type: 'progress-bar',
+      },
+      {
+        name: 'Illustrator',
+        category: 'design',
+        percentage: 80,
+        type: 'progress-bar',
+      },
+      {
+        name: 'InDesign',
+        category: 'design',
+        percentage: 70,
+        type: 'progress-bar',
+      },
+    ],
+    proficiency: [
+      {
+        name: 'English',
+        category: 'proficiency',
+        percentage: 90,
+        type: 'dots',
+      },
+      {
+        name: 'Malayalam',
+        category: 'proficiency',
+        percentage: 100,
+        type: 'dots',
+      },
+      {
+        name: 'Hindi',
+        category: 'proficiency',
+        percentage: 70,
+        type: 'dots',
+      },
+    ],
+    coding: [
+      {
+        name: 'HTML5 / CSS3 / SASS / Bootstrap / Tailwind CSS / Markdown',
+        category: 'coding',
+        percentage: 95,
+        type: 'circular-progress',
+      },
+      {
+        name: 'Angular / React / NativeScript / ExpressJs / JavaScript / Typescript',
+        category: 'coding',
+        percentage: 90,
+        type: 'circular-progress',
+      },
+      {
+        name: 'Vue / Flutter / Ionic / Git / Ajax',
+        category: 'coding',
+        percentage: 80,
+        type: 'circular-progress',
+      },
+      {
+        name: 'NestJs / Grunt / Sonar / PHP',
+        category: 'coding',
+        percentage: 75,
+        type: 'circular-progress',
+      },
+    ],
+    knowledge: [
+      {
+        name: 'Web Application',
+        category: 'knowledge',
+        type: 'list',
+      },
+      {
+        name: 'Mobile Application',
+        category: 'knowledge',
+        type: 'list',
+      },
+      {
+        name: 'Website Hosting',
+        category: 'knowledge',
+        type: 'list',
+      },
+      {
+        name: 'Create Logo Design',
+        category: 'knowledge',
+        type: 'list',
+      },
+      {
+        name: 'Design for Print',
+        category: 'knowledge',
+        type: 'list',
+      },
+      {
+        name: 'Modern and Mobile Ready Websites',
+        category: 'knowledge',
+        type: 'list',
+      },
+      {
+        name: 'Search Engine Marketing',
+        category: 'knowledge',
+        type: 'list',
+      },
+      {
+        name: 'Graphics and Animations',
+        category: 'knowledge',
+        type: 'list',
+      },
+    ],
+  };
 
   return (
     <div className="about-page w-full px-5 md:px-8">
@@ -47,28 +136,21 @@ const About: React.FC = () => {
           <div className="col p-0">
             <h2 className="text-2xl text-900 font-bold mb-4">Biography</h2>
             <p>
-              I&apos;m a passionate and results-oriented Full Stack Developer with a solid
-              foundation in building end-to-end digital solutions across both product-driven and
-              corporate environments. With hands-on experience in architecting, developing, and
-              deploying full-scale web and mobile applications, I bring a strong blend of technical
-              expertise and business awareness to every project I take on.{' '}
+              I am a UI Team Lead with over {new Date().getFullYear() - 2012} years of experience in
+              software development, specializing in the MEAN stack and modern front-end frameworks.
+              Currently, I lead UI development in the healthcare domain at Sorice Solutions Pvt.
+              Ltd., where I focus on scalable architecture, mentoring teams, and delivering
+              user-centric applications. Over the years, I’ve worked on enterprise projects with
+              Wipro (via Skynonn Technologies), gaining strong exposure to automation, cloud
+              integration, and CI/CD practices, and with LSG Technologies, where I strengthened my
+              expertise in responsive web design and UI/UX development.
             </p>
             <p>
-              In product development, I focus on delivering intuitive, high-performance applications
-              that solve real user problems and scale with business growth. From ideation to
-              release, I actively contribute to UX decisions, code quality, performance
-              optimization, and continuous improvement.
-            </p>
-            <p>
-              Within corporate teams, I thrive in structured, goal-oriented environments where
-              collaboration, efficiency, and innovation drive success. I&apos;ve led and worked in
-              cross-functional teams, delivering under tight deadlines while maintaining high
-              standards of quality and security.
-            </p>
-            <p>
-              I&apos;m a fast learner, creative thinker, and problem-solver who embraces challenges
-              and adapts quickly to evolving technologies. Whether leading initiatives or working
-              independently, I remain committed to delivering impactful results.
+              Earlier in my career, I also worked as a Web/Graphic Designer and in operations, which
+              gave me a broader perspective in both technology and business processes. This mix of
+              technical leadership, hands-on development, and creative problem-solving helps me
+              approach projects holistically — balancing user experience, performance, and business
+              goals.
             </p>
 
             <hr className="my-4 border-50" />

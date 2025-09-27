@@ -1,6 +1,4 @@
-import { IdModel } from './id.model';
-
-export interface TopNavigationModel extends IdModel {
+export interface TopNavigationModel {
   href: string;
   icon: string;
   label: string;

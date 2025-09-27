@@ -1,7 +1,5 @@
-/* eslint-disable no-unused-vars, no-undef */
 import React, { useState, useEffect, useRef } from 'react';
 import { Route, Routes, useLocation, Navigate } from 'react-router-dom';
-import { AutoComplete, AutoCompleteCompleteEvent } from 'primereact/autocomplete';
 import { Dialog } from 'primereact/dialog';
 import { DataView } from 'primereact/dataview';
 import { InputText } from 'primereact/inputtext';
@@ -12,7 +10,6 @@ import Experience from './experience/Experience';
 import Education from './education/Education';
 import Portfolio from './portfolio/Portfolio';
 import { DialogProvider, useDialog } from '../dialog/Dialog';
-import { apiFetch } from '../../http';
 import { QuickLinkModel } from '@/model/quick-link.model';
 
 const DialogController: React.FC = () => {
@@ -20,6 +17,29 @@ const DialogController: React.FC = () => {
   const dataViewRef = useRef<DataView>(null);
   const [filter, setFilter] = useState('');
   const [quickLinks, setQuickLinks] = useState<any[]>([]);
+  const allQuickLinks = [
+    {
+      name: 'Download Resume',
+      icon: 'cbn-download',
+      href: '/downloads/resume-nithin-v.pdf',
+      target: '_blank',
+    },
+    { name: 'Know me', icon: 'cbn-user', href: '/about' },
+    { name: 'Know my career', icon: 'cbn-user', href: '/experiences' },
+    { name: 'See my skills', icon: 'cbn-target', href: '/about#skills' },
+    {
+      name: 'See my github',
+      icon: 'cbn-github',
+      href: 'https://github.com/codebynithin',
+      target: '_blank',
+    },
+    {
+      name: 'View my source code',
+      icon: 'cbn-code',
+      href: 'https://github.com/codebynithin/nithin',
+      target: '_blank',
+    },
+  ];
   const filteredQuickLinks = (filter: string) => {
     setFilter(filter);
     fetchQuickLinks(filter);
@@ -74,19 +94,15 @@ const DialogController: React.FC = () => {
   };
   const fetchQuickLinks = async (query?: string) => {
     try {
-      const params: { [key: string]: string } = {};
-
       if (query) {
-        params['name'] = query;
+        setQuickLinks(
+          allQuickLinks.filter((link) => link.name.toLowerCase().includes(query.toLowerCase())),
+        );
+      } else {
+        setQuickLinks(allQuickLinks);
       }
-
-      const response = await apiFetch(
-        `/api/v1/quick-links?${new URLSearchParams(params).toString()}`,
-      );
-      const data = await response.json();
-      setQuickLinks(data);
     } catch (error) {
-      console.error('Error fetching quick links:', error);
+      console.error('Error filtering quick links:', error);
     }
   };
 

@@ -1,6 +1,4 @@
-import { IdModel } from './id.model';
-
-export interface ExperienceModel extends IdModel {
+export interface ExperienceModel {
   date: string;
   title: string;
   company: string;

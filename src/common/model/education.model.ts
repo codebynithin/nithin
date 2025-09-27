@@ -1,6 +1,4 @@
-import { IdModel } from './id.model';
-
-export interface EducationModel extends IdModel {
+export interface EducationModel {
   date: string;
   title: string;
   institution: string;

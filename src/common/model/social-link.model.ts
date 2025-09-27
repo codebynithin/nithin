@@ -1,6 +1,4 @@
-import { IdModel } from './id.model';
-
-export interface SocialLinkModel extends IdModel {
+export interface SocialLinkModel {
   href: string;
   icon: string;
   label: string;

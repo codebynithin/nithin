@@ -1,6 +1,4 @@
-import { IdModel } from './id.model';
-
-export interface QuickLinkModel extends IdModel {
+export interface QuickLinkModel {
   name: string;
   icon: string;
   href: string;

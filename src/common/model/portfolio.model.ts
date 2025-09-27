@@ -1,6 +1,4 @@
-import { IdModel } from './id.model';
-
-export interface PortfolioModel extends IdModel {
+export interface PortfolioModel {
   title: string;
   category: string;
   imageUrl: string;

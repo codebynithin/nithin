@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './Education.scss';
 import { EducationModel } from '../../../common/model/education.model';
-import { apiFetch } from '../../../http';
 
 const Education: React.FC = () => {
   const [educations, setEducations] = useState<EducationModel[]>([]);
@@ -9,13 +8,27 @@ const Education: React.FC = () => {
   useEffect(() => {
     const fetchEducations = async () => {
       try {
-        const response = await apiFetch('/api/v1/educations');
-
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-
-        const data: EducationModel[] = await response.json();
+        const data: EducationModel[] = [
+          {
+            date: '2008 - 2009',
+            title: 'Web Designing and Animation',
+            institution: 'Cochin CADD Center, Kochi',
+            description: 'Completed certification course in Web Designing and Animation.',
+          },
+          {
+            date: '2003 - 2006',
+            title: 'Diploma in Polymer Technology',
+            institution: 'Technical Education Department Kerala',
+            description: 'Completed 3 year diploma course with 73% of marks.',
+          },
+          {
+            date: '2001 - 2003',
+            title: 'VHSE in Refrigerator and Air Conditioning',
+            institution: 'Technical Education Department Kerala',
+            description:
+              'Completed 2 year vocational and higher secondary course in Refrigerator and Air Conditioning with 67% of marks.',
+          },
+        ];
 
         setEducations(data);
       } catch (error) {
