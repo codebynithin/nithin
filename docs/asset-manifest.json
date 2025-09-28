@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "https://codebynithin.github.io/nithin/static/css/main.c24d7975.css",
-    "main.js": "https://codebynithin.github.io/nithin/static/js/main.0ddf0b78.js",
+    "main.css": "https://codebynithin.github.io/nithin/static/css/main.d1ab4c37.css",
+    "main.js": "https://codebynithin.github.io/nithin/static/js/main.fe2afc34.js",
     "index.html": "https://codebynithin.github.io/nithin/index.html",
-    "main.c24d7975.css.map": "https://codebynithin.github.io/nithin/static/css/main.c24d7975.css.map",
-    "main.0ddf0b78.js.map": "https://codebynithin.github.io/nithin/static/js/main.0ddf0b78.js.map"
+    "main.d1ab4c37.css.map": "https://codebynithin.github.io/nithin/static/css/main.d1ab4c37.css.map",
+    "main.fe2afc34.js.map": "https://codebynithin.github.io/nithin/static/js/main.fe2afc34.js.map"
   },
   "entrypoints": [
-    "static/css/main.c24d7975.css",
-    "static/js/main.0ddf0b78.js"
+    "static/css/main.d1ab4c37.css",
+    "static/js/main.fe2afc34.js"
   ]
 }
