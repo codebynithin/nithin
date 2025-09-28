@@ -41,7 +41,7 @@ const Education: React.FC = () => {
 
   return (
     <div className="education-page w-full px-5 md:px-8">
-      <div className="grid grid-nogutter gap-4">
+      <div className="grid gap-4">
         <h1 className="col-12 p-0 text-4xl text-900 font-bold m-0">Education</h1>
         <hr className="col-12 p-0 m-0 border-50" />
         <div className="flex flex-wrap">

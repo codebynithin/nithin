@@ -3,12 +3,12 @@ import './Footer.scss';
 
 const Footer: React.FC = () => {
   return (
-    <footer className="footer p-3 flex justify-content-start align-items-end">
+    <footer className="footer p-3 flex justify-start items-end">
       <div className="based-in">
         <div>Based in</div>
         <div className="underline">Kerala, India</div>
       </div>
-      <div className="hire-me flex flex-col align-items-end ml-auto">
+      <div className="hire-me flex flex-col items-end ml-auto">
         <div>Want to hire me?</div>
         <a href="mailto:contact@codebynithin.com" className="underline">
           contact@codebynithin.com

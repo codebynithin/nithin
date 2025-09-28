@@ -20,8 +20,8 @@ const Home: React.FC = () => {
   }, []);
 
   return (
-    <div className="home-container w-full flex flex-col align-items-center justify-content-center gap-3 pt-6 md:px-8 md:flex-row md:gap-8 md:pt-0">
-      <div className="col flex align-items-end justify-content-end md:align-items-center pb-4 md:pb-0">
+    <div className="w-full flex flex-col items-center justify-center gap-3 pt-6 md:px-8 md:flex-row md:gap-8 md:pt-0">
+      <div className="col flex items-end justify-end md:items-center pb-4 md:pb-0">
         <div className="grid grid-nogutter">
           <div className="col-12 p-0 md:m-2 text-6xl text-center md:text-right text-900 font-bold">
             Nithin
@@ -41,7 +41,7 @@ const Home: React.FC = () => {
         </div>
         <div className="col-12 line-height-3">
           <div
-            className="flex align-items-center justify-content-center md:justify-content-start gap-2 cursor-pointer"
+            className="flex items-center justify-center md:justify-start gap-2 cursor-pointer"
             onClick={() => {
               if (navigator.userAgent.toLowerCase().includes('mobile')) {
                 showDialog();

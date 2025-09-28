@@ -1,6 +1,4 @@
-export default {
-  plugins: {
-    tailwindcss: {},
-    autoprefixer: {},
-  },
-}
+module.exports = {
+  syntax: 'postcss-scss',
+  plugins: { 'tailwindcss/nesting': {}, tailwindcss: {}, autoprefixer: {} },
+};

@@ -4,7 +4,12 @@ import './Header.scss';
 // eslint-disable-next-line no-unused-vars
 import { TopNavigationModel } from '../../common/model/top-navigation.model';
 
-const Header: React.FC<{ handleModeChange: (data: boolean) => void }> = ({ handleModeChange }) => {
+interface HeaderProps {
+  isDarkMode: boolean;
+  onToggleDarkMode: () => void;
+}
+
+const Header: React.FC<HeaderProps> = ({ isDarkMode, onToggleDarkMode }) => {
   const links: TopNavigationModel[] = [
     { href: '/about', icon: 'cbn-user', label: 'About' },
     { href: '/experiences', icon: 'cbn-experiences', label: 'Experiences' },
@@ -12,27 +17,11 @@ const Header: React.FC<{ handleModeChange: (data: boolean) => void }> = ({ handl
     { href: '/educations', icon: 'cbn-educations', label: 'Educations' },
   ];
   const location = useLocation();
-  const [isDarkMode, setIsDarkMode] = useState<boolean>(() => {
-    const savedTheme = localStorage.getItem('theme');
-
-    return !savedTheme || savedTheme === 'dark';
-  });
   const [menuOpen, setMenuOpen] = useState(false);
-  const loadTheme = (theme: 'dark' | 'light') => {
-    document.querySelector('html')?.classList?.remove('dark', 'light');
-    document.querySelector('html')?.classList?.add(theme);
-    handleModeChange(isDarkMode);
-  };
+
   const toggleTheme = () => {
-    setIsDarkMode(!isDarkMode);
+    onToggleDarkMode();
   };
-
-  useEffect(() => {
-    const theme = isDarkMode ? 'dark' : 'light';
-
-    loadTheme(theme);
-    localStorage.setItem('theme', theme);
-  }, [isDarkMode]);
 
   return (
     <header
@@ -49,7 +38,7 @@ const Header: React.FC<{ handleModeChange: (data: boolean) => void }> = ({ handl
       <div className="header-content">
         <Link to="/">codebynithin.com</Link>
       </div>
-      <div className="header-navs flex flex-col align-items-end gap-2">
+      <div className="header-navs flex flex-col items-end gap-2">
         {links.map((link: TopNavigationModel, index: number) => (
           <Link
             key={index}

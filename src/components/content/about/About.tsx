@@ -129,10 +129,10 @@ const About: React.FC = () => {
 
   return (
     <div className="about-page w-full px-5 md:px-8">
-      <div className="w-full grid grid-nogutter gap-4">
+      <div className="w-full flex flex-col gap-4">
         <h1 className="col-12 p-0 text-4xl text-900 font-bold m-0">About Me</h1>
         <hr className="col-12 p-0 m-0 border-50" />
-        <div className="w-full flex flex-col md:flex-row gap-8">
+        <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="col p-0">
             <h2 className="text-2xl text-900 font-bold mb-4">Biography</h2>
             <p>
@@ -158,27 +158,29 @@ const About: React.FC = () => {
             <h2 className="text-2xl text-900 font-bold mb-4">Personal Information</h2>
 
             <ul className="info list-none p-0 m-0">
-              <li className="flex align-items-center py-2">
-                <strong className="w-7rem md:w-12rem font-medium">Age</strong>
+              <li className="flex items-center py-2">
+                <strong className="w-[9rem] md:w-[12rem] font-medium">Age</strong>
                 <span>{new Date().getFullYear() - 1986}</span>
               </li>
-              <li className="flex align-items-center py-2">
-                <strong className="w-7rem md:w-12rem font-medium">Mobile</strong>
+              <li className="flex items-center py-2">
+                <strong className="w-[9rem] md:w-[12rem] font-medium">Mobile</strong>
                 <a href="tel:+919496334758">+91 9496 334 758</a>
               </li>
-              <li className="flex align-items-center py-2">
-                <strong className="w-7rem md:w-12rem font-medium">Email</strong>
+              <li className="flex items-center py-2">
+                <strong className="w-[9rem] md:w-[12rem] font-medium">Email</strong>
                 <a href="mailto:maili2nithin@gmail.com">mails2nithin@gmail.com</a>
               </li>
-              <li className="flex align-items-center py-2">
-                <strong className="w-7rem md:w-12rem font-medium">Address</strong>
+              <li className="flex items-center py-2">
+                <strong className="w-[9rem] md:w-[12rem] font-medium">Address</strong>
                 <span>Ernakulam, Kerala</span>
               </li>
-              <li className="flex align-items-center py-2">
-                <strong className="w-7rem md:w-12rem font-medium">Residence</strong>
+              <li className="flex items-center py-2">
+                <strong className="w-[9rem] md:w-[12rem] font-medium">Residence</strong>
                 <span>Indian</span>
               </li>
             </ul>
+
+            <hr className="my-4 border-50" />
 
             {skills && skills[SkillCategoryEnum.PROFICIENCY] && (
               <div className="col-12 md:col-6 py-4 px-0 mt-4">
@@ -186,19 +188,19 @@ const About: React.FC = () => {
                 {skills[SkillCategoryEnum.PROFICIENCY].map((skill: any, index: number) => (
                   <div
                     key={index}
-                    className={
+                    className={`flex items-center gap-3 mb-4 ${
                       index < skills[SkillCategoryEnum.PROFICIENCY].length - 1 ? 'mb-4' : ''
-                    }
+                    }`}
                   >
-                    <div className="flex justify-content-between mb-2">
+                    <div className="w-[9rem] md:w-[12rem]">
                       <span>{skill.name}</span>
                     </div>
                     <div className="flex gap-1">
                       {[...Array(10)].map((_, i) => (
                         <div
                           key={i}
-                          className={`w-1rem h-1rem border-circle ${
-                            i < skill.percentage / 10 ? 'bg-primary' : 'surface-50'
+                          className={`w-[1rem] h-[1rem] rounded-full ${
+                            i < skill.percentage / 10 ? 'bg-blue-500' : 'bg-gray-500'
                           }`}
                         ></div>
                       ))}
@@ -209,59 +211,62 @@ const About: React.FC = () => {
             )}
           </div>
           <div className="col p-0 pl-0 md:pl-8 relative" id="skills">
-            <hr className="my-4 border-50 md:absolute md:top-0 md:left-0 md:h-full md:my-0 spacer" />
             <h2 className="text-2xl text-900 font-bold mb-4">Skills</h2>
             <div className="flex flex-wrap gap-5">
               {skills && skills[SkillCategoryEnum.CODING] && (
-                <div className="w-full md:w-6">
+                <div className="w-full md:w-[48%]">
                   <div className="p-4 border-1 border-solid border-round border-50">
                     <h3 className="text-xl text-900 font-bold mt-0 mb-4">
                       FrameWorks &amp; Coding
                     </h3>
-                    <div className="flex gap-4 justify-content-center">
-                      {skills[SkillCategoryEnum.CODING]
-                        .slice(0, 2)
-                        .map((skill: any, index: number) => (
-                          <div key={index} className="text-center">
-                            <div
-                              className="w-8rem h-8rem border-circle surface-50 flex align-items-center justify-content-center mb-2 mx-auto"
-                              style={{
-                                background: `conic-gradient(var(--p-primary-color) ${skill.percentage}%, var(--surface-50) 0)`,
-                              }}
-                            >
-                              <div className="w-6rem h-6rem border-circle surface-0 flex align-items-center justify-content-center font-bold text-2xl">
-                                {skill.percentage}%
+                    <div className="grid grid-cols-2 gap-6 justify-center">
+                      {skills[SkillCategoryEnum.CODING].map((skill: any, index: number) => (
+                        <div key={index} className="text-center">
+                          <div className="flex items-center justify-center mb-4">
+                            <div className="relative w-[9rem] h-[9rem] rounded-full bg-gray-200">
+                              <div
+                                className="absolute inset-0 rounded-full"
+                                style={{
+                                  background: `conic-gradient(#3b82f6 0% ${skill.percentage}%,#999 ${skill.percentage}% 100%)`,
+                                }}
+                              ></div>
+                              <div className="absolute inset-2 flex items-center justify-center rounded-full bg-white dark:bg-gray-800">
+                                <span className="text-blue-500 font-bold">{skill.percentage}%</span>
                               </div>
                             </div>
-                            <span>{skill.name}</span>
                           </div>
-                        ))}
-                    </div>
-                    <div className="flex gap-4 justify-content-center mt-4">
-                      {skills[SkillCategoryEnum.CODING]
-                        .slice(2, 4)
-                        .map((skill: any, index: number) => (
-                          <div key={index} className="text-center">
-                            <div
-                              className="w-8rem h-8rem border-circle surface-50 flex align-items-center justify-content-center mb-2 mx-auto"
-                              style={{
-                                background: `conic-gradient(var(--p-primary-color) ${skill.percentage}%, var(--surface-50) 0)`,
-                              }}
-                            >
-                              <div className="w-6rem h-6rem border-circle surface-0 flex align-items-center justify-content-center font-bold text-2xl">
-                                {skill.percentage}%
-                              </div>
-                            </div>
-                            <span>{skill.name}</span>
-                          </div>
-                        ))}
+
+                          <span>{skill.name}</span>
+                        </div>
+                      ))}
                     </div>
                   </div>
                 </div>
               )}
 
+              {skills && skills[SkillCategoryEnum.KNOWLEDGE] && (
+                <div className="w-full md:w-[48%]">
+                  <div className="p-4 border-1 border-solid border-round border-50">
+                    <h3 className="text-xl text-900 font-bold mt-0 mb-4">Knowledge</h3>
+                    <ul className="list-none p-0 m-0">
+                      {skills[SkillCategoryEnum.KNOWLEDGE].map((skill: any, index: number) => (
+                        <li
+                          key={index}
+                          className={`flex items-center my-3 ${
+                            index < skills[SkillCategoryEnum.KNOWLEDGE].length - 1 ? 'mb-2' : ''
+                          }`}
+                        >
+                          <i className="icon cbn-target text-primary mr-2"></i>
+                          <span>{skill.name}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              )}
+
               {skills && skills[SkillCategoryEnum.DESIGN] && (
-                <div className="w-full custom-width">
+                <div className="w-full md:w-[48%]">
                   <div className="p-4 border-1 border-solid border-round border-50">
                     <h3 className="text-xl text-900 font-bold mt-0 mb-4">Design</h3>
                     {skills[SkillCategoryEnum.DESIGN].map((skill: any, index: number) => (
@@ -271,38 +276,17 @@ const About: React.FC = () => {
                           index < skills[SkillCategoryEnum.DESIGN].length - 1 ? 'mb-4' : ''
                         }
                       >
-                        <div className="flex justify-content-between mb-1">
+                        <div className="flex justify-between mb-1">
                           <span>{skill.name}</span>
                         </div>
-                        <div className="surface-50 border-round" style={{ height: '8px' }}>
+                        <div className="h-2 w-full bg-gray-200 dark:bg-gray-700 rounded">
                           <div
-                            className="bg-primary border-round"
-                            style={{ width: `${skill.percentage}%`, height: '8px' }}
+                            className="h-2 bg-blue-500 rounded transition-all duration-300"
+                            style={{ width: `${skill.percentage}%` }}
                           ></div>
                         </div>
                       </div>
                     ))}
-                  </div>
-                </div>
-              )}
-
-              {skills && skills[SkillCategoryEnum.KNOWLEDGE] && (
-                <div className="w-full md:w-6">
-                  <div className="p-4 border-1 border-solid border-round border-50">
-                    <h3 className="text-xl text-900 font-bold mt-0 mb-4">Knowledge</h3>
-                    <ul className="list-none p-0 m-0">
-                      {skills[SkillCategoryEnum.KNOWLEDGE].map((skill: any, index: number) => (
-                        <li
-                          key={index}
-                          className={`flex align-items-center my-3 ${
-                            index < skills[SkillCategoryEnum.KNOWLEDGE].length - 1 ? 'mb-2' : ''
-                          }`}
-                        >
-                          <i className="icon cbn-target text-primary mr-2"></i>
-                          <span>{skill.name}</span>
-                        </li>
-                      ))}
-                    </ul>
                   </div>
                 </div>
               )}

@@ -1,24 +1,15 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* Tailwind Directives */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
 
-@custom-variant dark (&:where(.dark, .dark *));
-
+/* Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap');
 
 :root {
-  --p-primary-color: #00b8d6;
-  --primary-dark-color: #009bb7;
-  --secondary-color: #ff5821;
-  --secondary-dark-color: #d83a0f;
-  --white: #eceff4;
-  --bg-color-light: #f3f3f3;
-  --text-color-light: #222;
-  --bg-color-dark: #222;
-  --text-color-dark: #bdbdbd;
+  --p-primary-color: #3b82f6;
   --border-color: rgba(255, 255, 255, 0.15);
   --hover-color: rgba(255, 255, 255, 0.15);
-  --mask-color: rgba(0, 0, 0, 0.5);
 }
 
 *,
