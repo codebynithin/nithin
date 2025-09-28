@@ -10,20 +10,6 @@ a {
   }
 }
 
-.app-container {
-  transition: opacity 0.5s ease-in;
-
-  &.hidden {
-    visibility: hidden;
-    opacity: 0;
-  }
-
-  &.visible {
-    visibility: visible;
-    opacity: 1;
-  }
-}
-
 p {
   margin: 0;
   margin-bottom: 1.5em;

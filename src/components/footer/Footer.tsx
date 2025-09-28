@@ -8,7 +8,7 @@ const Footer: React.FC = () => {
         <div>Based in</div>
         <div className="underline">Kerala, India</div>
       </div>
-      <div className="hire-me flex flex-column align-items-end ml-auto">
+      <div className="hire-me flex flex-col align-items-end ml-auto">
         <div>Want to hire me?</div>
         <a href="mailto:contact@codebynithin.com" className="underline">
           contact@codebynithin.com

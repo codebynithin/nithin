@@ -132,7 +132,7 @@ const About: React.FC = () => {
       <div className="w-full grid grid-nogutter gap-4">
         <h1 className="col-12 p-0 text-4xl text-900 font-bold m-0">About Me</h1>
         <hr className="col-12 p-0 m-0 border-50" />
-        <div className="w-full flex flex-column md:flex-row gap-8">
+        <div className="w-full flex flex-col md:flex-row gap-8">
           <div className="col p-0">
             <h2 className="text-2xl text-900 font-bold mb-4">Biography</h2>
             <p>

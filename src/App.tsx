@@ -11,21 +11,8 @@ const App: React.FC = () => {
     setIsDarkMode(data);
   };
 
-  useEffect(() => {
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-      const isDark = savedTheme === 'layout-dark';
-
-      setIsDarkMode(isDark);
-
-      document.body.className = isDark ? 'layout-dark' : 'layout-light';
-    }
-  }, []);
-
   return (
-    <div
-      className={`w-full text-sm md:text-lg flex flex-column justify-content-between m-0 app-container`}
-    >
+    <div className="w-full text-sm md:text-lg flex flex-col justify-between m-0">
       <Header handleModeChange={handleModeChange} />
       <Content />
       <Footer />

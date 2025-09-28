@@ -15,30 +15,20 @@ const Header: React.FC<{ handleModeChange: (data: boolean) => void }> = ({ handl
   const [isDarkMode, setIsDarkMode] = useState<boolean>(() => {
     const savedTheme = localStorage.getItem('theme');
 
-    return !savedTheme || savedTheme === 'layout-dark';
+    return !savedTheme || savedTheme === 'dark';
   });
   const [menuOpen, setMenuOpen] = useState(false);
-  const loadTheme = (theme: 'layout-light' | 'layout-dark') => {
-    document.body.classList.remove('layout-light', 'layout-dark');
-    document.body.classList.add(theme);
+  const loadTheme = (theme: 'dark' | 'light') => {
+    document.querySelector('html')?.classList?.remove('dark', 'light');
+    document.querySelector('html')?.classList?.add(theme);
     handleModeChange(isDarkMode);
-
-    document
-      .getElementById('root')
-      ?.classList.remove('layout-wrapper-light', 'layout-wrapper-dark');
-    document
-      .getElementById('root')
-      ?.classList.add(
-        'layout-wrapper',
-        theme === 'layout-light' ? 'layout-wrapper-light' : 'layout-wrapper-dark',
-      );
   };
   const toggleTheme = () => {
     setIsDarkMode(!isDarkMode);
   };
 
   useEffect(() => {
-    const theme = isDarkMode ? 'layout-dark' : 'layout-light';
+    const theme = isDarkMode ? 'dark' : 'light';
 
     loadTheme(theme);
     localStorage.setItem('theme', theme);
@@ -46,11 +36,11 @@ const Header: React.FC<{ handleModeChange: (data: boolean) => void }> = ({ handl
 
   return (
     <header
-      className={`header w-full p-2 md:p-3 flex justify-content-between align-items-start gap-2 ${
+      className={`header w-full p-2 md:p-3 flex justify-between align-start gap-2 ${
         menuOpen ? 'active' : ''
       }`}
     >
-      <div className="header-theme flex flex-column gap-1">
+      <div className="header-theme flex flex-col gap-1">
         <div>Switch to</div>
         <div onClick={toggleTheme} className="underline cursor-pointer hover:text-primary">
           {isDarkMode ? 'Light Mode' : 'Dark Mode'}
@@ -59,7 +49,7 @@ const Header: React.FC<{ handleModeChange: (data: boolean) => void }> = ({ handl
       <div className="header-content">
         <Link to="/">codebynithin.com</Link>
       </div>
-      <div className="header-navs flex flex-column align-items-end gap-2">
+      <div className="header-navs flex flex-col align-items-end gap-2">
         {links.map((link: TopNavigationModel, index: number) => (
           <Link
             key={index}

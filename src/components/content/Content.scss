@@ -1,8 +1,8 @@
 .content-container > div {
-  min-height: calc(100vh - 240px);
+  min-height: calc(100vh - 224px);
 
   @media screen and (min-width: 768px) {
-    min-height: calc(100vh - 272px);
+    min-height: calc(100vh - 260px);
   }
 }
 

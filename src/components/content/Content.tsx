@@ -186,10 +186,10 @@ const DialogController: React.FC = () => {
   if (!isDialogVisible) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-start justify-center pt-16 px-4">
+    <div className="w-full h-full fixed inset-0 z-50 flex items-start justify-center z-40">
       {/* Backdrop */}
       <div
-        className="fixed inset-0 bg-black/50 transition-opacity"
+        className="w-full h-full fixed inset-0 bg-black/75"
         onClick={hideDialog}
         aria-hidden="true"
       />
@@ -197,7 +197,7 @@ const DialogController: React.FC = () => {
       {/* Dialog */}
       <div
         ref={dialogRef}
-        className="relative w-full max-w-3xl bg-white dark:bg-gray-800 rounded-lg shadow-xl overflow-hidden transition-all transform"
+        className="relative w-full max-w-md bg-white dark:bg-gray-800 rounded-lg shadow-xl overflow-hidden transition-all transform"
         role="dialog"
         aria-modal="true"
         aria-labelledby="dialog-title"
@@ -274,7 +274,7 @@ const Content: React.FC = () => {
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/experiences" element={<Experience />} />
-            <Route path="/education" element={<Education />} />
+            <Route path="/educations" element={<Education />} />
             <Route path="/portfolio" element={<Portfolio />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
