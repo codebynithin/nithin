@@ -104,14 +104,14 @@ const Portfolio: React.FC = () => {
   ];
 
   return (
-    <div className="portfolio-page w-full px-5 md:px-8">
+    <div className="portfolio-page w-full px-5">
       <div className="grid gap-4">
         <h1 className="col-12 p-0 text-4xl text-900 font-bold m-0">Portfolio</h1>
-        <hr className="col-12 p-0 m-0 border-50" />
-        <div className="portfolio-items grid grid-nogutter">
+        <hr className="col-12 p-0 m-0" />
+        <div className="portfolio-items grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           {portfolios.map((item, index) => (
-            <div key={index} className="col-12 md:col-4 lg:col-2 p-3">
-              <div className="portfolio-item-card border-1 border-solid border-round border-50">
+            <div key={index} className="p-3">
+              <div className="portfolio-item-card border border-solid rounded-lg border-50">
                 <img
                   src={`${process.env.PUBLIC_URL}/images/portfolio/${item.thumbnailUrl}`}
                   alt={item.title}

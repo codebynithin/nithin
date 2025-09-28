@@ -40,18 +40,18 @@ const Education: React.FC = () => {
   }, []);
 
   return (
-    <div className="education-page w-full px-5 md:px-8">
+    <div className="education-page w-full px-5">
       <div className="grid gap-4">
         <h1 className="col-12 p-0 text-4xl text-900 font-bold m-0">Education</h1>
         <hr className="col-12 p-0 m-0 border-50" />
-        <div className="flex flex-wrap">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {educations.map((item, index) => (
-            <div key={index} className="col-12 md:col-6 lg:col-4 p-3">
-              <div className="h-full p-3 border-1 border-solid border-round border-50">
+            <div key={index} className="p-3">
+              <div className="h-full p-3 border border-solid rounded-lg border-50">
                 <p className="text-sm text-800 mt-0 mb-2">{item.date}</p>
-                <p className="text-xl text-900 font-bold m-0">{item.title}</p>
-                <p className="text-sm text-800 mt-1 mb-2">{item.institution}</p>
-                <p className="m-0">{item.description}</p>
+                <p className="text-2xl text-900 font-bold m-0">{item.title}</p>
+                <p className="text-xl text-800 font-semibold mt-1 mb-2">{item.institution}</p>
+                <p className="text-base text-800 mt-1 mb-0">{item.description}</p>
               </div>
             </div>
           ))}

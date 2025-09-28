@@ -40,7 +40,7 @@ const Experience: React.FC = () => {
   ];
 
   return (
-    <div className="experience-page w-full px-5 md:px-8">
+    <div className="experience-page w-full px-5">
       <div className="grid gap-4">
         <h1 className="col-12 p-0 text-4xl text-900 font-bold m-0">Experience</h1>
         <hr className="col-12 p-0 m-0 border-50" />
@@ -58,14 +58,14 @@ const Experience: React.FC = () => {
             technology and creative problem-solving.
           </p>
         </div>
-        <div className="grid grid-nogutter">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {experiences.map((item, index) => (
-            <div key={index} className="col-12 md:col-6 lg:col-4 p-3">
-              <div className="h-full p-3 border-1 border-solid border-round border-50">
-                <p className="text-sm text-800 mx-0 my-2">{item.date}</p>
-                <p className="text-xl text-900 font-bold mx-0 my-2">{item.title}</p>
-                <p className="text-sm text-800 mx-0 my-2">{item.company}</p>
-                <p className="mx-0 my-2">{item.description}</p>
+            <div key={index} className="p-3">
+              <div className="h-full py-3 px-6 border border-solid rounded-lg border-50">
+                <p className="text-base text-800 mx-0 my-2">{item.date}</p>
+                <p className="text-2xl text-900 font-bold mx-0 my-2">{item.title}</p>
+                <p className="text-xl text-800 font-semibold mx-0 my-2">{item.company}</p>
+                <p className="text-base text-800 mx-0 my-2">{item.description}</p>
               </div>
             </div>
           ))}

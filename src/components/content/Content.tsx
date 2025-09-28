@@ -8,15 +8,14 @@ import Header from '../header/Header';
 import Footer from '../footer/Footer';
 import DialogController from '../dialog/DialogController';
 import Experience from './experience/Experience';
+import Education from './education/Education';
 
 const Content: React.FC = () => {
   const location = useLocation();
   const isHome = location.pathname === '/';
   const [isDarkMode, setIsDarkMode] = useState(false);
 
-  // Handle dark mode changes
   useEffect(() => {
-    // Check for saved theme preference or use system preference
     const savedTheme = localStorage.getItem('theme');
     const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
@@ -29,12 +28,13 @@ const Content: React.FC = () => {
     }
   }, []);
 
-  // Toggle dark mode
   const toggleDarkMode = useCallback(() => {
     setIsDarkMode((prevMode) => {
       const newMode = !prevMode;
       localStorage.setItem('theme', newMode ? 'dark' : 'light');
+
       document.documentElement.classList.toggle('dark', newMode);
+
       return newMode;
     });
   }, []);
@@ -49,6 +49,7 @@ const Content: React.FC = () => {
           <Route path="/about" element={<About />} />
           <Route path="/experiences" element={<Experience />} />
           <Route path="/portfolio" element={<Portfolio />} />
+          <Route path="/educations" element={<Education />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>

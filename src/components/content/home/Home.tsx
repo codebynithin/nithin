@@ -26,7 +26,7 @@ const Home: React.FC = () => {
           <div className="col-12 p-0 md:m-2 text-6xl text-center md:text-right text-900 font-bold">
             Nithin
           </div>
-          <div className="col-12 p-0 md:m-2 text-6xl text-center md:text-right text-900 font-bold">
+          <div className="col-12 p-0 md:m-2 text-6xl text-center md:text-right text-900 font-medium">
             Viswanathan
           </div>
         </div>
@@ -39,7 +39,7 @@ const Home: React.FC = () => {
         <div className="col-12 text-2xl line-height-3 pt-0">
           who enjoys crafting digital experiences
         </div>
-        <div className="col-12 line-height-3">
+        <div className="col-12 line-height-3 mt-4">
           <div
             className="flex items-center justify-center md:justify-start gap-2 cursor-pointer"
             onClick={() => {
