@@ -51,7 +51,7 @@ const Home: React.FC = () => {
             {keyCombination.map((key: string, index: number) => (
               <React.Fragment key={index}>
                 {index > 0 && <span className="mx-2">+</span>}
-                <span className="inline-flex border-round md:border-round-xl px-3 py-2 tap-bg">
+                <span className="inline-flex rounded md:rounded-xl px-5 py-2 tap-bg inset-shadow-black dark:inset-shadow-white">
                   {key}
                 </span>
               </React.Fragment>
