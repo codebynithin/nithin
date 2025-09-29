@@ -2,11 +2,11 @@
   "name": "nithin",
   "version": "1.0.1",
   "private": true,
-  "homepage": ".",
   "author": {
     "name": "Nithin Viswanathan",
     "email": "mails2nithin@gmail.com"
   },
+  "homepage": "https://codebynithin.com",
   "scripts": {
     "predeploy": "GENERATE_SOURCEMAP=false npm run build",
     "deploy": "gh-pages -d build",
@@ -28,6 +28,8 @@
     "web-vitals": "~2.1.4"
   },
   "devDependencies": {
+    "@commitlint/cli": "~12.1.4",
+    "@commitlint/config-angular": "~12.1.4",
     "@types/jest": "~30.0.0",
     "@types/react": "~19.1.8",
     "@types/react-dom": "~19.1.6",
@@ -63,16 +65,17 @@
     ]
   },
   "lint-staged": {
-    "{server,src}/app/**/*.(tsx|ts|js|jsx)": [
+    "src/app/**/*.(tsx|ts|js|jsx)": [
       "eslint --fix"
     ],
-    "{server,src}/**/*.(html|scss|json|tsx|ts|js|jsx)": [
+    "src/**/*.(html|scss|json|tsx|ts|js|jsx)": [
       "prettier --write"
     ]
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -c .commitlintrc.json -E HUSKY_GIT_PARAMS"
     }
   }
 }
