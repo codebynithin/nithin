@@ -19,6 +19,10 @@ const Content: React.FC = () => {
     const savedTheme = localStorage.getItem('theme');
     const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
+    if (window.location.pathname !== '/') {
+      window.location.href = '/';
+    }
+
     if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
       document.documentElement.classList.add('dark');
       setIsDarkMode(true);
@@ -31,6 +35,7 @@ const Content: React.FC = () => {
   const toggleDarkMode = useCallback(() => {
     setIsDarkMode((prevMode) => {
       const newMode = !prevMode;
+
       localStorage.setItem('theme', newMode ? 'dark' : 'light');
 
       document.documentElement.classList.toggle('dark', newMode);
@@ -42,7 +47,7 @@ const Content: React.FC = () => {
   return (
     <div className="flex flex-col min-h-screen">
       <Header isDarkMode={isDarkMode} onToggleDarkMode={toggleDarkMode} />
-      <main className={`flex-grow flex items-center justify-center ${isHome ? 'pt-0' : 'pt-10'}`}>
+      <main className={`flex-grow flex items-start justify-center ${isHome ? 'pt-0' : 'pt-6'}`}>
         <DialogController />
         <Routes>
           <Route path="/" element={<Home />} />

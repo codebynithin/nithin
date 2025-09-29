@@ -128,7 +128,7 @@ const About: React.FC = () => {
   };
 
   return (
-    <div className="about-page w-full px-5 md:px-8">
+    <div className="about-page w-full px-5">
       <div className="w-full flex flex-col gap-4">
         <h1 className="col-12 p-0 text-4xl text-900 font-bold m-0">About Me</h1>
         <hr className="col-12 p-0 m-0 border-50" />
@@ -237,7 +237,9 @@ const About: React.FC = () => {
                                 }}
                               ></div>
                               <div className="absolute inset-2 flex items-center justify-center rounded-full bg-white dark:bg-gray-800">
-                                <span className="text-blue-500 font-bold">{skill.percentage}%</span>
+                                <span className="text-blue-500 text-3xl font-bold">
+                                  {skill.percentage}%
+                                </span>
                               </div>
                             </div>
                           </div>
