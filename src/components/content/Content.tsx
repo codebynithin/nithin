@@ -19,10 +19,6 @@ const Content: React.FC = () => {
     const savedTheme = localStorage.getItem('theme');
     const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
-    if (window.location.hash && window.location.hash !== '#/') {
-      window.location.hash = '#/';
-    }
-
     if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
       document.documentElement.classList.add('dark');
       setIsDarkMode(true);
