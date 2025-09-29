@@ -200,7 +200,9 @@ const About: React.FC = () => {
                         <div
                           key={i}
                           className={`w-[1rem] h-[1rem] rounded-full ${
-                            i < skill.percentage / 10 ? 'bg-blue-500' : 'bg-gray-500'
+                            i < skill.percentage / 10
+                              ? 'bg-blue-500'
+                              : 'bg-gray-200 dark:bg-gray-700'
                           }`}
                         ></div>
                       ))}
@@ -223,11 +225,15 @@ const About: React.FC = () => {
                       {skills[SkillCategoryEnum.CODING].map((skill: any, index: number) => (
                         <div key={index} className="text-center">
                           <div className="flex items-center justify-center mb-4">
-                            <div className="relative w-[9rem] h-[9rem] rounded-full bg-gray-200">
+                            <div className="relative w-[9rem] h-[9rem] rounded-full bg-gray-200 dark:bg-gray-700">
                               <div
                                 className="absolute inset-0 rounded-full"
                                 style={{
-                                  background: `conic-gradient(#3b82f6 0% ${skill.percentage}%,#999 ${skill.percentage}% 100%)`,
+                                  background: `conic-gradient(#3b82f6 0% ${skill.percentage}%, ${
+                                    document.documentElement.classList.contains('dark')
+                                      ? '#374151'
+                                      : '#e5e7eb'
+                                  } ${skill.percentage}% 100%)`,
                                 }}
                               ></div>
                               <div className="absolute inset-2 flex items-center justify-center rounded-full bg-white dark:bg-gray-800">
@@ -256,7 +262,7 @@ const About: React.FC = () => {
                             index < skills[SkillCategoryEnum.KNOWLEDGE].length - 1 ? 'mb-2' : ''
                           }`}
                         >
-                          <i className="icon cbn-target text-primary mr-2"></i>
+                          <i className="icon cbn-target mr-2 text-gray-400"></i>
                           <span>{skill.name}</span>
                         </li>
                       ))}
