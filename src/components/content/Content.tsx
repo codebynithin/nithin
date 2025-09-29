@@ -12,7 +12,7 @@ import Education from './education/Education';
 
 const Content: React.FC = () => {
   const location = useLocation();
-  const isHome = location.pathname === '/';
+  const isHome = location.pathname === '/' || location.pathname === '/#/';
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   useEffect(() => {
@@ -43,7 +43,9 @@ const Content: React.FC = () => {
   return (
     <div className="flex flex-col min-h-screen">
       <Header isDarkMode={isDarkMode} onToggleDarkMode={toggleDarkMode} />
-      <main className={`flex-grow flex items-start justify-center ${isHome ? 'pt-0' : 'pt-6'}`}>
+      <main
+        className={`flex-grow flex justify-center items-${isHome ? 'center pt-0' : 'start pt-6'}`}
+      >
         <DialogController />
         <Routes>
           <Route path="/" element={<Home />} />
