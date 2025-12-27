@@ -8,8 +8,8 @@
   },
   "homepage": "https://codebynithin.com",
   "scripts": {
-    "predeploy": "GENERATE_SOURCEMAP=false npm run build",
-    "deploy": "gh-pages -d build",
+    "predeploy": "GENERATE_SOURCEMAP=false npm run build && rm -rf docs && cp -r build docs",
+    "deploy": "git add docs && git commit -m 'feat: deploy to docs' && git push",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "start": "PUBLIC_URL=/ react-scripts start",
     "build": "PUBLIC_URL=https://codebynithin.com react-scripts build",
