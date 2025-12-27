@@ -9,8 +9,7 @@ const Banner: React.FC = () => {
     const day = today.getDate();
     const year = today.getFullYear();
 
-    // December 31st
-    if (month === 11 && day === 31) {
+    if (month === 11 && day < 25) {
       return {
         show: true,
         message: `Goodbye ${year}`,
@@ -19,7 +18,6 @@ const Banner: React.FC = () => {
       };
     }
 
-    // January 1st
     if (month === 0 && day === 1) {
       return {
         show: true,
