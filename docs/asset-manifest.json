@@ -1,11 +1,11 @@
 {
   "files": {
-    "main.css": "https://codebynithin.com/static/css/main.e98863ad.css",
+    "main.css": "https://codebynithin.com/static/css/main.abbe1c6d.css",
     "main.js": "https://codebynithin.com/static/js/main.b3895b3b.js",
     "index.html": "https://codebynithin.com/index.html"
   },
   "entrypoints": [
-    "static/css/main.e98863ad.css",
+    "static/css/main.abbe1c6d.css",
     "static/js/main.b3895b3b.js"
   ]
 }
