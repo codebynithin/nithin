@@ -1,4 +1,47 @@
 Options -MultiViews
+
+# ─────────────────────────────────────────────
+#  Security Headers
+# ─────────────────────────────────────────────
+<IfModule mod_headers.c>
+  # Prevent clickjacking — only allow framing from same origin
+  Header always set X-Frame-Options "SAMEORIGIN"
+
+  # Stop browsers guessing MIME types (MIME-sniffing attacks)
+  Header always set X-Content-Type-Options "nosniff"
+
+  # Legacy XSS filter for older browsers
+  Header always set X-XSS-Protection "1; mode=block"
+
+  # Control referrer information sent to third parties
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+
+  # Restrict access to browser features not needed by this portfolio
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()"
+
+  # Content Security Policy — pragmatic for a CRA + Google Analytics/Fonts portfolio
+  Header always set Content-Security-Policy "\
+    default-src 'self'; \
+    script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; \
+    style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; \
+    font-src 'self' https://fonts.gstatic.com; \
+    img-src 'self' data: https:; \
+    connect-src 'self' https://www.google-analytics.com https://analytics.google.com; \
+    frame-ancestors 'none'; \
+    base-uri 'self'; \
+    form-action 'self';"
+
+  # HSTS — enforce HTTPS for 1 year (enable only after confirming HTTPS works)
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+
+  # Remove server fingerprinting headers
+  Header always unset X-Powered-By
+  Header always unset Server
+</IfModule>
+
+# ─────────────────────────────────────────────
+#  SPA Routing
+# ─────────────────────────────────────────────
 RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^ index.html [QSA,L]
