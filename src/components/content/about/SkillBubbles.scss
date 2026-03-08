@@ -16,8 +16,9 @@
   align-items: center;
   justify-content: center;
   will-change: transform;
-  opacity: 0.18;
-  filter: grayscale(15%);
+  opacity: 0.12;
+  /* Full grayscale → true black-and-white icons in light mode */
+  filter: grayscale(100%) contrast(120%);
 
   img {
     display: block;
@@ -25,6 +26,12 @@
     pointer-events: none;
     -webkit-user-drag: none;
   }
+}
+
+/* Dark mode — invert the black icons to white so they show on dark backgrounds */
+:root.dark .skill-bg-bubble,
+.dark .skill-bg-bubble {
+  filter: grayscale(100%) contrast(120%) invert(1);
 }
 
 // Everything rendered after the canvas sits on top
