@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Experience.scss';
 
 const Experience: React.FC = () => {
+  const [certificateOpen, setCertificateOpen] = useState(false);
   const experiences = [
     {
       date: '2020 - Present',
@@ -112,7 +113,10 @@ const Experience: React.FC = () => {
                 <p className="text-xl text-800 font-semibold mx-0 my-2">
                   {item.company}
                   {item.certificate && (
-                    <span className="certificate-badge">
+                    <span
+                      className={`certificate-badge${certificateOpen ? ' is-open' : ''}`}
+                      onClick={() => setCertificateOpen(!certificateOpen)}
+                    >
                       🏅
                       <span className="certificate-tooltip">
                         <img src={item.certificate} alt="Certificate of Recognition" />
@@ -123,6 +127,12 @@ const Experience: React.FC = () => {
                     </span>
                   )}
                 </p>
+                {item.certificate && (
+                  <div className={`certificate-expand${certificateOpen ? ' is-open' : ''}`}>
+                    <img src={item.certificate} alt="Certificate of Recognition" />
+                    <span className="certificate-expand-label">Certificate of Recognition</span>
+                  </div>
+                )}
                 <p className="text-base text-800 mx-0 my-2">{item.description}</p>
 
                 {item.projects?.length && (
