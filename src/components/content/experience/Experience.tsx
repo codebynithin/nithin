@@ -9,6 +9,20 @@ const Experience: React.FC = () => {
       company: 'Sorice Solutions Pvt. Ltd.',
       description:
         'Working in health domain as a MEAN developer with experience in Angular, NativeScript, NestJs, Node js, HTML5, CSS3, JavaScript, Git, Kubernetes, etc.',
+      projects: [
+        {
+          title: '4medica Portal',
+          description:
+            'Leading the UI development of 4medica Portal, the new platform that helps 4medica clients to manage and monitor their business, products and services.',
+          url: 'https://portal.4medica.io/',
+        },
+        {
+          title: '4Health',
+          description:
+            'Leading the UI development of 4Health, which help to get reports from lab partners and deliver to the end customers',
+          url: 'https://4health.me/',
+        },
+      ],
     },
     {
       date: '2016 - 2020',
@@ -16,6 +30,20 @@ const Experience: React.FC = () => {
       company: 'Skyonn Technologies Pvt. Ltd.',
       description:
         'Working for Wipro as a contract employee with experience in HTML5, CSS3, JavaScript, Grunt, Ajax, Jenkins, Git, Azure, requireJs, etc.',
+      projects: [
+        {
+          title: 'Philips Store for Business',
+          description:
+            'A portal for Philips Professional Lighting (Smart Lighting, Professional Lighting, Lumileds, Signify) that helps dealers, distributors and end customers across the world to select and buy the right products for their needs.',
+          url: 'https://www.b2bshop.philips.com/',
+        },
+        {
+          title: 'Dubai Trade',
+          description:
+            'Dubai Trade is the premier trade facilitation platform in the region, integrating port, logistics, and customs services into a seamless digital ecosystem. It streamlines international trade operations by connecting buyers, sellers, banks, and government agencies through a unified interface.',
+          url: 'https://www.dubaitrade.ae/en/',
+        },
+      ],
     },
     {
       date: '2012 - 2016',
@@ -23,6 +51,20 @@ const Experience: React.FC = () => {
       company: 'LSG Technologies India Pvt. Ltd.',
       description:
         '4 years experience Website design & development, responsive website creation, html5, css3, JavaScript, jQuery, brochure creation, Flash animation, PowerPoint Presentations, etc.',
+      projects: [
+        {
+          title: 'Legal Bill Review',
+          description:
+            'Legal bill review is a transformative financial approach to bring a paradigm shift in efficiency, transparency and modernity in corporate cost management.',
+          url: '#',
+        },
+        {
+          title: 'Beach Plum Villa',
+          description:
+            'Beach Plum Villa is a Luxury Villa located in the picturesque coastal town of Wellfleet, Massachusetts. I was responsible for the complete UI development of the website.',
+          url: 'https://beachplumvilla.com/',
+        },
+      ],
     },
     {
       date: '2011 - 2012',
@@ -66,6 +108,17 @@ const Experience: React.FC = () => {
                 <p className="text-2xl text-900 font-bold mx-0 my-2">{item.title}</p>
                 <p className="text-xl text-800 font-semibold mx-0 my-2">{item.company}</p>
                 <p className="text-base text-800 mx-0 my-2">{item.description}</p>
+                {item.projects?.length && (
+                  <p className="text-lg text-900 font-bold mx-0 my-2">Projects:</p>
+                )}
+                {item.projects?.map((project, projectIndex) => (
+                  <div key={projectIndex} className="mt-3">
+                    <a href={project.url} target="_blank" rel="noopener noreferrer">
+                      <p className="text-lg text-900 font-bold mx-0 my-2">{project.title}</p>
+                    </a>
+                    <p className="text-base text-800 mx-0 my-2">{project.description}</p>
+                  </div>
+                ))}
               </div>
             </div>
           ))}
