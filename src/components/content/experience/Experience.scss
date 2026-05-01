@@ -1,0 +1,59 @@
+.certificate-badge {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 8px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  position: relative;
+  vertical-align: middle;
+
+  &:hover .certificate-tooltip {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+}
+
+.certificate-tooltip {
+  width: min(650px, 90vw);
+  position: absolute;
+  bottom: calc(100% - 24px);
+  left: -10px;
+  transform: translateY(6px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  z-index: 9999;
+  text-align: center;
+  pointer-events: none;
+
+  img {
+    width: 100%;
+    border-radius: 10px;
+    border: 2px solid #c9a84c;
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.4);
+    display: block;
+  }
+
+  // Arrow pointing down — aligned with badge emoji
+  &::after {
+    content: '';
+    position: absolute;
+    top: calc(100% - 36px);
+    left: 10px;
+    border: 12px solid transparent;
+    border-top-color: #c9a84c;
+  }
+}
+
+.certificate-tooltip-label {
+  display: inline-block;
+  padding: 4px 12px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: #c9a84c;
+  border-radius: 4px;
+}
