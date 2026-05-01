@@ -114,23 +114,43 @@ const Experience: React.FC = () => {
                   {item.company}
                   {item.certificate && (
                     <span
-                      className={`certificate-badge${certificateOpen ? ' is-open' : ''}`}
+                      className={`group inline-flex items-center ml-2 text-lg cursor-pointer relative align-middle transition-transform duration-200${
+                        certificateOpen ? ' scale-[1.2]' : ''
+                      }`}
                       onClick={() => setCertificateOpen(!certificateOpen)}
                     >
                       🏅
-                      <span className="certificate-tooltip">
-                        <img src={item.certificate} alt="Certificate of Recognition" />
-                        <span className="certificate-tooltip-label">
+                      {/* Desktop tooltip — hidden on mobile */}
+                      <span className="hidden md:block w-[min(650px,90vw)] absolute bottom-[calc(100%-24px)] -left-2.5 translate-y-1.5 opacity-0 invisible transition-[opacity,transform] duration-[250ms] ease-in-out z-[9999] text-center pointer-events-none md:group-hover:opacity-100 md:group-hover:visible md:group-hover:translate-y-0 after:content-[''] after:absolute after:top-[calc(100%-36px)] after:left-[10px] after:border-[12px] after:border-transparent after:border-t-[#c9a84c]">
+                        <img
+                          src={item.certificate}
+                          alt="Certificate of Recognition"
+                          className="w-full rounded-[10px] border-2 border-[#c9a84c] shadow-[0_12px_48px_rgba(0,0,0,0.4)] block"
+                        />
+                        <span className="inline-block px-3 py-1 text-[0.7rem] font-bold text-white tracking-[0.08em] uppercase bg-[#c9a84c] rounded-b-[4px]">
                           Certificate of Recognition
                         </span>
                       </span>
                     </span>
                   )}
                 </p>
+                {/* Mobile expand/collapse panel */}
                 {item.certificate && (
-                  <div className={`certificate-expand${certificateOpen ? ' is-open' : ''}`}>
-                    <img src={item.certificate} alt="Certificate of Recognition" />
-                    <span className="certificate-expand-label">Certificate of Recognition</span>
+                  <div
+                    className={`md:hidden overflow-hidden text-center transition-all duration-[400ms] ease-in-out${
+                      certificateOpen
+                        ? ' max-h-[600px] opacity-100 mt-3'
+                        : ' max-h-0 opacity-0 mt-0'
+                    }`}
+                  >
+                    <img
+                      src={item.certificate}
+                      alt="Certificate of Recognition"
+                      className="w-full rounded-[10px] border-2 border-[#c9a84c] shadow-[0_8px_24px_rgba(0,0,0,0.3)] block"
+                    />
+                    <span className="inline-block -mt-px px-3 py-1 text-[0.7rem] font-bold text-white tracking-[0.08em] uppercase bg-[#c9a84c] rounded-b-[4px]">
+                      Certificate of Recognition
+                    </span>
                   </div>
                 )}
                 <p className="text-base text-800 mx-0 my-2">{item.description}</p>
