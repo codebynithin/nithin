@@ -256,8 +256,8 @@ body:has(.portfolio-page-shell) {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background-image: linear-gradient(var(--portfolio-line) 1px, transparent 1px),
-    linear-gradient(90deg, var(--portfolio-line) 1px, transparent 1px);
+  /* background-image: linear-gradient(var(--portfolio-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--portfolio-line) 1px, transparent 1px); */
   background-size: 72px 72px;
   opacity: 0.35;
 }
@@ -542,7 +542,7 @@ body:has(.portfolio-page-shell) {
   height: 0.22rem;
   overflow: hidden;
   border-radius: 1rem;
-  background: var(--portfolio-line);
+  // background: var(--portfolio-line);
 }
 
 .skill-bar__track span {

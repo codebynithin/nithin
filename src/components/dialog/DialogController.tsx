@@ -1,5 +1,4 @@
 import React, { useState, useRef, useCallback, useEffect, useMemo } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { useDialog } from './Dialog';
 import { QuickLinkModel } from '@/model/quick-link.model';
 
@@ -50,7 +49,6 @@ const DialogController: React.FC = () => {
   const listRef = useRef<HTMLDivElement>(null);
   const [filter, setFilter] = useState('');
   const [focusedIndex, setFocusedIndex] = useState(-1);
-  const navigate = useNavigate();
 
   // Define the quick links
   const allQuickLinks = useMemo<QuickLink[]>(
@@ -97,11 +95,11 @@ const DialogController: React.FC = () => {
       } else if (link.href.startsWith('http')) {
         window.location.href = link.href;
       } else {
-        navigate(link.href.startsWith('/') ? link.href : `/${link.href}`);
+        window.location.href = link.href.startsWith('/') ? link.href : `/${link.href}`;
       }
       hideDialog();
     },
-    [navigate, hideDialog],
+    [hideDialog],
   );
 
   // Handle keyboard navigation

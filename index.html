@@ -4,7 +4,6 @@
     <meta charset="utf-8" />
     <base href="/" />
 
-    <!-- ===================== Core SEO ===================== -->
     <title>Nithin V | UI Team Lead &amp; Full-Stack Developer — Angular, React, Node.js</title>
     <meta
       name="description"
@@ -18,8 +17,6 @@
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://codebynithin.com/" />
 
-    <!-- ===================== Security (meta-enforceable headers) ===================== -->
-    <!-- CSP via meta tag — covers GitHub Pages & any host that can't set HTTP headers -->
     <meta
       http-equiv="Content-Security-Policy"
       content="
@@ -34,13 +31,9 @@
       "
     />
     <meta name="referrer" content="strict-origin-when-cross-origin" />
-
-    <!-- ===================== Viewport & Theme ===================== -->
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#1e293b" />
+    <meta name="theme-color" content="#22bbf2" />
 
-
-    <!-- ===================== Open Graph (Facebook / LinkedIn) ===================== -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://codebynithin.com/" />
     <meta property="og:title" content="Nithin V | UI Team Lead &amp; Full-Stack Developer" />
@@ -54,7 +47,6 @@
     <meta property="og:locale" content="en_IN" />
     <meta property="og:site_name" content="Nithin V — Portfolio" />
 
-    <!-- ===================== Twitter Card ===================== -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content="https://codebynithin.com/" />
     <meta name="twitter:title" content="Nithin V | UI Team Lead &amp; Full-Stack Developer" />
@@ -64,7 +56,6 @@
     />
     <meta name="twitter:image" content="https://codebynithin.com/og-image.png" />
 
-    <!-- ===================== Structured Data — Person ===================== -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -106,20 +97,14 @@
       }
     </script>
 
-    <!-- ===================== Favicons & Manifest ===================== -->
-    <link rel="icon" href="%PUBLIC_URL%/favicon.png" />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/favicon.png" />
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-
-    <!-- ===================== Performance: Preconnects ===================== -->
+    <link rel="icon" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/favicon.png" />
+    <link rel="manifest" href="/manifest.json" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preconnect" href="https://www.googletagmanager.com" />
+    <link rel="stylesheet" href="/styles/icomoon.css" />
 
-    <!-- ===================== Styles ===================== -->
-    <link rel="stylesheet" href="%PUBLIC_URL%/styles/icomoon.css" />
-
-    <!-- ===================== Google Analytics ===================== -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-X1921TD2E0"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -133,5 +118,6 @@
   <body class="bg-white dark:bg-gray-800 text-black dark:text-white">
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
+    <script type="module" src="/src/index.tsx"></script>
   </body>
 </html>

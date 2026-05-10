@@ -25,10 +25,7 @@ const ProjectsSection: React.FC = () => {
             style={{ '--project-color': project.color } as React.CSSProperties}
           >
             <div className="project-card__image">
-              <img
-                src={`${process.env.PUBLIC_URL}/images/portfolio/${project.image}`}
-                alt={`${project.title} preview`}
-              />
+              <img src={`/images/portfolio/${project.image}`} alt={`${project.title} preview`} />
             </div>
             <div className="project-card__body">
               <div className="project-card__topline">

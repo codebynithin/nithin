@@ -52,7 +52,7 @@ const PortfolioPage: React.FC = () => {
           setActiveNav(visible.target.id);
         }
       },
-      { rootMargin: '-35% 0px -50% 0px', threshold: [0.12, 0.35, 0.6] },
+      { rootMargin: '-20% 0px -60% 0px', threshold: [0.1, 0.25, 0.5, 0.75] },
     );
 
     Object.values(sectionRefs.current).forEach((section) => {
