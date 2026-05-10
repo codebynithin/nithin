@@ -61,9 +61,9 @@ const DialogController: React.FC = () => {
         href: '/downloads/resume-nithin-v.pdf',
         target: '_blank',
       },
-      { name: 'Know me', icon: 'cbn-user', href: '/about' },
-      { name: 'Know my career', icon: 'cbn-user', href: '/experiences' },
-      { name: 'See my skills', icon: 'cbn-target', href: '/about#skills' },
+      { name: 'Know me', icon: 'cbn-user', href: '#about' },
+      { name: 'Know my career', icon: 'cbn-user', href: '#experience' },
+      { name: 'See my skills', icon: 'cbn-target', href: '#skills' },
       {
         name: 'See my github',
         icon: 'cbn-github',
@@ -92,6 +92,8 @@ const DialogController: React.FC = () => {
     (link: QuickLink) => {
       if (link.target === '_blank') {
         window.open(link.href, '_blank', 'noopener,noreferrer');
+      } else if (link.href.startsWith('#')) {
+        document.querySelector(link.href)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
       } else if (link.href.startsWith('http')) {
         window.location.href = link.href;
       } else {
