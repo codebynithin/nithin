@@ -1,6 +1,6 @@
 {
   "name": "nithin",
-  "version": "1.0.1",
+  "version": "1.1.0-lts",
   "private": true,
   "author": {
     "name": "Nithin Viswanathan",
@@ -8,8 +8,8 @@
   },
   "homepage": "https://codebynithin.com",
   "scripts": {
-    "predeploy": "GENERATE_SOURCEMAP=false npm run build",
-    "deploy": "gh-pages -d build",
+    "predeploy": "GENERATE_SOURCEMAP=false npm run build && rm -rf docs && cp -r build docs",
+    "deploy": "git add docs && git commit -m 'feat: deploy to docs' && git push",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "start": "PUBLIC_URL=/ react-scripts start",
     "build": "PUBLIC_URL=https://codebynithin.com react-scripts build",
@@ -75,7 +75,7 @@
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged",
-      "commit-msg": "commitlint -c .commitlintrc.json -E HUSKY_GIT_PARAMS"
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   }
 }

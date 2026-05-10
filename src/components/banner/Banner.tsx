@@ -7,22 +7,21 @@ const Banner: React.FC = () => {
     const today = new Date();
     const month = today.getMonth(); // 0-indexed (0 = January, 11 = December)
     const day = today.getDate();
+    const year = today.getFullYear();
 
-    // December 31st
-    if (month === 11 && day === 31) {
+    if (month === 11 && day > 25) {
       return {
         show: true,
-        message: 'Goodbye 2025',
+        message: `Goodbye ${year}`,
         subMessage: 'Thank you for the memories! 🎆',
         type: 'goodbye' as const,
       };
     }
 
-    // January 1st
     if (month === 0 && day === 1) {
       return {
         show: true,
-        message: 'Happy New Year 2026',
+        message: `Happy New Year ${year}`,
         subMessage: 'Wishing you joy and success! 🎉',
         type: 'newyear' as const,
       };
